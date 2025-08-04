@@ -26,3 +26,58 @@ class Page(models.Model):
 
     def __str__(self):
         return self.heading
+    
+
+
+
+class Leadership(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_leadership')
+    name = models.CharField(max_length=255,
+                            null=True, blank=False)
+    position = models.CharField(max_length=255,
+                            null=True, blank=True)
+    description = RichTextUploadingField(null=True, blank=False)
+    image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    sequence_number = models.IntegerField(blank=False, default=1, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+
+class LeadershipGroupImage(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_leadershipgimg')
+    image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Leaders Group Image"
+        verbose_name_plural = "Leaders Group Image"
+    
+
+    def __str__(self):
+        return self.image_alt_text    
+    
+
+class AboutUsImage(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_aboutus')
+    top_video_iframe=models.TextField(null=True, blank=True)
+    who_we_are=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    who_we_are_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    our_vision=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    our_vision_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    our_mission=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    our_mission_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "About Us Image"
+        verbose_name_plural = "About Us Images"
+    
+
+    # def __str__(self):
+    #     return self.image_alt_text   

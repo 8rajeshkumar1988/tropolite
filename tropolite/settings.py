@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-tmd*+i0o0ngmbhaya=@zjj7yhm#f7yh(qdc+484jxad8(0-ls@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.tropolite.com','tropolite.com','4.240.75.78']
+ALLOWED_HOSTS = ["*" ]
 
 
 # Application definition
@@ -104,7 +104,7 @@ DATABASES = {
         #'ENGINE': 'mysql.connector.django',
         'NAME': 'tropolite_db',
         'USER': 'root',
-        'PASSWORD': ".lRaFJqJP2TJ",
+        'PASSWORD': "",
         'HOST': "127.0.0.1",
         'PORT': "3306",
         'OPTIONS': {
@@ -209,7 +209,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-SECURE_SSL_REDIRECT = True
+#SECURE_SSL_REDIRECT = True
 
 # CKEDITOR_CONFIGS = {
 #     'default': {
