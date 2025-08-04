@@ -1,0 +1,271 @@
+{% extends "front/base.html" %}{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/p-14.css' %}" />
+{% endblock %}
+{% block content %}
+{% include "front/include/breadcrumb.html" %}
+<!-- -------------------------------------------------------- -->
+<!-- section - 1 -->
+<!--------------------------------------------------------  -->
+<section class="whips whips2 whips3 connect-with">
+    <!-- <div><img src="assets/foodimg.png" alt="" /></div> -->
+    <div class="connect connect-with__headings head_anim">
+        <h1 class="connect-with__headings--h1 big-h1 ">Connect for</h1>
+        <h2 class="connect-with__headings--h2">Food innovation & Solutions</h2>
+    </div>
+    <div class="connect-with__content para_anim">
+        <p>
+            Tropilite isn't just about ingredients; it's about a community of
+            bakers, creators and dreamers. Whether you're exploring,
+            experimenting, or executing, our contact page is your gateway to a
+            world of baking possibilities. Let's sprinkle a little extra
+            sweetness into our interaction. Fill out the forms and let the
+            baking conversations begin!
+        </p>
+    </div>
+</section>
+<!-- -------------------------------------------------------- -->
+<!-- section - 2 -->
+<!--------------------------------------------------------  -->
+
+<section class="section-location">
+    <div class="section-location__container">
+        <div class="section-location__container__contact">
+            <div class="icon">
+                <img loading='lazy' src="{% static 'front/assets/call.svg' %}" alt="phone icon"  title="food-img" /> 
+            </div>
+            <div class="detail short_para_anim  ">
+                <p>Customer care contact</p>
+                <p class="contact-detail">+91-7049400400</p>
+            </div>
+        </div>
+        <div class="section-location__container__contact">
+            <div class="icon">
+                <img loading='lazy' src="{% static 'front/assets/email-p.webp' %}" alt="email icon" title="email icon" />
+            </div>
+            <div class="detail short_para_anim  ">
+                <p>Email address</p>
+                <p class="contact-detail">customercare@tropolite.com</p>
+            </div>
+        </div>
+
+        <div class="section-location__container__address short_para_anim  ">
+            <h3>DELHI SALES OFFICE</h3>
+            <p>
+                9/28 2nd Floor, East Patel Nagar, New Delhi-110008
+                <br/>Phone No.: +91-11-35000414/415
+               
+            </p>
+        </div>
+
+        <div class="section-location__container__address short_para_anim  ">
+            <h3>MUMBAI SALES OFFICE</h3>
+            <p>
+                Tropilite Foods Pvt.Ltd, Office No. 104/105/106, First Floor, Fortune Plaza, Plot No. 29 & 30, Sector 19A, Vashi, Navi Mumbai - 400705 <br/>
+                Phone No.: 022 4608 4509
+            </p>
+        </div>
+        <div class="section-location__container__address short_para_anim  ">
+            <h3>MANUFACTURING UNIT</h3>
+            <p>
+                Davar Campus, Tansen Road Industrial Estate Gwalior, Madhya
+                Pradesh - 474002 
+                <br/>Phone No.: +91-751-4056333
+            </p>
+        </div>
+        <div class="section-location__container__address short_para_anim  ">
+            <h3>DUBAI OFFICE</h3>
+            <p>
+                Gulf Central, and floor Shop 20, Madina Mall, AL QUSAIS, Dubai
+                <br/>Phone No.: +971-506128142
+                
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------------------------------------- -->
+<!-- section - 3 -->
+<!--------------------------------------------------------  -->
+<section class="thanks_pop" style='    position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background: #f7f8f8;
+margin: 0;
+border-radius: 0;
+z-index: 9999999999;
+display: none;
+align-items: center;
+justify-content: center;'>
+        <i class="fa-solid fa-xmark close_thank"  style="    position: fixed;
+        right: 50px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        top: 50px;
+    "></i>
+    <div style="width: fit-content;">
+        <h2 class='h1'>Thank You</h2>
+        <div class="alert alert-success revert_res" role="alert"></div>
+    </div>
+</section>
+<section class="section-inquiry">
+    <div class=" section-inquiry__container head_anim">
+        <h2 class="h1">Get Drooling Deals </h2>
+        <h3>Bulk Orders & Enquiries</h3>
+
+        <form id="save_lead_form" action={% url 'save_lead' %} method='POST'>
+            {% csrf_token %}
+            {{leadform.product_id}}
+            <input type="hidden" name="page" value="contact-us"/>
+            <div class="section-inquiry__container__form-details">
+                <div class="col-1 col">
+                    <label for="fname">Name<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    {{leadform.name}}
+
+                </div>
+                <div class="col-2 col">
+                    <label for="phone">Phone<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    {{leadform.mobile}}
+                </div>
+
+                <div class="col-3 col">
+                    <label for="email">Email<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    {{leadform.email}}
+                </div>
+                <div class="col-4 col">
+                    <label for="pincode">Pincode<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    {{leadform.zip_code}}
+                </div>
+
+                <div class="col-1 col">
+                    <label for="city">City<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    {{leadform.city}}
+                   
+                </div>
+
+                <div class="col-2 col">
+                    <label for="state">State<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    {{leadform.state}}
+                </div>
+
+                <div class="col-7 col">
+                    <label for="query">Query</label>
+                    {{leadform.description}}
+
+                </div>
+            </div>
+
+            <a href="javascript:void(0)" class="cta savelead" id="savelead">
+                <span>Submit</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </a>
+            <div class="msg_div"></div>
+
+        </form>
+    </div>
+</section>
+
+<script>
+
+    $('.close_thank').click(function(){
+        $('.thanks_pop').css('display', 'none')
+        $('#save_lead_form')[0].reset();
+        $('.revert_res').text('')
+    })
+
+
+    $(document).ready(function () {
+
+
+        
+
+          
+          
+
+        
+
+        $(".savelead").on("click", function () {
+            var not_filled = 0;
+           $('.input').each(function (index, data) {
+                if ($(data).val() == '') {
+                    $(data).addClass('error');
+                    not_filled++;
+                } else {
+                    $(data).removeClass('error');
+                }
+            }); 
+            var not_filled = 0;
+
+            // console.log(not_filled);  
+            if (not_filled == 0) {
+                form = document.getElementById('save_lead_form');
+                formdata = new FormData(form);
+                $.ajax({
+                    url: $("#save_lead_form").attr("action"),
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    data: formdata,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $("#savelead").html(`<span>Wait...</span>
+                            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>`);
+                        $("#savelead").removeClass('savelead');
+                    },
+                    success: function (data) {
+                        $("#savelead").html(`<span>submit</span>
+                            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>`);
+                        $("#savelead").addClass('savelead');
+                        if (data.error == false) {
+                            $('#save_lead_form')[0].reset();
+                            var response = "";
+                            response += '<div class="alert alert-success" role="alert">' + data.message + '</div>';
+                            $('.thanks_pop').css('display', 'flex')
+                            $('.revert_res').text(data.message)
+                            refreshPage();
+                        } else {
+                            var response = "";
+                            var resp = data.errors;
+                            if (data.message == '') {
+                                $.each(resp, function (k, value) {
+                                    response +=
+                                        '<div class="alert alert-danger" role="alert">' +
+                                        k +
+                                        " : " +
+                                        value +
+                                        `</div>`;
+                                });
+                            } else {
+                                response += '<div class="alert alert-danger" role="alert">' + data.message + '</div>';
+                            }
+                            $(".msg_div").html(response);
+                        }
+                    },
+                });
+            }
+        });
+    });
+
+    function refreshPage() {
+        setTimeout(function() {
+            location.reload();
+        }, 2000);  // 5000 milliseconds = 5 seconds
+    }
+
+</script>
+
+{% include "front/include/deals.html" %}
+{% endblock %}

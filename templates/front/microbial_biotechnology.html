@@ -1,0 +1,62 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+{% include "front/include/breadcrumb.html" %}
+<link rel="stylesheet" href="{% static 'front/css/patent_microbial.css' %}" />
+
+<section class="taste-happy head_anim">
+    <div class="aboutus-top-heading">
+        <h1>Microbial Biotechnology</h1>
+        <h3>UNLOCKING THE ESSENCE OF THE FERMENTATION</h3>
+    </div>
+    <div class="happy-back" style="height: 100%; width: 100%; max-height: 500px ;">
+        <div style="padding:56.25% 0 0 0;position:relative;">
+            <div id="901056879_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+            </div>
+            <iframe preload="auto" src="https://player.vimeo.com/video/901056879?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="R&amp;D Clip- Patents"></iframe></div>
+    </div>    
+</section>
+<section class="fermentation_art para_anim ">
+    <div class='champ-text'>
+        <h2 class="">Art of Fermentation</h2>
+        <h3>Cutting-Edge Science & Innovation</h3>
+        <p>With a rich legacy of safe usage in the food industry, the spotlight is now on selected cultures for dairy fermentation, showcasing remarkable potential and health benefits. At Tropolite Foods Pvt Ltd, we're dedicated to exploring the realm of microbial wonders to elevate the taste, texture and nutritional value of food.</p>
+    </div>
+    <div class='ferma_img'><img src="{% static 'front/assets/The-art-of-fermentation-meets-cutting-edge-science.jpg' %}" alt="test images" title="test images"></div>
+</section>
+<section class="champ para_anim">
+    <div class="champ-div">
+        <div class="champ-text"><h2>Championing Progress</h2><h3>The Power of Starter Cultures
+        </h3><p>The cultivation of starter cultures has taken the food industry by storm. These cultures, meticulously formed using distinct cultivation mediums and a carefully curated blend of fungal and bacterial strains, are at the heart of dairy product fermentation. Our palette of microorganisms encompasses bacteria, fungi (yeasts and molds) and enzymes, all harmonizing to craft a symphony of flavors and textures. The industrial application of starter cultures rests on precision, from concentration to preservation technologies, ensuring a steady supply of robust and functional cultures.</p></div>
+        <div class="champ-img"><img loading='lazy' src="{% static 'front/assets/metaSet.webp' %}" alt="Championing the Power of Starter Cultures" title="Championing the Power of Starter Cultures">> </div>
+    </div>
+    <div class="champ-div">
+        <div class="champ-img"><img loading='lazy' src="{% static 'front/assets/Exploring-Health-Benefits-and-Beyond.jpg' %}" alt="Exploring Health Benefits and Beyond" title="Exploring Health Benefits and Beyond"></div>
+        <div class="champ-text"><h2>Exploring Health Benefits</h2><h3>And Beyond</h3><p>In this era of discovery, we delve into the potential health benefits associated with starter cultures. Research hints at the role of lactic acid bacteria in influencing colon cancer growth, lowering cholesterol levels, preventing urogenital infections, addressing constipation and managing food allergies. Tropolite Foods Pvt Ltd is at the forefront of this exploration, channeling our expertise towards isolating, improving, establishing and mass-producing Probiotics and Yeast for diverse applications in dairy fermentation, baking and brewing.</p></div>
+    </div>
+</section>
+<section class="leading para_anim head_anim champ-text">
+    <h2 class="">Leading the Change</h2>
+    <h3>microbial biotechnology R&D</h3>
+    <p>Our research and development endeavors in Microbial Biotechnology encompass a spectrum of innovations:</p>
+    <div class="leading-div">
+        <li>Elevating Dairy Delights</li>
+        <p>We focus on isolating, improving, establishing and developing mass production technologies for strain-specific Lactic Acid Bacteria (Probiotics). Additionally, we formulate new blends for fermented dairy products, lending our touch of excellence to starter cultures.</p>
+        <li>Baking and Brewing Brilliance:</li>
+        <p>Saccharomyces cerevisiae (Yeast) takes center stage as we harness its potential for application in the realms of baking and brewing. Our efforts fuel fermentation processes that redefine taste and quality.</p>
+        <li>Mastering the Process</li>
+        <p>Standardization becomes our compass as we navigate upstream, downstream and freeze-drying processes. This meticulous approach ensures large-scale production that retains quality and integrity.</p>        
+    </div>
+    <p>As we traverse the exciting landscape of Microbial Biotechnology, our commitment to innovation is unwavering. At Tropilite Foods Pvt Ltd, we're not just exploring microbes – we're unraveling the potential for healthier, tastier and more nutritious culinary experiences.</p>
+
+</section>
+
+
+
+
+
+
+{% include "front/include/deals.html" %}
+<script>
+    get_thumbnail('901056879');
+</script>
+{% endblock %}

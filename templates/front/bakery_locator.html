@@ -1,0 +1,181 @@
+{% extends "front/base.html" %}{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/map.css' %}" />
+<link rel="stylesheet" href="{% static 'front/css/select.css' %}" />
+
+<link rel="stylesheet" href="{% static 'front/leaflet/leaflet.css' %}" />
+{% comment %} <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> {% endcomment %}
+{% endblock %}
+{% block content %}
+
+{% include "front/include/breadcrumb.html" %}
+
+<h1 hidden>Bakery Locator</h1>
+
+{% include "front/include/bakery_finder_header.html" %}
+<style>
+  #map {
+      height: 100%;
+      width: 100%;
+  }
+  .simplebar-scrollbar {
+    width: 10px;
+  }
+  
+  .simplebar-scrollbar-thumb {
+    background-color: maroon; /* Color of the scrollbar thumb */
+    border-radius: 5px;
+  }
+  
+  .simplebar-scrollbar-track {
+    background-color: grey; /* Color of the scrollbar track */   
+  }
+  .simplebar-track .simplebar-scrollbar {
+    max-height: 150px; /* Set the max-height of the scrollbar track */
+  }
+</style>
+<section class='outer-map-section' >
+  <div class="outer-map-container" id='location-list'>
+    <div class="selectbox">
+      <form id="formfilter" action="/dealer-locator#location-list" method='GET'>
+      <div >
+
+        <select name="state" class='state_list' id="state_list" >
+          <option value="ALL">All State</option>
+        </select>
+        
+        <select name="pin_code" class='pincode_list' style="display:none" id="cars" >
+          <option value="ALL">All Pin Codes</option>
+          {% if pin_code %}<option value="{{pin_code}}">{{pin_code}}</option>{% endif %}
+          {%if pincodes %}
+          {% for pincode  in pincodes %}
+            <option value="{{pincode}}">{{pincode}}</option>
+          {% endfor %}
+
+          {% endif %}
+          
+        </select>
+      </div>
+      
+    </form>
+    </div>
+    <div class="map-container" id="bakery_listing" >
+      
+    </div>
+
+
+  </div>
+</section>
+
+
+
+
+<script>
+    
+
+   $(document).ready(function() {
+    load_states('{{pin_code}}');
+   // bakery_listing('{{pin_code}}');
+    
+    {% if pin_code %}
+    $('.pincode_list').val('{{pin_code}}'); 
+    $('.pincode_list').trigger('change');
+    {% endif %}
+
+    $('.pincode_list').select2({}).on('change', function () {
+       var pcode = $(this).val();
+       var state=$('.state_list').val();
+        bakery_listing(pcode,"ALL");
+        //$('.state_list').val("ALL");
+        load_states(pcode)
+        $('.state_list').select2();
+        
+       
+    });
+
+    $('.state_list').select2().on('change', function () {
+     
+       var state = $(this).val();
+       $('#cars').val("ALL");
+       //$("#cars").trigger('change');
+       $('#cars').select2();
+       var pcode=$('.pincode_list').val();
+       bakery_listing("ALL",state);
+      
+   });
+      
+ });
+
+ function load_states(pincode){
+  $.ajax({
+    url: '{% url "state_listing" %}?pin_code='+pincode,  
+    type: 'GET',
+    dataType: "json",
+    success: function(result) {
+        response=result.list;
+        console.log(response.length);
+        bakery_listing(pincode,"")
+        $(".state_list").html('');
+        $(".state_list").append('<option  value="ALL">All States</option>');
+        for (var i = response.length - 1; i >= 0; i--) {
+          
+          if(response[i].selected==true){
+            $(".state_list").append('<option selected value="'+response[i].id+'">'+ response[i].name +'</option>');
+          }else{
+            $(".state_list").append('<option value="'+response[i].id+'">'+ response[i].name +'</option>');
+          }
+          
+        };
+        //$(".state_list").trigger('change');
+        //$(".pincode_list").trigger('change');
+    },
+    error: function(error) {
+        console.log('Error:', error);
+    }
+});
+ }
+
+  function bakery_listing(pin_code,state){
+    $.ajax({
+      url: '{% url "bakery_listing" %}?pin_code='+pin_code+'&state='+state,  
+      type: 'GET',
+      dataType: 'html',
+      success: function(response) {
+          $('#bakery_listing').html(response);
+          
+          initMap();
+          let parentDoc = document.querySelector('#bakery_listing')
+          if(window.innerWidth < 1024){
+            if(document.querySelector('.left-location').id > 4 ){
+              parentDoc.style.display = "flex"
+              parentDoc.style.height = "1000px"
+            }else{
+              parentDoc.style.display = "block"
+              parentDoc.style.height = "auto"
+            }
+          }
+          
+      },
+      error: function(error) {
+          console.log('Error:', error);
+      }
+  });
+  } 
+ 
+</script>
+
+<!-- Leaflet CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Leaflet.markercluster CSS and JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+{% include "front/include/deals.html" %}
+
+{% endblock %}
+

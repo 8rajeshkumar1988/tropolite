@@ -1,0 +1,238 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}{% load random_tags %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/patent_microbial.css' %}" />
+<link rel="stylesheet" href="{% static 'front/css/jquery-fancy-box.css' %}" />
+
+<style>
+.tem-img {
+    height: auto;
+    width: 100%;
+  }
+  #filterbytag{
+    position: relative;
+    & input{
+      width: 0;
+      visibility: hidden;
+    }
+    & label{
+      cursor: pointer;
+    }
+    & input:checked + label{
+      color: #932f31;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    & .for_cross::after{
+      font-size: 1rem;
+    }
+  }
+  .for_cross{
+    display: none;
+    position: absolute;
+    left:50px;
+    top: 8px;
+    transform: rotate(90deg);
+    height:9px;
+    mix-blend-mode: hard-light;
+    width:9px;
+  }
+  #csr-selection h2, #csr-selection select, #csr-selection option{
+    font-family: 'faunaOne' !important;
+    font-size: 14.2px !important;
+  }
+  .for_cross::after{
+    font-family: "Font Awesome 6 Free" !important;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    #csrfilter, #formfilter{
+      width: fit-content  ;
+    }
+    #filterbytag{
+      flex-direction: column;
+      flex-wrap: unset !important;
+      height: 25px;
+      background: white;
+      border-radius: 6px;
+      padding: 5px;
+      padding-top: 0px;
+      overflow: hidden;
+      row-gap: 5px;
+
+      & .for_cross{
+        display: block;
+      }
+      & .for_cross.onnn{
+        transform: rotate(270deg)  !important;
+      }
+    }
+    
+  }
+
+</style>
+{% endblock %}
+{% include "front/include/breadcrumb.html" %}
+
+
+<section class="taste-happy head_anim">
+  <div class="aboutus-top-heading">
+      <h1>Corporate Social Responsibility</h1>
+      <h3>at Tropolite</h3>
+  </div>
+  <div class="happy-back" style="height: 100%; width: 100%; max-height: 500px ;">
+      <div style="padding:56.25% 0 0 0;position:relative;">
+        <div id="899748682_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+        </div>
+        <iframe src="https://player.vimeo.com/video/899748682?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="R&amp;D Clip- Patents"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+  </div>    
+</section>
+
+
+
+
+<section class="csr-selection" id="csr-selection" style="display: grid ; border-radius: 0; grid-template-columns: auto auto;  align-items: start; justify-content: space-between; column-gap: 20px; position: relative; overflow: visible; z-index: 9; height: 20px; max-height: 25px;">
+    <div><form id="filterbytag" action="" method="GET" style="display: flex; flex-wrap: wrap; column-gap: 15px;">
+      <!-- <i class="fa-solid fa-angle-right fa-rotate-90 for_cross" style="color: #000000;"></i> -->
+      <img class="for_cross" src="{% static 'front/assets/arrow.webp'%}" alt="cross" title="cross">
+      <div>
+        <input class='cata_input{{list.id}} cat_tab' value="" category_id="" type="radio" name="cate" id="cat_0" >
+        <label  for="cat_0">All</label>
+      </div>
+      
+      {% for list in csr_category_list %}      
+      <div>
+        <input class='cata_input{{list.id}} cat_tab' value="{{list.id}}" category_id="{{list.id}}" type="radio" name="cate" id="cat_{{list.id}}" >
+        <label  for="cat_{{list.id}}">{{list.name}}</label>
+      </div>
+      {% endfor %}
+      
+    </form></div>
+
+    <h2 style='margin-top: 2px;'>CSR in 
+        <form id="formfilter" action="/csr-reports#csr-selection" method='GET'>
+        <select class="filters" name="year" id="csrfilter">
+           
+        </select>
+        </form>
+      
+    </h2>
+</section>
+
+
+<section class="csr-reports-div-content">
+
+</section>
+
+<script src="{% static 'front/js/lightbox.js'%}"></script>
+
+<script>
+  get_thumbnail(899748682);
+     function get_report(year,img="", id=""){
+      console.log('called');
+       $.ajax({
+            url: '{% url "csrreportList" %}?year='+year+'&csrcategory='+id,  
+            type: 'GET',
+            dataType: 'html',
+            success: function(response) {
+                $('.csr-reports-div-content').html(response); 
+                if(img){
+                  $("#"+img).trigger('click');             
+                } 
+                
+              },
+            error: function(error) {
+                console.log('Error:', error);
+              }
+        }); 
+     }
+    $(document).ready(function() {
+      
+      csrcategoryid='{{csrcategoryid}}';
+    
+      if(csrcategoryid){
+        $('.cata_input' +csrcategoryid).prop('checked', true);
+      }
+       
+      $(".cat_tab").on("click",function(){
+        var category_id=$(this).attr('category_id');
+        var year=$("#csrfilter").val();
+       
+          get_report(year,"", category_id)
+        
+      });
+
+    // Get the csrcategoryid
+    
+    
+    var selected_year='{{year}}';
+    var img="{{img}}";
+    if(csrcategoryid != '' && csrcategoryid != 'None'){
+      get_report(selected_year,img, csrcategoryid)
+    } else{
+      get_report(selected_year,img)
+      $('.cata_input').prop('checked', true)
+    }
+    $('.filters').change(function(){
+          var csrcategoryid=""; 
+          $('.cat_tab').each(function() 
+          {    
+              if($(this).is(':checked'))
+              csrcategoryid=$(this).val();
+          });
+          var year=$(this).val();
+          if(csrcategoryid != ''){
+            get_report(year,"",csrcategoryid);    
+          }else{
+            get_report(year);    
+          }
+          
+        })
+        
+        populateYears('csrfilter',selected_year);
+      });
+  
+      function populateYears(selectId,selected_year) {
+        var $selectElement = $('#' + selectId);
+        var currentYear = new Date().getFullYear();
+        $selectElement.append('<option value="">Year</option>');
+        for (var i = 0; i <= 5; i++) {
+          var year = currentYear - i;
+          if(selected_year==year)
+              $selectElement.append('<option selected value="' + year + '">' + year + '</option>');
+           else
+            $selectElement.append('<option value="' + year + '">' + year + '</option>');
+        }
+      }
+      
+
+
+
+
+
+    
+    </script>
+</script>
+
+<script src="{% static 'front/js/fancy-box-js.js'%}"></script>
+
+
+
+
+{% include "front/include/deals.html" %}
+
+
+<script>
+  const btnn = $('.for_cross')
+  const tagg = $('#filterbytag')
+  btnn.click(function(){
+    if(btnn.hasClass('onnn')){
+      btnn.removeClass('onnn')
+      tagg.css('height', '24px')
+    } else{
+      btnn.addClass('onnn ')
+      tagg.css('height', '100%')
+    }
+  })
+</script>
+{% endblock %}

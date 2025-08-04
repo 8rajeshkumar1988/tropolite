@@ -1,0 +1,18 @@
+{% load static %}
+{% if posts %}
+
+    <h2 class="h1">Socials</h2>
+    <div class="social-posts instagram-gallery-medium" id="instafeed">
+        {% for post in posts %}
+        {% if post.media_type  == 'IMAGE' %}
+        <div class="rat">
+            <a href="{{post.permalink}}" target="_blank" title="tropolite instagram feed" rel="nofollow">
+                <img src="{{post.media_url}}" loading="lazy" alt="{{post.caption}}">
+            </a>
+        </div>        
+        {% endif %}
+        {% endfor %}
+    </div>
+ 
+{% endif %}
+

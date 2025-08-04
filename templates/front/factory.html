@@ -1,0 +1,443 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'front/css/patent_microbial.css' %}" />
+<link rel="stylesheet" href="{% static 'front/css/factory.css' %}" />
+<style>
+    @keyframes pulse {
+            0% {
+                -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+                box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+            }
+            70% {
+                -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+                box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+            }
+            100% {
+                -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+                box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+            }
+        }
+    .sound{
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 15px;
+      border-radius: 50%;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .icon svg:last-child {
+      display: none;
+    }
+    #production_dots{
+      position: relative;
+      margin: 0 !important;
+      justify-content: center;
+    }
+    @media screen and (max-width:600px) {
+      .sound{
+        top: 5px;
+        right: 10px;
+        scale: 0.6;
+      }
+    }
+  </style>
+{% endblock %}
+{% include "front/include/breadcrumb.html" %}
+
+<section class="factory-top-section bakery head_anim">
+
+    <h1>Manufacturing Capabilities</h1>
+    <h2 style='font-size:1.5rem; font-family:karin; text-align:center;'>Tropilite Foods Factory</h2>
+    <div>
+      
+      <div class="bakery-video-cont">
+        <!-- <div class="sound icon" onclick='playPause()'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M5 17h-5v-10h5v10zm2-10v10l9 5v-20l-9 5zm15.324 4.993l1.646-1.659-1.324-1.324-1.651 1.67-1.665-1.648-1.316 1.318 1.67 1.657-1.65 1.669 1.318 1.317 1.658-1.672 1.666 1.653 1.324-1.325-1.676-1.656z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M5 17h-5v-10h5v10zm2-10v10l9 5v-20l-9 5zm11.008 2.093c.742.743 1.2 1.77 1.198 2.903-.002 1.133-.462 2.158-1.205 2.9l1.219 1.223c1.057-1.053 1.712-2.511 1.715-4.121.002-1.611-.648-3.068-1.702-4.125l-1.225 1.22zm2.142-2.135c1.288 1.292 2.082 3.073 2.079 5.041s-.804 3.75-2.096 5.039l1.25 1.254c1.612-1.608 2.613-3.834 2.616-6.291.005-2.457-.986-4.681-2.595-6.293l-1.254 1.25z" />
+            </svg>
+        </div> -->
+        <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;">
+          <div id="900034710_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></div>
+          <iframe src="https://player.vimeo.com/video/900034710?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=true" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+      </div>
+      
+      
+      
+      <h3>{% if category_data.description_heading %}{{category_data.description_heading}}{%else%}{{category_data.name}}{%endif%}</h3>
+        <div class="indulge-sec-div">
+          {% if category_data.description %}
+          <div class="">
+              <p>
+                {{ category_data.description |safe }}
+              </p>
+            </div>
+          {% endif %}
+            {% if category_data.right_description %}
+            <div class="">
+              <p>
+                {{  category_data.right_description |safe }}
+              </p>
+            </div>
+            {% endif %}
+          </div>
+      </div>
+      {% comment %} <a href="#" class="cta">
+        <span>EXPLORE PRODUCTS</span>
+        <svg width="13px" height="10px" viewBox="0 0 13 10">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline>
+        </svg>
+      </a> {% endcomment %}
+  </section>
+
+
+
+  <section class="factory-section-two application head_anim para_anim">
+    <h3>Unveiling the Art and Science of</h3>
+    <h2 class="h1">Ingredients Manufacturing</h2>
+    
+    <div class="apps">
+    
+    
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">                
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;">
+                  <div id="901143266_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+                  </div><iframe  src="https://player.vimeo.com/video/901143266?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+                            
+            </div>
+            <div class="app-item2 app-div">
+    
+                <div class="list_anim">
+                    <p>
+                        At the nucleus of innovation and craftsmanship, Tropilite Foods Pvt Ltd stands as a testament to
+                        relentless pursuit of excellence in baking, culinary and dairy ingredient research, analysis and
+                        manufacturing. Our state of the art Factory is equipped to foster creativity and precision for
+                        crafting the finest food ingredients that will elevate your every culinary creation to a
+                        masterpiece.
+                    </p>
+                </div>
+    
+            </div>
+        </div>
+    
+    
+    
+    </div>
+  </section>
+
+
+  <section class="factory-section-three ">
+    <div class="apps head_anim_s para_anim">
+        <div class="app-maindiv app-odd ">
+            <div class="app-item2 app-div ">
+                <h2>R&D Innovation Centre</h2>
+                <h3>Pioneering Tomorrow's Flavors</h3>
+                <div class="list_anim">
+                    <p>
+                        Enter the R&D Innovation Centre, the birthplace of taste revolutions. Our visionary scientists and culinary artists collaborate in an environment where ideas take flight. Here, cutting-edge technology meets epicurean curiosity, shaping the tastes that will grace future tables.
+                    </p>
+                </div>
+    
+            </div>
+            <div class="app-item1 app-div">
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;">
+                  <div id="901057152_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+                  </div><iframe preload="auto" src="https://player.vimeo.com/video/901057152?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+            </div>
+        </div>
+        <div class="app-maindiv app-odd">
+            <div class="app-item2 app-div">
+                <h2>Quality Control Labs</h2>
+                <h3>Where Perfection Takes Form</h3>
+                <div class="list_anim">
+                    <p>
+                        Precision meets scrutiny in our Quality Control Labs. Equipped with cutting-edge instruments and overseen by meticulous experts, this division ensures that only the finest ingredients bear the Tropolite seal.
+                    </p>
+                </div>
+    
+            </div>
+            <div class="app-item1 app-div">
+    
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;">
+                  <div id="901056879_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+                  </div>
+                  <iframe preload="auto" src="https://player.vimeo.com/video/901056879?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+    
+    
+    
+            </div>
+    
+    
+    
+        </div>
+    </div>
+  </section>
+
+  {% comment %} <section class="factory-section-four head_anim_s para_anim">
+    <div class="apps">
+    
+    
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% static 'front/assets/Production-line-1.webp' %}" alt="Frozen Whipping Cream & Topping Production">
+             </div>
+            
+            <div class="app-item2 app-div">
+                <h2>Production Line 1</h2>
+                <h3>Frozen Whipping Cream & Topping Production</h3>
+                <div class="list_anim">
+                    <p>From the Pasteurizer Tank to the Conveyor Belt, Production Line 1 weaves the magic of frozen whipping cream and tantalizing toppings. Homogenisers dance in harmony, while the Ageing Tank imparts richness. Every step is a symphony of taste and texture.</p>
+                </div>    
+            </div>
+            
+        </div>      
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% static 'front/assets/Production-line-2.webp' %}" alt="Powder Blending Line">
+             </div>
+            
+            <div class="app-item2 app-div">
+                <h2>Production Line 2</h2>
+                <h3>Powder Blending Line</h3>
+                <div class="list_anim">
+                    <p>
+                        In Production Line 2, powders transform into culinary gold. Meticulous blending creates harmonious flavors, unlocking endless possibilities for bakers and chefs alike.
+                    </p>
+                </div>    
+            </div>
+            
+        </div>      
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% static 'front/assets/Production-Line-3.webp' %}" alt="Wet Process Line">
+             </div>
+            
+            <div class="app-item2 app-div">
+                <h2>Production Line 3</h2>
+                <h3>Wet Process Line</h3>
+                <div class="list_anim">
+                    <p>
+                        High Speed Mixers whirl in Production Line 3, crafting the wet ingredients that fuel baking brilliance. Here, liquids and creativity blend seamlessly, setting the stage for delectable creations.
+                    </p>
+                </div>    
+            </div>
+            
+        </div>      
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% static 'front/assets/Production-Line-4.webp' %}" alt="Tetra Pack & UHT Line">
+             </div>
+            
+            <div class="app-item2 app-div">
+                <h2>Production Line 4</h2>
+                <h3>Tetra Pack & UHT Line</h3>
+                <div class="list_anim">
+                    <p>
+                        Homogenisers and Blending Tanks unite in Production Line 4, where innovation meets preservation. This is where freshness is sealed, ready to grace kitchens around the world.
+                    </p>
+                </div>    
+            </div>
+            
+        </div>      
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% static 'front/assets/Production-line-5.webp' %}" alt="Bio-Processing & Fermentation Facility">
+             </div>
+            
+            <div class="app-item2 app-div">
+                <h2>Production Line 5</h2>
+                <h3>Bio-Processing & Fermentation Facility</h3>
+                <div class="list_anim">
+                    <p>
+                        In Production Line 5, bio-processing and fermentation work in harmony. Microbes transform ingredients, creating a symphony of flavors and health benefits.
+                    </p>
+                </div>    
+            </div>
+            
+        </div>      
+    </div>
+  </section> {% endcomment %}
+
+
+
+  <section class="highlights" id='production_line'>
+    <div class="high-cara">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+      
+        <div class="carousel-inner">          
+          <div class="carousel-item active">
+            <div class="high-cara-img">
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe preload="auto" src="https://player.vimeo.com/video/901057009?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+            </div>
+            <div class="cara-text">
+                <h2>Production Line 1</h2>
+                <h3>Frozen Whipping Cream & Topping Production</h3>
+                <p>From the Pasteurizer Tank to the Conveyor Belt, Production Line 1 weaves the magic of frozen whipping cream and tantalizing toppings. Homogenisers dance in harmony, while the Ageing Tank imparts richness. Every step is a symphony of taste and texture.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="high-cara-img">
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe preload="auto" src="https://player.vimeo.com/video/901056909?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+            </div>
+            <div class="cara-text">
+                <h2>Production Line 2</h2>
+                <h3>Tetra Pack & UHT Line</h3>
+                <p>Homogenisers and Blending Tanks unite in Production Line 2, where innovation meets preservation. This is where freshness is sealed, ready to grace kitchens around the world.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="high-cara-img">
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe preload="auto" src="https://player.vimeo.com/video/901056937?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+            </div>
+            <div class="cara-text">
+                <h2>Production Line 3</h2>
+                <h3>Powder Blending Line</h3>
+                <p>In Production Line 3, powders transform into culinary gold. Meticulous blending creates harmonious flavors, unlocking endless possibilities for bakers and chefs alike.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="high-cara-img">
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe preload="auto" src="https://player.vimeo.com/video/901056975?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+            </div>
+            <div class="cara-text">
+                <h2>Production Line 4</h2>
+                <h3>Wet Process Line</h3>
+                <p> High Speed Mixers whirl in Production Line 4, crafting the wet ingredients that fuel baking brilliance. Here, liquids and creativity blend seamlessly, setting the stage for delectable creations.</p>
+            </div>
+          </div>
+          
+          <div class="carousel-item">
+            <div class="high-cara-img">
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe preload="auto" src="https://player.vimeo.com/video/901057042?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+            </div>
+            <div class="cara-text">
+                <h2>Production Line 5</h2>
+                <h3>Bio-Processing & Fermentation Facility</h3>
+                <p>In Production Line 5, bio-processing and fermentation work in harmony. Microbes transform ingredients, creating a symphony of flavors and health benefits.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-indicators" id='production_dots'>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+        <button
+          class="carousel-control-prev high-cara-btn"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"
+            ><img
+              loading="lazy"
+              src="{% static 'front/assets/arrow-left.webp' %}"
+              alt="left arow backgroud button"
+              title="left arow backgroud button"
+          /></span>
+          <span class="visually-hidden">previos</span>
+        </button>
+        <button
+          class="carousel-control-next high-cara-btn"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"
+            ><img
+              loading="lazy"
+              src="{% static 'front/assets/arrow-right.webp' %}"
+              alt="righ arrow button"
+              title="righ arrow button"
+          /></span>
+          <span class="visually-hidden">upcoming</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="factory-section-five application short_ head_anim_s head_anim para_anim">
+    <div class="apps">
+        <div class="app-maindiv app-odd">
+            <div class="app-item2 app-div">
+                <h2>Application Centre</h2>
+                <h3>Inspiring Pastry & Culinary Artistry</h3>
+                <div class="list_anim">
+                    <p>
+                        Welcome to the Application Centre, a canvas where chefs and artisans experiment with our creations. Here, ingredients become inspiration and pastry & culinary artistry takes center stage.
+                    </p>
+                </div>
+    
+            </div>
+            <div class="app-item1 app-div">
+    
+               {% comment %} <img loading='lazy' src="{% static 'front/assets/Application-center.webp' %}" alt="Inspiring Pastry & Culinary Artistry"> {% endcomment %}
+
+               <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe preload="auto" src="https://player.vimeo.com/video/901057079?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+            </div>
+        </div>
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+
+                {% comment %} <img loading='lazy' src="{% static 'front/assets/Cold-storage.webp' %}" alt="BioFlex Bio-Processing Unit"> {% endcomment %}
+                <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe preload="auto" src="https://player.vimeo.com/video/901057125?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+    
+            </div>
+            <div class="app-item2 app-div">
+                <h2>Cold Storage</h2>
+                <h3>Where Freshness is Preserved</h3>
+    
+                <div class="list_anim">
+                    <p>
+                      Our Cold Storage features specialized rooms- Blast Freezer Rooms and Cold Rooms - to ensure that our ingredients stay fresh. with precise temperature control. Each chamber is meticulously designed to cater to the unique needs of our diverse range of products. Every product is safeguarded at its ideal temperature, ensuring the preservation of flavor, texture, and nutritional value.
+                    </p>
+                </div>
+    
+            </div>
+            
+    
+    
+    
+        </div>
+    </div>
+  </section>
+ 
+
+
+  {% include "front/include/deals.html" %}
+
+  <script>
+    let factoryHeroVideo = document.querySelector('#factoryHeroVideo')
+    let playPause=()=>{
+        console.log('clicked')
+        factoryHeroVideo.muted = !factoryHeroVideo.muted;
+        $('.icon svg').toggle()
+    }
+     
+    get_thumbnail('900034710');
+    get_thumbnail('901143266');
+    get_thumbnail('901057152');
+    get_thumbnail('901056879');
+
+  </script>
+
+{% endblock %}

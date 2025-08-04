@@ -1,0 +1,114 @@
+@font-face {
+    font-family: "karine";
+    src: url("KarinMedium.ttf")
+  }
+
+  @font-face {
+    font-family: castlegar;
+    src: url("./Castlegar-medium.otf");
+    /* font-display: swap; */
+}
+.recipies__container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;    
+    height: auto;
+}
+
+.recipies_container_box {
+    height: auto;
+    min-width: 300px;
+    /* max-width: 400px; */
+}
+
+.box__content {
+    margin-top: 20px;
+}
+
+.box_content_heading p{
+    /* letter-spacing: 1.1px; */
+    color: #2E2E2E;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: karine !important;
+    min-height: 48px;
+    margin-bottom: 5px;
+}
+
+.box__img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    /* opacity: 0.84;
+    mix-blend-mode: multiply; */
+}
+
+.box_content_buttons {
+    display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.box_content_buttons a{
+    cursor: pointer;
+    font-family: karine;
+    background: none;
+    border: 0.5px solid #2E2E2E;
+    border-radius: 40px;
+    padding: 5px 15px;
+    font-size: 12px;
+}
+
+
+
+.box_content_view-more a{
+    font-family: karine;
+    background: none;
+    border: none;
+    margin-top: 10px;
+    text-decoration: underline;
+    color: #E2B57C;
+}
+
+
+
+.containerSlider .SliderContent .fixedSlide {
+    text-align: right;
+    /* width: 100%; */
+}
+.containerSlider .SliderContent .fixedSlide h1{
+    font-size: 5rem;
+    font-family: castlegar;
+    color: #932F31;
+}
+.box__img{
+    height: 350px;
+    overflow: hidden;
+    border-radius: 30px;
+}
+@media screen and (max-width: 1024px) {
+    .recipies__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .containerSlider .SliderContent .fixedSlide h1{
+        font-size: 4rem;
+        
+    }
+}
+@media screen and (max-width: 768px) {
+    .recipies__container {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        gap: 10px;
+    }
+    .box__content{padding: 20px;margin-top: 0;}
+    .containerSlider .SliderContent .fixedSlide {
+        text-align: left;
+        width: 80%;
+    }
+    .containerSlider .SliderContent .fixedSlide h1{
+        font-size: 3.5rem;
+    }
+}

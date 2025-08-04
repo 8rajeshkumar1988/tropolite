@@ -1,0 +1,10 @@
+{% load static %}
+<div class="pro_sub_cat">
+<div class="pro-2">
+    {% for product in products %}
+    {% with product=product %}
+    {% include "front/include/product_card.html" %}
+    {% endwith %}
+    {%endfor%}
+</div>
+</div>

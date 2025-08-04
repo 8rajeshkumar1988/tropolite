@@ -1,0 +1,20 @@
+{% load i18n %}
+{% for inline_admin_formset in inline_admin_formsets %}
+    {% for form in inline_admin_formset.forms %}
+        <div class="inline-related" id="reminders_{{ form.instance.id }}__row">
+            <div class="form-row">
+                <div class="original">
+                    {{ form.instance }}
+                    <div class="field-box field-editable">
+                        <h3>
+                            {{form.instance.date_to_be_notified}}
+                            <a href="{% url 'admin:leads_reminders_change' form.instance.id %}">
+                                {% trans 'Edit' %}
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endfor %}

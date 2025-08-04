@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+           
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid white;
+            padding: 20px 30px;
+            height: 100%;
+            width: 100%;
+            padding-bottom: 100px;
+        }
+        @font-face {
+            font-family: castlegar;
+            src: url('http://tropolite.com/static/front/css/Castlegar-medium.otf');
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="position: relative;">
+        <div style="font-family: 'castlegar'; color: maroon; font-size: 2rem;">Dear Team,</div>
+        <br>
+        <div style="">We have received a new job application for the {{applicant.job.heading}} position. Kindly review the details provided below and take the necessary actions:
+        </div>
+        <br> 
+        <br><br>
+        <table style="width: 100%;">
+            <tr style="display: block;  width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid grey;">
+                <td  style=" width: 200px; border-right: 1px solid grey; margin-right: 15px; " >Name</td>
+                <td style="width: 300px; padding-left: 50px;">{{applicant.name}}</td>
+            </tr>
+            <tr style="display: block; grid-template-columns: 30% 65%; gap: 5%; width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid grey;">
+                <td  style=" width: 200px; border-right: 1px solid grey; margin-right: 15px; " >Work Experience</td>
+                <td style="width: 300px; padding-left: 50px;">{{applicant.work_experience}}</td>
+            </tr>
+            <tr style="display: block; grid-template-columns: 30% 65%; gap: 5%; width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid grey;">
+                <td  style=" width: 200px; border-right: 1px solid grey; margin-right: 15px;">Email</td>
+                <td style="width: 300px; padding-left: 50px;">{{applicant.email}}</td>         
+            </tr>
+            <tr style="display: block; grid-template-columns: 30% 65%; gap: 5%; width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid grey;">
+                <td  style=" width: 200px; border-right: 1px solid grey; margin-right: 15px;">Contact Number</td>
+                <td style="width: 300px; padding-left: 50px;">{{applicant.mobile}}</td> 
+            </tr>
+            <tr style="display: block; grid-template-columns: 30% 65%; gap: 5%; width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid grey;">
+                <td  style=" width: 200px; border-right: 1px solid grey; margin-right: 15px;">Qualification</td>
+                <td style="width: 300px; padding-left: 50px;">{{applicant.qualification}}</td>  
+            </tr>
+            <tr style="display: block; grid-template-columns: 30% 65%; gap: 5%; width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid grey;">
+                <td  style=" width: 200px; border-right: 1px solid grey; margin-right: 15px;">Current Location</td>
+                <td style="width: 300px; padding-left: 50px;">{{applicant.current_location}}</td>    
+            </tr>
+            <tr style="display: block; grid-template-columns: 30% 65%; gap: 5%; width: 100%; padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid grey;">
+                <td  style=" width: 200px; border-right: 1px solid grey; margin-right: 15px;">Preferred Location</td>
+                <td style="width: 300px; padding-left: 50px;">{{applicant.preferred_location}}</td>   
+            </tr>
+            
+        </table>
+
+       <br> <br> <br>
+
+        <div>Let’s bake success together, <br>Tropolite Team</div>        
+    </div>
+</body>
+</html>

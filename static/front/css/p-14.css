@@ -1,0 +1,346 @@
+@font-face {
+  font-family: "karine";
+  src: url("KarinMedium.ttf")
+}
+@font-face {
+  font-family: FaunaOne;
+  src: url("./FaunaOne.ttf");
+  /* font-display: swap; */
+}
+
+/* ----------------------------- */
+/* Section-1 */
+/* ------------------------------ */
+.connect-with {
+  background: #ffffff;
+}
+
+.connect-with__headings {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.connect-with__headings--h1 {
+  font-size: 110px;
+}
+
+.connect-with__headings--h2 {
+  line-height: 1.5 !important;
+  letter-spacing: 1.2px;
+  text-align: center;
+  color: #2e2e2e;
+  font: normal normal bold 30px/60px Karin;
+}
+
+.connect-with__content--para {
+  text-align: left;
+  font: normal normal normal 20px/48px FaunaOne;
+  letter-spacing: 0px;
+  color: #676767;
+  line-height: unset;
+}
+.section-inquiry__container .cta{ left: calc(100% - 50px);
+  transform: translate(-50%, 0px);
+  margin-top: 10px;
+}
+@media screen and (max-width: 1333px) {
+  .connect-with__headings--h1 {
+    font-size: 90px;
+  } 
+}
+@media screen and (max-width: 480px) {
+  .connect-with__headings--h1 {
+    font-size: 70px;
+  } 
+  .connect-with__headings--h2 {
+    margin-top: 0px;
+    font-size: 23px;
+    line-height: 1.5;
+  } 
+}
+
+/* ----------------------------- */
+/* Section-2 */
+/* rewriting css of section2 */
+/* ------------------------------ */
+
+.section-location__container {
+  background-color: #F7F8F8;
+  padding: 60px;
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  column-gap: 100px;
+}
+.section-location__container p {
+  font-family: FaunaOne;
+  color: #2E2E2E;
+}
+.section-location__container__contact {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.section-location__container__contact p{margin-bottom: 0 !important;}
+.section-location__container__contact .icon {
+  height: 80px;
+  width: 80px;
+}
+
+.section-location__container__contact .icon img {
+  height: 100%;
+  width: 100%;
+}
+
+.section-location__container__contact .detail .contact-detail,
+.section-location__container__address h3 {
+  font-family: karine !important;
+  color: #2E2E2E;
+  letter-spacing: 0.86px;
+  font-weight: 600;
+  font-size: 23px;
+}
+.section-inquiry__container label{
+  font-family: faunaOne !important;
+}
+@media screen and (max-width: 1024px) {
+  .section-location__container {
+    column-gap: 50px;
+  }
+  .section-location__container__contact .detail .contact-detail,
+  .section-location__container__address h3 {  
+    letter-spacing: 0.86px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .close_pop{
+    right: 20px !important;
+  }
+  .enquiry_pop .section-inquiry__container{
+    padding-top: 20px !important;
+  }
+  .section-location__container {
+    grid-template-columns: 100%;
+    padding: 30px;
+  }
+ 
+  .connect-with{gap: 0;}
+  .section-location__container .grid-item-2 {
+    flex-direction: row-reverse;
+  }
+  .section-location__container__contact {
+    /* gap: 10px; */
+    flex-wrap: wrap;
+  }
+  .section-location__container__contact .icon {
+    height: 60px;
+    width: 60px;
+  }
+  .section-location__container{gap: 30px;}
+  .section-inquiry__container .cta{
+    left: 50%;
+    transform: translate(-50%, 0px);
+    margin-top: 10px
+  }
+  .section-inquiry__container .h1, .section-inquiry__container h3{text-align: center;}
+}
+
+@media screen and (max-width: 432px) {
+  
+  .section-location__container__contact .detail .contact-detail,
+  .section-location__container__address h3 {
+    
+    letter-spacing: 0.86px;
+    font-size: 18px;
+  }
+  .section-location__container {
+    grid-template-columns: 100%;
+    padding: 10px;
+  }
+  .section-location__container__contact {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .section-location__container__contact .icon {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+
+/* ----------------------------- */
+/* Section-3 */
+/* form-section */
+/* ------------------------------ */
+
+.section-inquiry__container {
+  padding: 60px 60px 30px 60px;
+  height: 100%;
+  width: 100%;
+  background: #f7f8f8;
+}
+.section-inquiry h1 {
+  margin-bottom: 10px;
+}
+.section-inquiry h3 {
+  font-family: karine;
+  font-weight: 600;
+}
+
+.section-inquiry__container__form-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 45px;
+  margin-top: 30px;
+}
+
+.section-inquiry__container__form-details .col {
+  padding: 10px 0px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 100%;
+  align-items: center;
+  gap: 10px;
+  font-family: karine;
+}
+
+.section-inquiry__container__form-details input, .section-inquiry__container__form-details select {
+  background: transparent;
+  border: 1px solid #676767;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px 5px;
+  width: calc(100% - 130px);
+  height: 35px;
+  font-family: faunaOne !important;
+  color: #676767;
+}
+form input, form select, form option, form textarea, form label{
+  font-size: 0.9rem;
+}
+
+.section-inquiry__container__form-details .col-5 {
+  grid-column: 3/1;
+  grid-row: 3/5;
+}
+.section-inquiry__container__form-details .col-7{
+  grid-area: 5 / 1 / 5 / 3;
+}
+.section-inquiry__container__form-details .col-7 textarea {
+  background: transparent;
+  border: 1px solid #676767;
+  outline: none;
+  border-radius: 15px;
+  padding: 5px 20px;
+  width: calc(100% - 130px);
+  font-family: faunaOne !important;
+  color: #676767;
+  height: 80px;
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+ 
+
+  .section-inquiry__container__form-details{
+    grid-template-columns: 100% !important;
+    font-size: 18px;margin-top: 10px;
+    row-gap: 5px;
+  }
+  
+  
+  .col-5 {
+    grid-column: 1 !important;
+    grid-row: 5/5 !important;
+  } 
+  .section-inquiry__container__form-details .col-5 textarea {
+    width: 100%;
+  }
+  .section-inquiry__container__form-details .col{
+    grid-template-columns: 120px calc(100% - 130px);
+  }
+  .section-inquiry__container__form-details input{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .section-inquiry__container__form-details input, .section-inquiry__container__form-details select, .section-inquiry__container__form-details .col-7 textarea{
+    width: 100% !important; 
+  }
+  .section-inquiry__container {
+    padding: 20px 10px;
+  }
+  /* .section-inquiry__container__form-details{
+    row-gap: 3px;
+  } */
+  .section-inquiry__container__form-details .col{
+    gap: 1px !important;
+  }
+  
+  .section-inquiry__container__form-details input{width: 100%;}
+  .section-inquiry__container__form-details .col {
+    padding: 10px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .section-inquiry__container__form-details .col-5 textarea {
+    width: 100%;
+  }
+    
+}
+
+
+@media screen and (max-width: 1024px) {
+  .section-inquiry__container__form-details input, .section-inquiry__container__form-details select{
+    width: 100%;
+  }
+  .section-inquiry__container__form-details .col{
+    grid-template-columns: 80px calc(100% - 90px);
+  }
+  .section-inquiry__container__form-details input{
+    width: 100%;
+  }
+  .section-inquiry__container__form-details .col-7 textarea{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .section-inquiry__container__form-details label, .section-inquiry__container__form-details textarea, .section-inquiry__container__form-details input, .section-inquiry__container__form-details select{
+    font-size: 0.8rem;
+  }
+  .section-inquiry__container__form-details .col-7{
+    grid-area: auto;
+  }
+  .section-inquiry__container__form-details .col{
+    padding: 0;
+    margin-bottom: 5px;
+    gap: 0;
+  }
+  .section-inquiry__container__form-details .col-7 textarea{
+    height: 80px;
+  }
+  .section-inquiry__container__form-details .col{
+    gap: 20px;
+  }
+  .section-inquiry__container__form-details input, .section-inquiry__container__form-details select, .section-inquiry__container__form-details .col-7 textarea{
+    width: calc(100% - 10px);
+  }
+}

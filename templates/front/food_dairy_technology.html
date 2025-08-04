@@ -1,0 +1,104 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+<style>
+    .head_anim .heroFood{
+        height: 400px;
+    }
+    .heroFood video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 30px;
+    }
+    @media screen and (max-width:1024px) {
+        .head_anim .heroFood{
+        height: auto;
+    }
+    }
+</style>
+{% include "front/include/breadcrumb.html" %}
+
+
+<section class="taste-happy head_anim">
+    <div class="aboutus-top-heading">
+        <h3>Exploring the Frontier</h3>
+    <h1>Food & Dairy Technology</h1>
+    </div>
+    <div class="happy-back" style="height: 100%; width: 100%; max-height: 400px ;">
+        <div id="902134053_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+        </div>
+        <div style="padding:56.25% 0 0 0;position:relative;">
+            <iframe preload="auto" src="https://player.vimeo.com/video/902134053?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;loop=1&amp;autoplay=1&amp;display=1&amp;controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="R&amp;D Clip- Patents" data-ready="true"></iframe>
+        </div> 
+    </div>
+    <div class="happy-text para-anim">
+        <div class="para_anim certi-head-para">
+            <p>Our commitment to pioneering progress in the realm of food and dairy production is underscored by a relentless pursuit of cutting-edge technologies and industry-leading practices. Through a seamless integration of advanced technologies, quality assurance, and sustainable practices, we strive to elevate the standards of food and dairy production.</p>
+        </div>
+    </div>
+</section>
+<section class="application future-flavor">
+    <div class="apps">
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+                <img src="{% static 'front/assets/Formulating the Future of Flavor.webp' %}" alt="Formulating the Future of Flavor" title="Formulating the Future of Flavor">
+            </div>
+            <div class="app-item2 app-div para_anim">
+                <h3>Formulating the Future of Flavor</h3>
+                <p>Tropilite Foods Pvt Ltd focuses on the development of cost-effective and high nutrition
+                    functional food ingredients. We provide one of the world's broadest and strongest
+                    product offerings of value-adding ingredients to the food industry. Our activities are
+                    driven by an ambition to develop new knowledge, new products and new applications for the
+                    benefit of our customers worldwide.</p>
+            </div>
+        </div>
+
+        <div class="app-maindiv app-even">
+            <div class="app-item2 app-div para_anim">
+                <h3>Redefining Bakery Artistry</h3>
+                <p>Bread, cake and pastries are more than just baked goods – they're culinary expressions. Our
+                    formulations bring a touch of innovation to each creation, whether it's a perfectly risen
+                    loaf, a sumptuous cake, or a delicate pastry. With Tropilite Foods Pvt Ltd, your culinary
+                    imagination knows no bounds.</p>
+            </div>
+            <div class="app-item1 app-div"><img loading='lazy' src="{% static 'front/assets/Redefining Bakery Artistry.webp' %}" alt="Redefining Bakery Artistry" title="Redefining Bakery Artistry"></div>
+        </div>
+
+        <div class="app-maindiv app-odd">
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% static 'front/assets/unleasing.webp' %}" alt="Unleashing Taste and Texture" title="Unleashing Taste and Texture">
+            </div>
+            <div class="app-item2 app-div para_anim">
+                <h3>Unleashing Taste and Texture</h3>
+                <p>From the lightest sponge to the richest ganache, taste and texture are paramount. We
+                    masterfully blend science and art to create formulations that delight the palate and
+                    captivate the senses. With each bite, you experience the essence of culinary excellence.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="activities">
+    <h2 class="h1">R&D Activities</h2>
+    <div>
+        <div>
+            <ul class="list_anim">
+                <li><p>Development of new cost-effective and more competitive food products from customer point of view.</p></li>
+                <li><p>Value-adding ingredients in existing products.</p></li>
+                <li><p>Development and formulation of functional foods.</p></li>
+                <li><p>Development of formulations of some important bakery and food ingredients, such as egg-free cakes and muffins, piping gel, chocolate cream, cooking cream, vegan toppings, etc.</p></li>
+                <li><p>Development of New & Efficient Process/Technology.</p></li>
+                <li><p>Standardization of the developed formulations.</p></li>
+            </ul>
+        </div>
+        <div><img loading='lazy' src="{% static 'front/assets/R&D activities.webp' %}" alt="Development of new cost-effective and more competitive food products from customer point of view" title="Development of new cost-effective and more competitive food products from customer point of view"></div>
+    </div>
+</section>
+
+{% include "front/include/deals.html" %}
+
+
+<script>
+    get_thumbnail('902134053');
+</script>
+{% endblock %}

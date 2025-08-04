@@ -1,0 +1,203 @@
+{% load static %}
+
+<style>
+  .inner_link{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
+  }
+</style>
+
+
+<section class="gourmet">
+    <div id="{% if ID %}carouselExampleInterval{{ ID }}{% else %}carouselExampleInterval{% endif %}"
+    class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="100000000">
+          <div class="gourmet-item">
+            <h3>for the master chef in you</h3>
+            <h2 class="h1">Strawberry Cake</h2>
+            <div>
+              <div class="points point-1">
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot"  style='top: -85px;
+                left: -200px;            
+            '>
+            <a class="inner_link" href="/bakery/bakery-whips/svensons" aria-label="svenson"></a>
+                  <div>
+                    <h5>Svenson’s</h5>
+                    <h6> Gourmet Non-Dairy Whipping Cream</h6><a href="/bakery/bakery-whips/svensons">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/hotspot-im.webp' %}" alt="Ethical Consumption For the Conscious" title="Ethical Consumption For the Conscious" loading='lazy' /></div>
+                  
+                </div>
+              </div>
+              <div class="points point-2" style="top: 56%;">
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot" style='top: 0%;
+                left: -150px;'>
+                <a class="inner_link" href="/bakery/bakery-premixes/zero-maida-cake-mixes" aria-label="bakery premixes"></a>
+                  <div>
+                    <h5>Zero Maida Cake Mixes</h5>
+                    <h6>Millet, Wholemeal & Multigrain</h6><a href="/bakery/bakery-premixes/zero-maida-cake-mixes">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/hotspot.webp'%}" alt="Dairy Free Whip Toppin" title="Dairy Free Whip Toppin"></div>
+                </div>
+              </div>
+             
+              <img loading='lazy' src="{% static 'front/assets/cake 2.webp' %}" class="d-block" alt="cake img" title="cake img">
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="20000000">
+          <div class="gourmet-item">
+            <h3>for the master chef in you</h3>
+            <h2 class="h1">Carrot Cake</h2>
+
+            <div>
+              <div class="points point-1" style="top: 28%;">
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot pop_1" style='left: -200px;
+                top: -130px;'>
+                <a class="inner_link" href="/bakery/bakery-ingredients/cream-cheese" aria-label="bakery premixes"></a>
+                  <div>
+                    <h5>Cream Cheese</h5>
+                    <h6>Gourmet Dairy Cream Cheese</h6><a href="/bakery/bakery-ingredients/cream-cheese">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/CreamHotspot.png' %}" alt="front/assets/CreamHotspot.png" title="CreamHotspot"></div>
+                </div>
+              </div>
+              <div class="points point-2" style="top: 65%;" >
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot pop_2" style="
+                left: -250px;
+            ">
+            <a class="inner_link" href="/bakery/bakery-premixes/tropolite-mix" aria-label="bakery premixes"></a>
+                  <div>
+                    <h5>Tropolite Mix</h5>
+                    <h6>Mawa Egg-Free Cake Mix </h6><a href="/bakery/bakery-premixes/tropolite-mix">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/TropoliteMix.png' %}" alt=" TropoliteMix.png " title=" TropoliteMix "></div>
+                </div>
+              </div>
+              <div class="points point-3" style="top: 70%;left: 72%;" >
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot pop_3" style="
+                left: -100px; 
+            "><a class="inner_link" href="/bakery/bakery-premixes/vegitrop-cake-mixes" aria-label="bakery premixes"></a>
+                  <div>
+                    <h5>Vegitrop Sponge Mix</h5>
+                    <h6>Vanilla Flavour Cake Base </h6><a href="/bakery/bakery-premixes/vegitrop-cake-mixes">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/Vegitrop.png' %}" alt="Vegitrop.png" title="Vegitrop"></div>
+                </div>
+              </div>
+              <div class="points point-4" style="top: 27%;left: 30%;" >
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot pop_4" style="
+                top: -100px;
+                left:-100px;
+            "><a class="inner_link" href="/bakery/bakery-ingredients/tropolite-fondant" aria-label="bakery premixes"></a>
+                  <div>
+                    <h5>Tropolite Fondant</h5>
+                    <h6>Cake Icings & Decorations </h6><a href="/bakery/bakery-ingredients/tropolite-fondant">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/TropoliteFondant.png' %}" alt="hotspot images" title="hotspot images"></div>
+                </div>
+              </div>
+              <img loading='lazy' src="{% static 'front/assets/scroll2.webp' %}" class="d-block" alt="scroll2" title='scroll2'>
+            </div>
+          </div>
+        </div>
+        {% comment %} <div class="carousel-item">
+          <div class="gourmet-item">
+            <h3>for the master chef in you</h3>
+            <h2 class="h1">Tropolite Gourmet</h2>
+            <div>
+              <div class="points point-1">
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot">
+                  <div>
+                    <h5>Dairy Free Whip Topping</h5>
+                    <h6>Ethical Consumption For the Conscious</h6><a href="#">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/hotspot-im.webp' %}" alt="hotspot images for the web"></div>
+                </div>
+              </div>
+              <div class="points point-2" style="top: 56%;">
+                <div class="circle"></div>
+                <div class="circle cir-1"></div>
+                <div class="hotspot">
+                  <div>
+                    <h5>Dairy Free Whip Topping</h5>
+                    <h6>Ethical Consumption For the Conscious</h6><a href="#">view product</a>
+                  </div>
+                  <div><img loading='lazy' src="{% static 'front/assets/hotspot-im.webp' %}" alt="hotspot images---"></div>
+                </div>
+              </div>
+              <img loading='lazy' src="{% static 'front/assets/cake 2.webp' %}" class="d-block" alt="hotspot images-for the cake details">
+            </div>
+          </div>
+        </div> {% endcomment %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="{% if ID %}#carouselExampleInterval{{ ID }}{% else %}#carouselExampleInterval{% endif %}"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"><svg width="13px" height="10px" viewBox="0 0 13 10">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline>
+        </svg></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="{% if ID %}#carouselExampleInterval{{ ID }}{% else %}#carouselExampleInterval{% endif %}"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"><svg width="13px" height="10px" viewBox="0 0 13 10">
+          <path d="M1,5 L11,5"></path>
+          <polyline points="8 1 12 5 8 9"></polyline>
+        </svg></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <script>
+    
+    document.querySelectorAll(".points").forEach((item) => {
+  item.addEventListener("mousemove", function () {
+    if($('.hotspot').hasClass('hotspot-on')){
+      $('.hotspot').removeClass('hotspot-on')
+    }
+    item.children[2].classList.add("hotspot-on");
+    item.children[2].classList.add("tuned-on");
+  });
+  item.addEventListener("mouseleave", function () {
+    item.children[2].classList.remove("hotspot-on");
+    item.children[2].classList.remove("tuned-on");
+  });
+});
+
+
+function addHotspotClass() {
+  $('.active .points .hotspot').each(function(index, element) {
+    if($('.hotspot').hasClass('tuned-on')){
+
+    }else{
+      setTimeout(function() {
+      if($('.hotspot').hasClass('hotspot-on')){
+        $('.hotspot').removeClass('hotspot-on')
+      }
+        $(element).addClass('hotspot-on');
+    }, 5000 * index);
+  }
+});
+}
+setInterval(addHotspotClass, 10000);
+
+  </script>

@@ -1,0 +1,89 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+
+{% include "front/include/breadcrumb.html" %}
+
+
+
+<section class="whips">
+    <div class="para_anim head_anim">
+        <h1>Tropolite Prime
+        </h1>
+     
+        <h2 style='font-size:1.5rem; font-family:karin;'>Create Magical Moments</h2>
+       
+        <p class="whip-para-1">
+            At Tropolite Foods, we've been pioneers in the culinary world since the 1970s, consistently pushing the boundaries of flavor and art. With Tropolite Prime, we place the culmination of these decades of culinary expertise– our time-honed art of ingredients– into your hands. Tropolite Prime equips you with our meticulously researched, premium ingredients to unlock flavors that not only please the palate but also resonate with the heart, crafting moments of pure delight. 
+        </p>
+        <p class="whip-para-1">Imagine crafting luscious cakes, heavenly soufflés, chocolatey mousse, parfaits, puddings, and a whole lotta delectable sweet desserts and savory cuisines that would tantalize your patrons’ appetite and transform your menu into a gourmet wonderland. Whether you're a baker, patissier, or a master chef of the savory arts, Tropolite Prime’s assorted ingredients  empower you to transcend the ordinary, explore the extraordinary, and make every creation a testament to your culinary magic.
+        </p>
+       
+    </div>
+    
+    <div><img class="img_radius" src="{% static 'front/assets/artisan.webp' %}" alt="create Magical moments" title="create Magical moments" /></div>
+  
+</section>
+
+<section class="whywhips head_anim">
+    <div>
+        <h3>why choose our</h3>
+        <h2 class="h1">Tropolite Prime?
+        </h2>
+    </div>
+   
+       
+        <div>
+        
+            <div class="">
+                
+                <div><img loading='lazy' src="{% static 'front/assets/icons (1).webp' %}" alt="Consistency in every whisk"  title="Consistency in every whisk" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"></div>
+                
+                <p>Consistency in every whisk</p>
+            </div>
+            
+            <div class="">
+                
+                <div><img loading='lazy' src="{% static 'front/assets/icons (2).webp' %}" alt="Convenience redefined" title="Convenience redefined" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"></div>
+                
+                <p>Convenience redefined</p>
+            </div>
+            
+            <div class="">
+                
+                <div><img loading='lazy' src="{% static 'front/assets/icons (3).webp' %}" alt="Versatility Unleased"  title="Versatility Unleased"  style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"></div>
+                
+                <p>Versatility Unleased</p>
+            </div>
+            
+            <div class="">
+                
+                <div><img loading='lazy' src="{% static 'front/assets/icons (4).webp' %}" alt="Trust and Quality" title="Trust and Quality" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"></div>
+                
+                <p>Trust and Quality</p>
+            </div>
+            
+        </div>
+       
+  
+</section>
+
+
+{% if products %}
+<section class="product artisan_product">
+    <div class="pro-1 para_anim head_anim product-dropdown-main">
+        <div class="">
+            <h2 class="h1">Whispers of Gourmet Magic</h2>
+        <h3>Endless Versatility, Endless Enchantments</h3>
+        </div>
+        
+        
+    </div>
+{% include "front/include/product_sub_cat_temp1.html" %}
+    
+</section>
+{% endif %}
+{% include "front/include/secret_book.html" %}
+
+{% include "front/include/deals.html" %}
+
+
+{% endblock %}

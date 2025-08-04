@@ -1,0 +1,237 @@
+{% extends "front/base.html" %}
+{% block content %} {% load static %}
+
+{% block head %}
+
+
+{% endblock %}
+
+{% include "front/include/breadcrumb.html" %}
+{% if recipe_data.banner_image %}
+<section class="product_img">
+    <img src="{{recipe_data.banner_image.url}}" alt="{{title}}" title="{{title}}" />
+    <div id="share" class='share_div'>
+        {% comment %} <i id='share_btn' class="fa-solid fa-upload" style="color: #E2B57C;"></i> {% endcomment %}
+        {% comment %} <img id='share_btn' src={% static "front/assets/noun-share-6422765.png"%} alt='share icon ' /> {% endcomment %}
+        {% comment %} <i id='share_btn' class="fa-solid fa-share" style="color: #E2B57C;"></i> {% endcomment %}
+        <i id='share_btn' class="fa-solid fa-share-nodes" style="color: #E2B57C;"></i>
+    </div>
+</section>
+{%endif%}
+
+<section class="product_attributes">
+    <div class="Indulge_sec2">
+        <h3>{{recipe_data.heading}}</h3>
+        {%if recipe_data.sub_heading%}
+        <h1>{{recipe_data.sub_heading}}</h1>
+        {%endif%}
+    </div>
+    {%if recipe_data.prep_time %}
+    <div class="Indulge_Att_box">
+        
+        <div>
+            <h3>{{recipe_data.prep_time}}</h3>
+            <p>Prep time</p>
+        </div>
+        
+        {%if recipe_data.ingredients_used%}
+        <div>
+            <h3>{{recipe_data.ingredients_used}}</h3>
+            <p>Ingredients used</p>
+        </div>
+        {%endif%}
+        {%if recipe_data.person_served%}
+        <div>
+            <h3>{{recipe_data.person_served}}</h3>
+            <p>Person served</p>
+        </div>
+        {%endif%}
+    </div>
+    {%elif recipe_data.ingredients_used%}
+    <div class="Indulge_Att_box">
+        {%if recipe_data.prep_time%}
+        <div>
+            <h3>{{recipe_data.prep_time}}</h3>
+            <p>Prep time</p>
+        </div>
+        {%endif%}
+       
+        <div>
+            <h3>{{recipe_data.ingredients_used}}</h3>
+            <p>Ingredients used</p>
+        </div>
+        
+        {%if recipe_data.person_served%}
+        <div>
+            <h3>{{recipe_data.person_served}}</h3>
+            <p>Person served</p>
+        </div>
+        {%endif%}
+    </div>
+    {% elif recipe_data.person_served%}
+    <div class="Indulge_Att_box">
+        {%if recipe_data.prep_time%}
+        <div>
+            <h3>{{recipe_data.prep_time}}</h3>
+            <p>Prep time</p>
+        </div>
+        {%endif%}
+        {%if recipe_data.ingredients_used%}
+        <div>
+            <h3>{{recipe_data.ingredients_used}}</h3>
+            <p>Ingredients used</p>
+        </div>
+        {%endif%}
+        
+        <div>
+            <h3>{{recipe_data.person_served}}</h3>
+            <p>Person served</p>
+        </div>    
+    </div>
+    {% endif %}
+    {%if recipe_data.description%}
+    <div class="Indulge_content_sec para_anim">
+        {% comment %} <h3>What is Coffee Whipped Cream?</h3> {% endcomment %}
+        <div class="indulge-sec-div">
+            
+            <div>
+                {{recipe_data.description|safe}}
+            </div>
+            
+            {%if recipe_data.right_description%}
+            <div>
+                {{recipe_data.right_description|safe}}
+            </div>
+            {%endif%}
+        </div>
+    </div>
+    {% elif recipe_data.right_description %}
+    <div class="Indulge_content_sec para_anim">
+        {% comment %} <h3>What is Coffee Whipped Cream?</h3> {% endcomment %}
+        <div class="indulge-sec-div">
+            {%if recipe_data.description%}
+            <div>
+                {{recipe_data.description|safe}}
+            </div>
+            {%endif%}
+            
+            <div>
+                {{recipe_data.right_description|safe}}
+            </div>
+          
+        </div>
+    </div>
+    {%endif%}
+</section>
+
+<div class="containerSlider head_anim" id="containerSlider">
+    <div class="SliderContent" {% if random_products %}{% else %}style="width:100%;"{% endif %}>
+        <h3 style="text-align: start;" >How to Make It?</h3>
+        <div class="fixedSlide" {% if random_products %}{% else %}style="width:90%;"{% endif %}>
+            
+            {%if recipe_data.how_to_make_it%}
+            <div class='how-to-make-it'>
+                {{recipe_data.how_to_make_it|safe}}
+            </div>
+            {%endif%}
+        </div>
+    </div>
+    {% if random_products %}    
+                    {% include "front/include/slider.html" %}
+                    {%endif%}   
+</div>
+
+{% if recipe_process_list %}
+<section class="product_process head_anim ">
+    <h2 class="h1">Process</h2>
+    <div class="apps">
+            {% for process_list in recipe_process_list %}
+            
+            <div class="app-maindiv app-odd">
+                <div class="app-item2 app-div">
+                    <h3>Step {{process_list.sequence_number}}</h3>
+                    
+                        {{process_list.description|safe}}
+                    
+                </div>
+            </div>
+            {% endfor %}
+        
+
+        {% comment %} <div class="app-maindiv app-even">
+            <div class="app-item2 app-div">
+                <h3>Step 2</h3>
+                <p>
+                    Then, use your mixer on high speed until the mixture forms stiff
+                    peaks—about 5 minutes.
+                </p>
+            </div>
+         
+        </div>
+
+        <div class="app-maindiv app-even">
+       
+            <div class="app-item2 app-div">
+                <h3>Step 3</h3>
+                <p>
+                    Feel free to add sugar or other sweeteners if desired. Now your
+                    whipped cream is ready to top off any cup of coffee!
+                </p>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</section>
+{%endif%}
+{%if recipe_data.bottom_description%}
+<section class="product_cele " >
+    {%if recipe_data.bottom_description_heading%}
+    <h3>{{recipe_data.bottom_description_heading}}</h3>
+    {%endif%}
+    <div class="product_cele_desc para_anim">
+        <div>
+        {{recipe_data.bottom_description|safe}}
+        </div>
+        {%if recipe_data.bottom_right_description%}
+        <div>
+            {{recipe_data.bottom_right_description|safe}}
+        </div>
+        {%endif%}
+    </div>
+</section>
+{%endif%}
+{% include "front/include/secret_book.html" %}
+
+{% include "front/include/deals.html" %}
+
+{% block script %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ 
+<script>
+    $(document).ready(function() {
+        var parentElement = $('.containerSlider_pro-2');
+        var numberOfChildren = parentElement.children().length;
+        if (window.innerWidth >= 1024) {
+            if(numberOfChildren > 2 ){
+                parentElement.addClass('scrolll')
+            }
+            } else if (window.innerWidth < 1024 && window.innerWidth > 768) {
+                if(numberOfChildren > 3 ){
+                parentElement.addClass('scrolll')
+            }             
+            } else if (window.innerWidth <= 768) {  // Adjusted condition to include 768
+                if(numberOfChildren > 1 ){
+                parentElement.addClass('scrolll')
+            }
+        }
+
+
+            // console.log('Number of children:', numberOfChildren);
+        });
+      
+</script>
+<!-- <script type="module" src="{% static 'front/js/main.js' %}"></script> -->
+{% endblock %}
+{% endblock %}

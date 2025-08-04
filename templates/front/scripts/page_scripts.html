@@ -1,0 +1,26 @@
+{% load static %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{{page_type}}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{page_url}}"
+    },
+    "headline": "{{title}}",
+    "image": "{{meta_image.url}}",
+    "author": {
+      "@type": "{{page_type}}",
+      "name": "Tropilite Foods Pvt. Ltd."
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "",
+      "logo": {
+        "@type": "ImageObject",
+        "url": ""
+      }
+    },
+    "datePublished": ""
+  }
+</script>

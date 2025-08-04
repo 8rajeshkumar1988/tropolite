@@ -1,0 +1,65 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+{% block head %}
+      <style>
+        ::-webkit-details-marker{
+            display:none;
+        }
+        .faq .summarySlot{
+            padding: 0;
+        }
+      </style>  
+{% endblock %}
+{% include "front/include/breadcrumb.html" %}
+<section class="jobApply head_anim faq">
+    <h1 class="">FAQs</h1>
+    <br>
+    <p>
+        Welcome to Tropolite, your go-to destination for all things baking, culinary, and dairy supplies. We understand that you might have questions, and we're here to whisk away any doubts you may have. Here are some frequently asked questions to guide you through the delightful journey with Tropolite. Happy baking!
+
+    </p>
+    {% if faq_list %}
+    <div class="jobSlot">
+        <h3>Unveiling the Sweet Answers</h3>
+        <div class="jobdetails">
+            {% for faq in faq_list %}
+            <details>
+            <summary>{{faq.question}}</summary>
+            <div class="summarySlotParent">
+                <div class="summarySlot">
+                    <p>{{faq.answer}}
+                    </p>
+                </div>
+            </div>
+            </details>
+            {% endfor %}
+            
+            
+           
+            
+        </div>
+
+        
+        
+    </div>
+    {% endif %}
+</section>
+
+
+{% include "front/include/legacy_numbers.html" %}
+
+{% include "front/include/deals.html" %}
+
+<script>
+    const detailsElements = document.querySelectorAll('.jobdetails details');
+
+    detailsElements.forEach((details) => {
+        details.addEventListener('click', () => {
+            detailsElements.forEach((otherDetails) => {
+                if (otherDetails !== details) {
+                    otherDetails.removeAttribute('open');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,63 @@
+
+
+  {% load static %}
+
+<style>
+  .iclose{
+    display: none;
+  }
+</style>
+
+<section class="header">
+    <div class="back-nav"></div>
+    <div class="logotop"><a href="/"><img  src="{% static 'front/assets/logo.webp' %}" alt="logo"  title='tropolite' /></a></div>
+    <div class="link">
+
+      <ul class="access-menu">
+        {% comment %} <i class="menu-bar fa-solid fa-bars" style="color: #000000;"></i> {% endcomment %}
+        <img class='menu-bar iopen' src='{% static "front/assets/iopen.png" %}' alt='this'  style='height: 25px;' title='menu open' /> 
+        <img class='menu-bar iclose' src='{% static "front/assets/iclose.png" %}' alt='this'  style='height: 25px;' title='menu close' /> 
+        <!-- <i class="menu-bar fa-solid fa-ellipsis-vertical" style="color: #000000;"></i> -->
+        <!-- <i class="menu-bar fa-solid fa-bars"></i> -->
+        
+        <li class='li-first-child'>
+          <p class='anchor' href="javascript:void(0)" aria-label="main menu for the know">Know</p>
+          <ul class="access-submenu">
+            <li><a href="/about-us"  aria-label="Visit the about us page official page" >About us</a></li>
+            {% comment %} <li><a href="/our-journey" aria-label='visit our journey page'>our journey</a></li> {% endcomment %}
+            <li><a href="/leadership" aria-label="visit  for the leadership page">leadership</a></li>
+            <li><a href="/manufacturing-capabilities" aria-label="visit to our factory or manufacturing capabilities">Manufacturing Capabilities</a></li>          
+            <li><a href="/career" aria-label="job pages">Career</a></li>
+            <li><a href="/csr" aria-label="to the csr pages">CSR</a></li>          
+          </ul>
+        </li>
+
+        {% include "front/include/cat_menus.html" %}
+       
+        <li>
+          <p class='anchor' aria-label="Inspire" href="javascript:void(0)">Inspire</p>
+          <ul class="access-submenu">
+            <li><a href="/recipes" aria-label="directed to the recipes">recipes</a></li>
+            <li><a href="/blogs" aria-label="this  direct to the blogs">Blog</a></li>
+            <li><a href="/events-and-exhibitions" aria-label="events-and-exhibitions">Events & Exhibitions</a></li>
+            {% comment %} <li><a href="javascript:void(0)" aria-label="read more about bakulator">bakulator</a></li>               {% endcomment %}
+          </ul>
+        </li>
+        <li>
+          <p class='anchor' href="javascript:void(0)" aria-label="click to explore Innovate">Innovate</p>
+          <ul class="access-submenu">
+            <li><a href="/patents-certificates" aria-label=" click to explore about patent and certificates">Patents & Certificates</a></li>
+            <li><a href="/food-dairy-technology" aria-label=" explore to food and dairy technology">Food & dairy technology</a></li>
+            <li><a href="/microbial-biotechnology" aria-label="explore to the microbial biotechnolog">Microbial biotechnology</a></li>              
+          </ul>
+        </li>
+        <li >
+          <a class='anchor' href="/contact-us" aria-label="click herer to contact us">Contact Us</a>            
+        </li>
+        <li >
+          <a class='anchor' style='background-color:#932F31; color: #fff !important; display:flex;gap:5px;' href="https://shop.tropolite.com/" target='_blank' aria-label="click herer to contact us">Shop Now <img style='height:25px; width:27px;' src="{% static "front/assets/trollyn.webp" %}" alt=" trolly"  title='trolly'></a>            
+        </li>
+      </ul>
+
+    </div>
+  </section>

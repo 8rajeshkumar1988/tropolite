@@ -1,0 +1,226 @@
+{% load static %}
+<div class="left-location" id="{{ locations|length }}" >
+    {% if locations %}
+    {% for location in locations %}
+    <div class="location-container">
+      <div class="location-container-left">
+        
+        <p class="h5">{{location.name}}</p class="h5">
+        <p class="p">
+          {{location.city}} {{location.state}}
+          {{location.pin_code}}, India 
+        </p>
+      </div>
+      <div class="location-container-right">
+        
+        <p class="ph-number"><a href="tel:{{location.contact_no}}">+91 {{location.contact_no}}</a></p>
+        
+        
+        <p id='kms_{{location.id}}'> {% if location.distance %}{{location.distance}} kms {% endif %} </p>
+      
+      </div>
+      <div class="location-container-right"></div>
+    </div>
+    {% endfor %} 
+    {% else %}
+      <p>Please select the state to find the list of registered Tropolite distributors.</p>
+    {% endif %} 
+  </div>
+  <div class="right-map">
+    <div id="map"></div>
+
+
+  </div>
+  <script>
+    var currentLatitude = "";
+    var currentLongitude = "";
+
+    function haversine(lat1, lon1, lat2, lon2) {
+        // Radius of the Earth in kilometers
+        const R = 6371.0;
+    
+        // Convert latitude and longitude from degrees to radians
+        const lat1Rad = toRadians(lat1);
+        const lon1Rad = toRadians(lon1);
+        const lat2Rad = toRadians(lat2);
+        const lon2Rad = toRadians(lon2);
+    
+        // Calculate the differences
+        const dlat = lat2Rad - lat1Rad;
+        const dlon = lon2Rad - lon1Rad;
+    
+        // Haversine formula
+        const a = Math.sin(dlat / 2)**2 + Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.sin(dlon / 2)**2;
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    
+        // Calculate the distance
+        const distance = R * c;
+        return Math.round(distance);
+    }
+    
+    // Helper function to convert degrees to radians
+    function toRadians(degrees) {
+        return degrees * (Math.PI / 180);
+    }
+  
+    function getGPS(callback, fallbackLocation = { lat: '', lng: '' }) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            showGPS(position);
+            if (callback) {
+              callback(currentLatitude, currentLongitude);
+            }
+          },
+          function (error) {
+            // Handle geolocation error
+            console.error("Error getting geolocation:", error);
+            if (callback) {
+              callback(fallbackLocation.lat, fallbackLocation.lng);
+            }
+          }
+        );
+      } else {
+        console.log("No GPS Functionality");
+        if (callback) {
+          callback(fallbackLocation.lat, fallbackLocation.lng);
+        }
+      }
+    }
+  
+    function showGPS(position) {
+      console.log("showGPS call");
+      document.cookie = "latitude=" + position.coords.latitude;
+      document.cookie = "longitude=" + position.coords.longitude;
+      currentLatitude = position.coords.latitude;
+      currentLongitude = position.coords.longitude;
+    }
+  
+    var locations = [
+      {% if locations %}
+        {% for location in locations %}
+          {% if location.latitude and location.longitude and location.name %}
+            {
+              lat: {{ location.latitude }},
+              lng: {{ location.longitude }},
+              title: '{{ location.name }}',
+              contact_no: '{{ location.contact_no }}',
+              direction: `https://www.google.com/maps/dir/?api=1&origin='',''&destination={{ location.latitude }},{{ location.longitude }}`,
+            },
+            
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    ];
+  
+    function initMap() {
+      
+      return new Promise((resolve) => {
+        getGPS((latitude, longitude) => {
+          currentLatitude = latitude;
+         
+  
+          locations = [
+            {% if locations %}
+              {% for location in locations %}
+                {% if location.latitude and location.longitude and location.name %}
+                  {
+                    lat: {{ location.latitude }},
+                    lng: {{ location.longitude }},
+                    location_id: {{ location.id }},
+                    title: '{{ location.name }}',
+                    contact_no: '{{ location.contact_no }}',
+                    clat: latitude,
+                    clng: longitude,
+                    direction: `https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination={{ location.latitude }},{{ location.longitude }}`,
+                  },
+                  
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          ];
+  
+          resolve();
+        });
+      }).then(() => {
+        
+
+        var zoomLevel = (locations[0] && locations.length == 3 )? 7 : (locations[0] && locations.length == 2 ) ? 10 : (locations[0] && locations.length == 1 ) ? 13 : 5;
+        {% if geocodes %}
+        var map = L.map('map').setView({{geocodes}}, 7);
+        
+        {%else%}
+        var map = L.map('map').setView([(locations[0] && locations.length < 20)  ? locations[0].lat : 20.5937 , (locations[0] && locations.length < 20) ? locations[0].lng : 78.9629], zoomLevel);
+        {% endif %}
+
+
+       
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+         }).addTo(map);
+    
+       var customIcon = L.icon({
+            iconUrl: '{% static 'front/assets/marker.webp' %}',
+            iconSize: [30, 40], // size of the icon
+            iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
+            popupAnchor: [0, -32] // point from which the popup should open relative to the iconAnchor
+        });
+
+       
+      // Customize the colors for the cluster markers
+      var clusterOptions = {
+        spiderfyOnMaxZoom: false,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: false,
+        maxClusterRadius: 100,
+        iconCreateFunction: function (cluster) {
+            var childCount = cluster.getChildCount();
+            var c = ' marker-cluster-';
+            if (childCount < 20) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+        }
+    };
+
+    // Create a MarkerClusterGroup with the customized options
+    var markers = L.markerClusterGroup(clusterOptions);
+        
+  
+        locations.forEach(function (location) {
+            if (location.clat && location.clng){
+            var distance=haversine(parseFloat(location.lat),parseFloat(location.lng),  parseFloat(location.clat),  parseFloat(location.clng));
+            if(distance && distance!='NaN'){
+                $("#kms_"+location.location_id).text(distance+" kms"); 
+            }
+          }   
+         
+  
+          var contentString = `<div style="padding:0px">
+            <h3 style="color: #932F31;margin: 0;">${location.title}</h3>
+            <a href="tel:${location.contact_no}"><p style="margin: 0;">+91 ${location.contact_no}</p></a><a style="color: #932F31;margin: 0; border-bottom:1px solid #932F31" href="${location.direction}" target="_blank"></a>
+          </div>`;
+  
+        
+          var newMarker = L.marker([location.lat, location.lng], { icon: customIcon });
+          newMarker.bindPopup(contentString);
+             // Add the marker to the MarkerClusterGroup
+             markers.addLayer(newMarker);
+            
+         
+        });
+// Add the MarkerClusterGroup to the map
+map.addLayer(markers);
+        
+      });
+    }
+  
+  </script>
+
+  <script>
+   
+  </script>

@@ -1,0 +1,70 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+
+{% include "front/include/breadcrumb.html" %}
+
+
+<section class="product artisan_product">
+ 
+    <div class="pro-1 para_anim head_anim product-dropdown-main">
+       <div class="">
+        {% if category_data %}
+        <h1 class="h1">All {{category_data.name}} Products</h1>
+        {% else %}
+        <h1 class="h1">All Products</h1>
+        {% endif %}
+        <h3>Endless Versatility, Endless Enchantments</h3> 
+       </div>
+<!--         
+        <div class="product-dropdown">
+      
+            <div class="dropdown">
+                <button class="dropdown-btn">Select Category <i class="fa-solid fa-list"></i></button>
+                <div class="dropdown-content">
+                    <ul>
+                        <li>
+                            <a>Bakery</a>
+                            <ul class="sublist">
+                                <li><a href="#">Bakery Whips</a></li>
+                                <li><a href="#">Bakery Ingredients</a></li>
+                                <li><a href="#">Bakery Premixes</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>Culinary</a>
+                            <ul class="sublist">
+                                <li><a href="#">Cooking Cream</a></li>
+                                <li><a href="#">Seasoning</a></li>
+                                <li><a href="#">Culinary Premixes</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>Dairy</a>
+                            <ul class="sublist">
+                                <li><a href="#">Dairy Premixes</a></li>
+                                <li><a href="#">Stabilizers & Emulsifiers</a></li>
+                                <li><a href="#">Starter Cultures and Probiotics</a></li>
+                                <li><a href="#">Ripple Sauce</a></li>
+                                <li><a href="#">Dairy & Food Ingredients</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>  -->
+    </div>
+{% if products %}    
+   {% include "front/include/product_sub_cat_temp1.html" %}
+   
+   {% else %}
+   <div>No record found.</div>
+   {% endif %}
+</section>
+
+{% include "front/include/bakery_finder.html" %}
+
+{% include "front/include/secret_book.html" %}
+
+{% include "front/include/deals.html" %}
+
+{% endblock %}

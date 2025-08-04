@@ -1,0 +1,50 @@
+{% load static %}
+
+<style>
+  .for_desk_{
+    display: block;
+  }
+  .for_mob_{
+    display: none;
+  }
+  @media  screen and (max-width: 769px){
+    .for_desk_{
+      display: none !important;
+    } 
+    .for_mob_{
+      display: block;
+    }
+  }
+</style>
+
+{% if category_list %}
+<li>
+  <p class='anchor' href="javascript:void(0)">Discover</p>
+  <ul class="access-submenu side-bar-pan">
+    {% for catmenus in category_list %}
+    <li>
+      <div class="arrow-img-div">
+        <img class='for_desk_' src="{% static 'front/assets/arrow-color.webp' %}" alt="tropolite logo"  title="tropolite logo" >
+        <i class="fa-solid fa-xmark for_mob_"></i>
+      </div>
+      <a class='list-sub-menu' href="/{{catmenus.slug}}">{{catmenus.name}}</a>
+      {% if catmenus.sub_category%}
+      <ul class="acc-menu">
+        {% for subcat in catmenus.sub_category %}
+        <li><a href="/{{catmenus.slug}}/{{subcat.slug}}">{{subcat.name}}</a></li>
+        {% endfor %}
+        
+      </ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+    <li>
+      <a href="/tropolite-prime">Prime</a>
+    </li>
+    <li>
+      <a href="/all-products">All Products</a>
+    </li>
+   
+  </ul>
+</li>
+{% endif %}

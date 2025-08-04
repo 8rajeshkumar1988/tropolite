@@ -1,0 +1,192 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}{% load random_tags %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/patent_microbial.css' %}" />
+
+<style>
+ 
+</style>
+
+{% endblock %}
+
+{% include "front/include/breadcrumb.html" %}
+<section class="taste-happy">
+  <div class="aboutus-top-heading">
+    <h1>CSR at Tropolite</h1>
+    <h2 style='font-size:1.5rem; font-family:karin; text-align:center;'>Nurturing change, <br />Nurturing India</h2>
+  </div>
+  <div class="happy-back head_anim">
+    <img src="{% static 'front/assets/MOU with JU.webp' %}" alt="csr background image" title='csr background image'>
+  
+  
+  </div>
+</section>
+<section class="fermentation_art head_anim">
+  <div class="csr-object para_anim">
+    <h2 class="h1">CSR Objective</h2>
+    <p>
+        Creating a difference in the world around us by engaging in meaningful activities which gives permanent positive impact in the areas of women empowerment, environment conservation, Child Education and so on.
+    </p>
+  </div>
+  <div>
+    <img src="{% static 'front/assets/CSR_Image.webp' %}" alt="CSR Objective"  title='CSR Objective' />
+  </div>
+</section>
+<section class="piller head_anim">
+  <h2 class="h1" style='text-align:center;' >Creating Difference</h2>
+  <h3 style='text-align: center; margin-bottom:20px;'>through Csr</h3>
+  <div class="piller-div short_para_anim">
+    {% for list in csr_category_list %}
+    <a href='/csr-reports?csrcategoryid={{list.sequence_number}}'>
+      <img
+        loading="lazy"
+        src="{{list.icon.url}}"
+        alt="{{list.name}}  _ image" 
+        title='{{list.name}}'
+      />
+      <p>{{list.name}}</p>
+    </a>
+    {% endfor %}
+    {% comment %} <div>
+      <img
+        loading="lazy"
+        src="{% static 'front/assets/education.svg' %}"
+        alt="education & awareness"
+      />
+      <p>Education & <br />Awareness</p>
+    </div>
+    <div>
+      <img
+        loading="lazy"
+        src="{% static 'front/assets/women.svg' %}"
+        alt="women empowerment"
+      />
+      <p>Women <br />Empowerment</p>
+    </div>
+    <div>
+      <img
+        loading="lazy"
+        src="{% static 'front/assets/environment.svg' %}"
+        alt="environment conservation"
+      />
+      <p>Environment <br />Conservation</p>
+    </div>
+    <div>
+      <img
+        loading="lazy"
+        src="{% static 'front/assets/health.svg' %}"
+        alt="health & wellness"
+      />
+      <p>Health &<br />Wellness</p>
+    </div>
+    <div>
+      <img
+        loading="lazy"
+        src="{% static 'front/assets/empower.svg' %}"
+        alt="empowering changemaker"
+      />
+      <p>Empowering <br />Changemaker</p>
+    </div> {% endcomment %}
+  </div>
+</section>
+{% if csrhighlights %}
+<section class="highlights head_anim para_anim">
+  <h2 class="h1">CSR Highlights</h2>
+  <div class="high-cara">
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+  
+  
+   
+      <div class="carousel-inner">
+        {% for img in csrhighlights %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="high-cara-img">
+            <img loading="lazy" src="{{img.image.url}}" alt="{{img.heading}}" title='{{img.heading}}' />
+          </div>
+          <div class="cara-text">
+            <h3>{{img.heading}}</h3>
+            <p>{{img.description}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="carousel-indicators" id='csr_dots'>
+        {% for img in csrhighlights %}
+        {% if forloop.first %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="active" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+        {% else %}
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" aria-label="Slide {{ forloop.counter }}"></button>
+        {% endif %}
+    {% endfor %}
+      </div>
+      <button
+        class="carousel-control-prev high-cara-btn"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"
+          ><img
+            loading="lazy"
+            src="{% static 'front/assets/arrow-left.webp' %}"
+            alt="left arow backgroud button"
+            title='left arow backgroud button'
+        /></span>
+        <span class="visually-hidden">previous</span>
+      </button>
+      <button
+        class="carousel-control-next high-cara-btn"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"
+          ><img
+            loading="lazy"
+            src="{% static 'front/assets/arrow-right.webp' %}"
+            alt="right arrow button"
+            title='right arrow button'
+        /></span>
+        <span class="visually-hidden">upcoming</span>
+      </button>
+    </div>
+  </div>
+</section>
+{% endif %} {% if csrreports %}
+<section class="report head_anim short_para_anim">
+  <h2 class="h1">Latest CSR Reports</h2>
+
+  {% for csrreport in csrreports %}
+  <div class="report-div" style="cursor: pointer;" onclick="window.location.href='/csr-reports?img=img_{{csrreport.id}}'"  >
+    {% if csrreport.image %}
+    <div class="report-div-img">
+      <img
+        loading="lazy"
+        src="{{csrreport.image.url}}"
+        alt="{{csrreport.heading}}"
+        title='{{csrreport.heading}}'
+      />
+    </div>
+    {% endif %} {% if csrreport.heading %}
+    <div>
+      <h3>{{csrreport.heading}}</h3>
+      <p>{{csrreport.report_date|date:'M, Y'}}</p>
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <div class="report-cta">
+    <a href="/csr-reports" class="cta">
+      <span>VIEW ALL</span>
+      <svg width="13px" height="10px" viewBox="0 0 13 10">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </a>
+  </div>
+</section>
+
+{% endif %} {% include "front/include/deals.html" %} {% endblock %}

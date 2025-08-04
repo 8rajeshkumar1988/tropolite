@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=2' name='viewport'/>
+    {% comment %} <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> {% endcomment %}
+
+    {% if meta_title %}
+    <title>{{meta_title}}</title>
+    {% else %}
+    <title>{{title}}</title>
+    {% endif %}
+   
+    <link rel="icon" href="{% static 'front/assets/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'front/assets/favicon.ico' %}" type="image/x-icon">
+    <meta name="keywords" content="{{meta_keywords}}" />
+    <meta name="description" content="{{meta_description}}" />
+    {% if meta_title %}
+    <meta property="og:title" content="{{meta_title}}" />
+    {% else %}
+    <meta property="og:title" content="{{title}}" />
+    {% endif %}
+
+
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{page_url}}" />
+    <meta property="og:description" content="{{meta_description}}" />
+
+    
+<meta name="twitter:site" content="tropolite">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{meta_description}}">
+
+   
+    {% if meta_image %}
+    <meta itemprop="image"
+      property="og:image"
+      content="https://tropolite.com{{meta_image.url}}"
+    />
+    <meta name="twitter:card" content="https://tropolite.com{{meta_image.url}}">
+    <meta name="twitter:image" content="https://tropolite.com{{meta_image.url}}">
+    {% else %}
+    <meta itemprop="image"
+      property="og:image"
+      content="https://tropolite.com/static/front/assets/logo.webp"
+    />
+    <meta name="twitter:card" content="https://tropolite.com/static/front/assets/logo.webp">
+    <meta name="twitter:image" content="https://tropolite.com/static/front/assets/logo.webp">
+      
+    {%endif%}
+
+    <meta property="og:site_name" content="Tropolite">
+
+
+   
+    <link rel="canonical" href="{{page_url}}"/>
+
+    <meta http-equiv="Cache-control" content="public" />
+    <!-- <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css"> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link loading='lazy' rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+
+    {% if load_vimeo_js == 'N' %}
+
+    {%else%}    
+    <script  src="https://player.vimeo.com/api/player.js"></script>
+    {%endif%}
+    
+    <link preload rel="stylesheet" href="{% static 'front/css/style.css' %}" />
+            
+            <link rel="stylesheet" href="{% static 'front/css/main.css' %}" />
+
+            <script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+              integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+              crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% block head %} {% endblock %}
+
+    {% include "front/scripts/breadcrumb.html" %}
+
+    {% if page_name == 'productdetail' %}
+    {% include "front/scripts/product_scripts.html" %}
+    {% endif %}
+
+    {% if page_name == 'blog_detail' %}
+    {% include "front/scripts/blogs_scripts.html" %}
+    {% endif %}
+
+    {% if page_name == 'recipedetail' %}
+    {% include "front/scripts/recipe_scripts.html" %}
+    {% endif %}
+    {% if page_name == 'blog_list' %}
+    {% include "front/scripts/blog_list.html" %}
+    {% endif %}
+
+    {% if page_name == 'recipes_list' %}
+    {% include "front/scripts/recipe_list.html" %}
+    {% endif %}
+    
+    {% if page_name == 'category' or page_name == 'subcategory' %}
+    {% include "front/scripts/category.html" %}
+    {% endif %}
+
+    {% if page_name == 'faqs' %}
+    {% include "front/scripts/faqs.html" %}
+    {% endif %}
+    
+
+    {% if page_schema %}
+    
+      {{ page_schema|safe }}
+   
+    {%endif%}
+
+    <!-- Google tag (gtag.js) -->
+<script  src="https://www.googletagmanager.com/gtag/js?id=G-C359FVN52G"></script>
+
+{% comment %} <link rel="stylesheet" href="https://unpkg.com/simplebar/dist/simplebar.min.css" />
+<script  src="https://unpkg.com/simplebar/dist/simplebar.min.js"></script> {% endcomment %}
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C359FVN52G');
+
+  function get_thumbnail(video_id){
+    fetch(`https://vimeo.com/api/v2/video/${video_id}.json`).then(
+        async (res) => {
+            try {
+              let data = await res.json();
+              imageData = data[0].thumbnail_large.substring(0, data[0].thumbnail_large.length - 3);
+              $(`#${video_id}_thumb`).append('<img src="' + imageData + '" alt="Video Thumbnail" title="Video Thumbnail" style="width: 100%; height: auto;">');
+              if($(`#${video_id}_thumbImg`)[0]){
+                $(`#${video_id}_thumbImg`).append('<img src="' + imageData + '" alt="Video Thumbnail" title="Video Thumbnail" style="width: 100%; height: auto;">');
+              }
+          } catch (error) {
+            $(`#${video_id}_thumb`).text("");
+          }
+        }
+      );
+  }
+</script>
+
+
+
+<link rel="preload" as="image" href="{% static 'front/assets/first-slide.webp' %}">
+<link rel="preload" as="image" href="{% static 'front/assets/first-image-home2.webp' %}">
+<link rel="preload" as="image" href="{% static 'front/assets/thumbnail.webp' %}">
+
+
+
+  </head>
+
+
+  
+
+
+  <body>
+    
+    <div class="conatiner">    
+    {% include "front/include/header.html" %} {% block content %}{% endblock %}
+    {% include "front/include/footer.html" %}
+    <div class="to-top"><svg width="13px" height="10px" viewBox="0 0 13 10">
+      <path d="M1,5 L11,5"></path>
+      <polyline points="8 1 12 5 8 9"></polyline>
+    </svg>
+    </div>
+  </div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script> -->
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/ScrollTrigger.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/split-type"></script> -->
+{% comment %} <script  src="https://unpkg.com/gsap@3.9.2/dist/gsap.min.js"></script> {% endcomment %}
+<!-- <script src="js/scroll.js"></script> -->
+
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+{% block script %}  {% endblock %}
+
+<div class="award">
+  
+  <div>
+    <p class="p1">Recognised as a Star Export House by the Government of India</p>
+    <p class="p2"><a href="/events-and-exhibitions">“Swarnim Shikhar Tak” | Tropolite's Annual Meet 2024 ft. Ashish Vidyarthi</a></p>
+  </div>
+  <img src="{% static 'front/assets/iclose.png' %}" alt="cross"  title="cross" class="cross">
+  <img src="{% static 'front/assets/award.png' %}" alt="cross"  title="cross" class="award_logo">
+  
+</div>
+
+<script src="{% static 'front/js/script.js' %}"></script>
+{% comment %} <script type="module" src="{% static 'front/js/main.js' %}"></script> {% endcomment %}
+
+<script>
+  $('.cross').on('click', function(){
+    $('.award').slideUp(500);
+    $('.to-top').css('bottom', '60px');
+    var cookieString = 'award=saved; path=/';
+    document.cookie = cookieString;
+
+});
+
+  $(document).ready(function(){
+    // Function to retrieve the value of a cookie by its name
+function getCookie(name) {
+  var cookieName = name + '=';
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var cookieArray = decodedCookie.split(';');
+  for(var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i];
+    while (cookie.charAt(0) == ' ') {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(cookieName) == 0) {
+      return cookie.substring(cookieName.length, cookie.length);
+    }
+  }
+  return '';
+}
+
+// Example usage:
+  var awardCookie = getCookie('award');
+  if(awardCookie !== 'saved'){
+    $('.award').slideDown(500)
+    $('.award').css('display', 'flex')
+  }
+
+  })
+
+  let toggle = true;
+  let interval;
+  
+  function startInterval() {
+    clearInterval(interval)
+    interval = setInterval(function(){
+      if(toggle){
+        $('.award .p1').css('zIndex', '1')   
+        $('.award .p2').css('zIndex', '2')   
+        $('.award .p1').slideUp('2000');
+        $('.award .p2').slideDown('2000');      
+        toggle = false;
+      } else {
+        $('.award .p1').css('zIndex', '2')   
+        $('.award .p2').css('zIndex', '1')   
+        $('.award .p1').slideDown('2000');      
+        $('.award .p2').slideUp('2000');
+        toggle = true;
+      }      
+    }, 4000);
+  }
+  
+  startInterval();   
+  $('.award').on('mouseenter', function() {
+    clearInterval(interval);
+  });
+  
+  $('.award').on('mouseleave', function() {
+    startInterval(); 
+  });
+    
+  
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+{% load static %}
+<div  onclick="window.location.href='/{{product.category.slug}}/{{product.subcategory.slug}}/{{product.slug}}'" class="pro_2Card" {%if product.background_color_code%} style="cursor: pointer;background-color: {{product.background_color_code}}"Â {%endif%}>    
+    {% for tag in product.tags.all %}
+    {% if tag.slug == "prime" %}
+        <img class="prime-logo-img" src="{% static 'front/assets/productPageLogo.webp' %}" alt="prime" title="prime">
+    {% endif %}
+    {% endfor %}
+    <div class="pro_Info  check-hei">
+        <div>
+        <h3 class="check-h4">{{product.name|slice:":35"}}{% if product.name|length > 35 %}... {% endif %}</h3>   
+        <div style='display:flex;flex-direction:row;gap:5px;'>
+        <small class="ptags">{{product.category.name}} </small>
+        <small class="ptags"> {{product.subcategory.heading}}</small>
+        </div>
+        {%if product.short_description%}
+        <div   class="check-para" style="
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;">
+            
+            <p class="give-check" 
+            style="
+      display: -webkit-box;
+      -webkit-line-clamp: initial;
+      -webkit-box-orient: vertical;
+      margin: 0;" 
+   >
+   {{product.short_description}}   {% comment %}|slice:":80"{% endcomment %}
+            </p>
+        </div>
+        </div>
+        {% endif %}
+        <a href="/{{product.category.slug}}/{{product.subcategory.slug}}/{{product.slug}}" class="cta check-cta">
+            <span>VIEW</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </a>
+    </div>
+    {% if product.image %} 
+    
+    <div class="{% if product.is_tild_list_image %}pro_Img {%else%} pro_Img2 {%endif%}" style="background-image: url('{{ product.image.url }}')">
+        <!-- <a href="/{{product.category.slug}}/{{product.subcategory.slug}}/{{product.slug}}" ><img src="{{ product.image.url }}" alt="{{product.name}}"></a> -->
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,73 @@
+{% load static %}
+<style>
+    .fancybox-thumbs{
+        top: auto;
+        width: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 95px;
+        padding: 10px 10px 5px 10px;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .fancybox-show-thumbs .fancybox-inner {
+        right: 0;
+        bottom: 95px;
+    }
+</style>
+{% if eventlists %}
+{% for eventlist in eventlists %} 
+<div class="eventCard">
+    <div class="eventBannerImg">
+        <button class="viewAll" gallery_id="{{eventlist.id}}" >
+            {% if eventlist.image %}
+                <img src="{{eventlist.image.url}}" alt="Banner Image" title="Banner Image">
+            {% endif %}
+        </button>
+    </div>
+    <div class="eventCardContent">
+        <div class="eventCardHeading">
+            <p>{{eventlist.event_name}}</p>
+        </div>
+        <div class="eventTypeDesc">
+            <div class="eventTag">
+                {{eventlist.event_type}}
+            </div>
+            <div class="eventDuration">
+                {{eventlist.event_date}} {% if eventlist.event_to_date and eventlist.event_date != eventlist.event_to_date %} - {{eventlist.event_to_date}}{% endif %}
+            </div>
+        </div>
+        <div class="exploreGallery">
+            <button class="viewAll" gallery_id="{{eventlist.id}}">View Gallery</button>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<section style="text-align: center;padding: 60px;grid-column: span 3;">
+    <h3>Stay tuned.</h3>
+</section>
+{% endif %}
+<script>
+    $(document).ready(()=>{
+        
+    
+
+    
+
+    $(".viewAll").click(function(e) {
+        e.preventDefault()
+        let galleryID =$(this).attr('gallery_id');
+        let currentUrl = new URL(window.location);
+    
+        currentUrl.searchParams.set('galleryID', galleryID);
+    
+        window.history.pushState({}, '', currentUrl);
+        console.log(galleryID);
+       
+        loadGallery(galleryID)
+        return false;
+        
+    });
+    });

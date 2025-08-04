@@ -1,0 +1,47 @@
+{% load static %}
+
+{% if csrreports %} 
+ 
+<div class='newlatest-report latest-report' id='latest-report'>
+
+
+    
+    <div class="st-gallery column-4">              
+        {% for csrreport in csrreports %}  
+        <div>
+            <ul>
+            <li  class="latest-report-div  {{csrreport.report_date|date:'Y'}}"  id="{{csrreport.report_date|date:'YM'}}">
+                <a id="img_{{csrreport.id}}" class="example-image-link" data-fancybox="highlights-gallery" href="{{csrreport.image.url}}" data-caption="{{csrreport.heading}}" title="{{csrreport.heading}}" >
+                    <img loading="lazy"  src="{{csrreport.image.url}}" alt="{{csrreport.heading}}"  title="{{csrreport.heading}}" class="filter-dark tem-img" />
+                </a>
+            </li> 
+        </ul>
+            <h3>{{csrreport.heading}}</h3>
+            <p>{{csrreport.report_date|date:'M, Y'}}</p></a> 
+        </div>
+        {% endfor %}
+    </div>
+
+
+    {% comment %} {% for csrreport in csrreports %}  
+    <div class="latest-report-div  {{csrreport.report_date|date:'Y'}}"  id="{{csrreport.report_date|date:'YM'}}">
+        <a
+            class="example-image-link"
+            href="{{csrreport.image.url}}"
+            data-lightbox="example-set"
+            data-title="{{csrreport.heading}}"
+            >
+            <img loading='lazy' src="{{csrreport.image.url}}" alt="{{csrreport.heading}}" class="tem-img"
+            /> 
+        <h3>{{csrreport.heading}}</h3>
+        <p>{{csrreport.report_date|date:'M, Y'}}</p></a> 
+    </div>
+    {% endfor %}     {% endcomment %}
+</div>
+{% else %}
+
+<section style="text-align: center;padding: 60px;">
+    <h3>data is not available</h3>
+</section>
+{% endif %}
+

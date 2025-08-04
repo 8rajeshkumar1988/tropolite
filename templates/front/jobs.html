@@ -1,0 +1,529 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/p-14.css' %}" />
+<style>
+    input {
+        font-size: 0.9rem;
+        font-family: faunaOne !important;
+    }
+    ::-webkit-details-marker{
+        display:none;
+    }
+    .iphone::before {
+        {% comment %} content: '' !important;
+        display: none !important; {% endcomment %}
+    }
+    .checkkk input{
+        padding-left: 0px !important;
+    }
+</style>
+{% endblock %}
+{% include "front/include/breadcrumb.html" %}
+<section class="taste-happy head_anim">
+    <div class="aboutus-top-heading">
+        <h1>Life at Tropilite</h1>
+        <h2 style='font-size:1.5rem; font-family:karin; text-align:center;'>Nurturing Creativity, Empowering Innovation</h2>
+    </div>
+    <div class="happy-back">
+        <!-- <img src="assets/taste-happy.webp" alt=""> -->
+        <div class='embed_video' style="padding:56.25% 0 0 0;position:relative;">
+            <div id="899745706_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+            </div>
+            <iframe
+                src="https://player.vimeo.com/video/899745706?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false"
+                frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+                style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe>
+        </div>
+    </div>
+    <div class="happy-text para-anim">
+        <div class="para_anim certi-head-para">
+            <p>As a trailblazing company at the forefront of food innovation in India, we foster a dynamic culture that
+                encourages employees to push boundaries, explore new horizons, and realize their full potential. At
+                Tropolite, every individual is an integral part of a diverse and vibrant community, contributing their
+                unique skills and perspectives to drive our collective success.</p>
+        </div>
+    </div>
+</section>
+
+<section class="jobSec head_anim">
+    <div class="apps">
+        <div class="app-maindiv app-odd">
+            <div class="app-item2 app-div para_anim">
+                <h2 class="h1">Cultivating Creativity</h2>
+                <h3>Where Innovation Finds Every Corner</h3>
+                <p>At Tropilite Foods Pvt Ltd, the spirit of innovation extends its embrace to every facet of our
+                    organization. Creativity flourishes as a valued trait, a driving force that propels us forward. Our
+                    belief in fostering creativity ensures that innovation becomes a shared journey, involving each
+                    member of our dynamic team.
+                </p>
+            </div>
+            <div class="app-item1 app-div">
+                <img src="{% static 'front/assets/Creativity.webp' %}" alt="Cultivating Creativity" title="Cultivating Creativity">
+            </div>
+
+        </div>
+
+        <div class="app-maindiv app-even para_anim">
+            <div class="app-item1 app-div"><img loading='lazy' src="{% static 'front/assets/DSC01785.webp' %}"
+                    alt="Cultivating Leadership" title="Cultivating Leadership"></div>
+            <div class="app-item2 app-div">
+                <h2 class="h1">Cultivating Leadership</h2>
+                <h3>A Journey Across All Roles</h3>
+                <p>Leadership isn't confined to the summit; it's a journey that resonates across every role. Our
+                    Leadership Model, an intricate tapestry of growth, ushers individuals through various stages of
+                    development. Starting with self-awareness, it transcends to interpersonal dynamics and eventually
+                    encompasses a holistic understanding of business facets.</p>
+            </div>
+        </div>
+        <div class="app-maindiv app-odd">
+            <div class="app-item2 app-div para_anim">
+                <h2 class="h1">Opportunities</h2>
+                <h3>Your Canvas, Our Blazing Horizon</h3>
+                <p>Within the expanse of Tropilite Foods Pvt Ltd, a galaxy of opportunities beckons. Our rapid business
+                    growth opens doors for our employees to embark on dynamic career paths across various domains. For
+                    those deserving, opportunities are limitless. We believe in nurturing potential and propelling
+                    performance beyond conventional roles and titles.
+                </p>
+            </div>
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% static 'front/assets/Life At Tropolite- Banner.webp' %}"
+                    alt="Your Canvas, Our Blazing Horizon" title="Your Canvas, Our Blazing Horizon">
+            </div>
+
+        </div>
+
+        {% comment %} <div class="app-maindiv app-even para_anim">
+            <div class="app-item1 app-div"><img src="{% static 'front/assets/Tropolite Team.jpg' %}"
+                    alt="The Loom of Strength and Synergy"></div>
+            <div class="app-item2 app-div">
+                <h2 class="h1">Diversity</h2>
+                <h3>The Loom of Strength and Synergy</h3>
+                <p>Tropilite Foods Pvt Ltd stands as a testament to the power of diversity. We are proud to be an equal
+                    opportunity employer, where our rich tapestry of employees reflects the myriad threads of our world.
+                    Our diversity isn't just a fact; it's a strength that we harness to create unparalleled synergy.
+                    Embracing the differences within our workforce, we weave together perspectives that redefine
+                    possibilities and drive transformative progress.</p>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</section>
+<section class="taste-happy head_anim">
+    <div class="aboutus-top-heading">
+        <h2 class='h1'>Diversity</h2>
+        <h3>Unique Minds, Unified Vision</h3>
+    </div>
+    <div class="happy-back" style=' max-height: 500px;
+    '>
+        <img src="{% static 'front/assets/Tropolite Team.webp' %}"
+        alt="The Loom of Strength and Synergy"  title="The Loom of Strength and Synergy">
+       
+    </div>
+    <div class="happy-text para-anim">
+        <div class="para_anim certi-head-para">
+            <p>Tropilite Foods Pvt Ltd stands as a testament to the power of diversity. We are proud to be an equal
+                opportunity employer, where our rich tapestry of employees reflects the myriad threads of our world.
+                Our diversity isn't just a fact; it's a strength that we harness to create unparalleled synergy.
+                Embracing the differences within our workforce, we weave together perspectives that redefine
+                possibilities and drive transformative progress.</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="jobApply head_anim">
+    <h2 class="h1">See Job Vacancies</h2>
+    <p>
+        At Tropilite Foods Pvt Ltd, life isn't just a routine; it's a canvas painted with creativity, diversity and
+        opportunities. It's a journey where every member thrives, becoming not only a contributor but a catalyst for
+        innovation and progress. Welcome to Life at Tropolite, where the ordinary transforms into extraordinary and
+        growth is a constant melody.
+    </p>
+    <div class="jobSlot">
+        {% comment %} <i id='share_btn_new' class="fa-solid fa-share" style="color: #E2B57C;"></i> {% endcomment %}
+        <h3>Job Listings</h3>
+        {% if departments %}
+        {% comment %} <div class="jobdetails">
+            {% for job in jobs %}
+            <details class="sub_detail">
+                <summary>{{job.heading}}</summary>
+                <div class="summarySlotParent">
+                    {% if job.qualifications %}
+                    <div class="summarySlot">
+                        <p>Qualifications</p>
+                        {{job.qualifications |safe }}
+                    </div>
+                    {% endif %}
+                    {% if job.job_scope %}
+                    <div class="summarySlot">
+                        <p>Job Scope</p>
+                        {{job.job_scope |safe}}
+                    </div>
+                    {% endif %}
+                    {% if job.experience %}
+                    <div class="summarySlot">
+                        <p>Experience</p>
+                        {{job.experience |safe}}
+                    </div>
+                    {% endif %}
+                    {% if job.desired_skills %}
+                    <div class="summarySlot">
+                        <p>Desired Skills</p>
+                        {{job.desired_skills |safe}}
+                    </div>
+                    {% endif %}
+
+                    <div class="summarySlot">
+                        <a onclick="displayForm('{{job.id}}','{{job.heading}}')" class="cta" href="javascript:void(0)">
+                            <span>APPLY NOW</span>
+                            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+            </details>
+            {% endfor %}
+        </div> {% endcomment %}
+
+
+        <div class="jobdetails">
+            {% for department in departments %}
+         
+            <details class="main_detail">
+                <summary>{{department.name}} &nbsp;
+                    <p style="margin: 0;"> ({{ department.job_list|length }} {% if department.job_list|length > 1 %}Vacancies{%else%}Vacancy{%endif%}) </p>
+                </summary>
+
+                {%if department.job_list %}
+                {% for job in department.job_list %}
+                <details class="sub_detail">
+                    <summary>{{job.heading}}</summary>
+                    
+                    {% if job.job_scope %}
+                    <div class="summarySlot">
+                        <p>Location</p>
+                        <div>
+                        {{job.location |safe}}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if job.job_scope %}
+                    <div class="summarySlot">
+                        <p>Job Scope</p>
+                        <div>
+                        {{job.job_scope |safe}}
+                        </div>  
+                    </div>
+                    {% endif %}
+
+                    {% if job.qualifications %}
+                    <div class="summarySlot">
+                        <p>Qualification</p>
+                        <div>
+                        {{job.qualifications |safe}}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if job.desired_experience_skills %}
+                    <div class="summarySlot">
+                        <p>Desired Experience & Skills
+                        </p>
+                        <div>
+                        {{job.desired_experience_skills |safe}}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if job.key_Responsibilities %}
+                    <div class="summarySlot">
+                        <p>Key Responsibilities
+
+                        </p>
+                        <div>
+                        {{job.key_Responsibilities |safe}}
+                        </div>  
+                    </div>
+                    {% endif %}
+
+                    {% if job.CTC_band %}
+                    <div class="summarySlot">
+                        <p>CTC                       </p>
+                        <div>
+                        {{job.CTC_band |safe}}
+                        </div>
+                    </div>
+                    {% endif %}
+
+
+                    
+                   
+                    <div class="summarySlot">
+                        <button type='button' onclick="displayForm('{{job.id}}','{{job.heading}}')" class="cta" >
+                            <span>APPLY NOW</span>
+                            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>
+                        </button>
+
+                    </div>
+                </details>
+                
+                {%endfor%}
+                
+                {% endif %}
+
+                
+            </details>
+          
+           {%endfor%}
+          
+           
+
+        </div>
+
+
+        {% else %}
+        <h3>Currently We close for hiring.</h3>
+        {% endif %}
+
+
+    </div>
+</section>
+
+<section class="form head_anim">
+    <div class="containerForm">
+        <button class="closebtnJob" onclick=""><i class="fa-solid fa-xmark"></i></button>
+        <h2 class='h1 share-resume'>Apply Now</h2>
+        <h3 id='form_heading'></h3>
+        <form id="apply_job_form" action={% url 'job_apply' %} method='POST'>
+
+            {% csrf_token %}
+            {{jobform.job_id}}
+            <div class="jobForm">
+                <div class="col">
+                    <label for="id_name">Your Name<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    {{jobform.name}}
+                    <!-- <input type="text" id="fname" name="firstname" placeholder="" /> -->
+                </div>
+                <div class="col">
+                    <label for="id_work_experience">Work Experience<span
+                            style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    <!-- <input type="number" id="phone" name="phone" placeholder="" /> -->
+                    {{jobform.work_experience}}
+                </div>
+                <div class="col">
+                    <label for="id_email">Email<span style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    <!-- <input type="email" id="email" name="email" placeholder="" /> -->
+                    {{jobform.email}}
+
+                </div>
+                <div class="col">
+                    <label for="id_mobile">Contact Number<span
+                            style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    <!-- <input type="number" id="number" name="number" placeholder="" /> -->
+                    {{jobform.mobile}}
+
+                </div>
+                <div class="col">
+                    <label for="id_qualification">Qualification<span
+                            style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    <!-- <input type="text" id="Qualification" name="Qualification" placeholder="" /> -->
+                    {{jobform.qualification}}
+
+                </div>
+                <div class="col">
+                    <label for="id_current_location">Current Location<span
+                            style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    <!-- <input type="location" id="location" name="location" placeholder="" /> -->
+                    {{jobform.current_location}}
+
+                </div>
+                <div class="col">
+                    <label for="id_preferred_location">Preferred Location<span
+                            style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    <!-- <input type="email" id="email" name="email" placeholder="" /> -->
+                    {{jobform.preferred_location}}
+
+                </div>
+                <div class="col  checkkk">
+                    <label for="id_resume">Attach Resume (Allowed extensions- pdf, doc, docx | Max size- 5mb)<span
+                            style='color: #932f31; font-size:1.5rem;'>*</span></label>
+                    <!-- <input type="file" name="resume" id="resume"> -->
+
+                    {{jobform.resume}}
+
+                </div>
+                {% comment %} <div class="col">
+                    <label for="id_cover_letter">Cover Letter<span
+                            style='color: #932f31; font-size:1.5rem;'>*</span></label><br>
+                    
+                    {{jobform.cover_letter}}
+
+                </div> {% endcomment %}
+            </div>
+
+            <a style="cursor: pointer;" class="cta apply_job" id="apply_job">
+                <span>Submit</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+            </a>
+            <div class="msg_div"></div>
+
+        </form>
+    </div>
+
+</section>
+
+
+</div>
+
+{% include "front/include/legacy_numbers.html" %}
+
+{% include "front/include/deals.html" %}
+<script>
+    get_thumbnail('899745706');
+</script>
+<script>
+    let form = document.querySelector(".form")
+    let displayForm = (id, heading) => {
+        console.log(id, heading);
+        $('body').css("overflow", 'hidden')
+        $("#form_heading").text(heading);
+        $("#id_job_id").val(id);
+        $(".form").css('display', 'grid')
+        $("#apply_job_form").css('display', 'block')
+        $('.to-top').css('display', 'none')
+    }
+    $('.closebtnJob').click(function () {
+        $('body').css("overflow", 'scroll')
+        $(".form").css('display', 'none')
+        $('.to-top').css('display', 'flex')
+        location.reload()
+    })
+
+    {% comment %} let CloseJobForm = () => {
+        document.querySelector('body').style.overflow = "scroll";
+        form.style.display = "none"
+        $('.to-top').css('display', 'flex')
+    } {% endcomment %}
+
+    $(document).ready(function () {
+
+        
+
+
+
+        $(".apply_job").on("click", function () {
+            var not_filled = 0;
+            $('.inputjob').each(function (index, data) {
+
+                if ($(data).val() == '') {
+                    $(data).addClass('error');
+                    not_filled++;
+                } else {
+                    $(data).removeClass('error');
+                }
+            });
+            var not_filled = 0;
+           
+            // console.log(not_filled);  
+            if (not_filled == 0) {
+                form = document.getElementById('apply_job_form');
+                formdata = new FormData(form);
+                $.ajax({
+                    url: $("#apply_job_form").attr("action"),
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    data: formdata,
+                    dataType: "json",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function () {
+                        $("#apply_job").html(`<span>Wait...</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>`);
+                        $("#apply_job").removeClass('apply_job');
+                    },
+                    success: function (data) {
+                        $("#apply_job").html(`<span>submit</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>`);
+                        $("#apply_job").addClass('apply_job');
+                        if (data.error == false) {
+                            $('#apply_job_form')[0].reset();
+                            $("#form_heading").text('')
+                            $("#apply_job_form").css('display', 'none')
+                            $('.share-resume').text('Thanks for Applying')
+                            var thankspara = $("<p>").addClass('thankspara').text("We have received your application and will review it carefully. Stay tuned for updates on your application status.");
+                            $('.containerForm').append(thankspara)
+                            setTimeout(function() {
+                                location.reload();
+                            }, 5000);
+                        } else {
+                            var response = "";
+                            var resp = data.errors;
+                            if (data.message == '') {
+                                $.each(resp, function (k, value) {
+                                    response +=
+                                        '<div class="alert alert-danger" role="alert">' +
+                                        k +
+                                        " : " +
+                                        value +
+                                        `</div>`;
+                                });
+                            } else {
+                                response += '<div class="alert alert-danger" role="alert">' + data.message + '</div>';
+                            }
+                            $(".msg_div").html(response);
+                        }
+                    },
+                });
+            }
+        });
+    });
+
+    {% comment %} }); {% endcomment %}
+
+</script>
+<script>
+    const detailsElements = document.querySelectorAll('.main_detail');
+
+    detailsElements.forEach((details) => {
+        details.addEventListener('click', () => {
+            detailsElements.forEach((otherDetails) => {
+                if (otherDetails !== details) {
+                    otherDetails.removeAttribute('open');
+                }
+            });
+        });
+    });
+
+
+    const subdetailsElements = document.querySelectorAll('.sub_detail');
+
+    subdetailsElements.forEach((details) => {
+        details.addEventListener('click', () => {
+            subdetailsElements.forEach((otherDetails) => {
+                if (otherDetails !== details) {
+                    otherDetails.removeAttribute('open');
+                }
+            });
+        });
+    });
+    
+
+</script>
+{% endblock %}

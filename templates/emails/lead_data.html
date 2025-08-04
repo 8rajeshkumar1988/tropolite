@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        border: 1px solid white;
+        padding: 20px 30px;
+        height: 100%;
+        width: 100%;
+        padding-bottom: 100px;
+      }
+      @font-face {
+        font-family: castlegar;
+        src: url("http://tropolite.com/static/front/css/Castlegar-medium.otf");
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="position: relative">
+      <div style="font-family: 'castlegar'; color: maroon; font-size: 2rem">
+        Dear Team,
+      </div>
+      {% if total_records_count > 0 %}
+      <br />
+      <div style="">Ready to conquer some hot new leads in the oven?</div>
+      <br />
+      <div style="">New Leads: {{total_records_count}}</div>
+      <br />
+      <div style="">
+        Please review the attached CSV file for the details on the latest lead
+        updates we have received from our Tropilite Foods website.
+      </div>
+      <br />
+      <br />
+
+      <div>Let’s crack it, <br />Tropolite Team</div>
+      {%else%}
+      <br />
+      <div style="">
+        No new leads received yet on the Tropilite Foods website since
+        yesterday.
+      </div>
+      <br />
+      <div style="">
+        We are boosting up our marketing efforts. Shall be back tomorrow with
+        updates.
+      </div>
+     
+      <br />
+      <br />
+      <div>Cheers, <br />Tropolite Team</div>
+      {%endif%}
+    </div>
+  </body>
+</html>

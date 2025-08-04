@@ -1,0 +1,16 @@
+{% load static %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@id": "#product",
+    "@type": "IndividualProduct",
+    "additionalType": "{{page_url}}",
+    "description": "{{short_description}}",
+    "name": "{{title}}",
+    "image": "{{meta_image.url}}",
+    "brand": {
+      "@type": "Brand",
+      "name": "Tropolite"
+    }
+  }
+  </script>

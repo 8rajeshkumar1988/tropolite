@@ -1,0 +1,221 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/patent_microbial.css' %}" />
+<link rel="stylesheet" href="{% static 'front/css/jquery-fancy-box.css' %}" />
+<link rel="stylesheet" href="{% static 'front/css/events_trop.css' %}" />
+{% endblock %}
+{% include "front/include/breadcrumb.html" %}
+
+<section class="taste-happy head_anim">
+    <div class="aboutus-top-heading">
+        <h1>Events & Exhibitions</h1>
+        <h3>At Tropolite</h3>
+    </div>
+  </section>
+  <section class="csr-selection" id="csr-selection" style="display: grid ; border-radius: 0; grid-template-columns: auto auto;  align-items: start; justify-content: space-between; column-gap: 20px; position: relative; overflow: visible; z-index: 9; height: 20px; max-height: 25px;">
+    <div><form id="filterbytag" class="eventFilter" action="" method="GET" style="display: flex; flex-wrap: wrap; column-gap: 15px;">
+      <!-- <i class="fa-solid fa-angle-right fa-rotate-90 for_cross" style="color: #000000;"></i> -->
+      <div>
+        <input class='cata_input1 cat_tab' checked value="" category_id="" type="radio" name="cate" id="cat_0" >
+        <label  for="cat_0">All</label>
+      </div>
+      <div>
+        <input class='cata_input2 cat_tab' value="Event" category_id="Event" type="radio" name="cate" id="cat_1" >
+        <label  for="cat_1">Events</label>
+      </div>
+      <div>
+        <input class='cata_input3 cat_tab' value="Exhibition" category_id="Exhibition" type="radio" name="cate" id="cat_2" >
+        <label  for="cat_2">Exhibitions</label>
+      </div>
+      
+    </form></div>
+</section>
+
+<section>
+    <div class="event-div-content">
+        {% comment %} <div class="eventCard">
+            <div class="eventBannerImg">
+                <a href="#">
+                    <img src="https://images.unsplash.com/photo-1571983763217-7ed0b741b0a5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=720&ixlib=rb-1.2.1&q=80&w=1280" alt="Banner Image">
+                </a>
+            </div>
+            <div class="eventCardContent">
+                <div class="eventCardHeading">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, officiis?</p>
+                </div>
+                <div class="eventTypeDesc">
+                    <div class="eventTag">
+                        Exhibition
+                    </div>
+                    <div class="eventDuration">
+                        14th - 15th April,2024
+                    </div>
+                </div>
+                <div class="exploreGallery">
+                    <button>View Gallery</button>
+                </div>
+            </div>
+        </div>
+        <div class="eventCard">
+            <div class="eventBannerImg">
+                <a href="#">
+                    <img src="https://images.unsplash.com/photo-1571983763217-7ed0b741b0a5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=720&ixlib=rb-1.2.1&q=80&w=1280" alt="Banner Image">
+                </a>
+            </div>
+            <div class="eventCardContent">
+                <div class="eventCardHeading">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, officiis?</p>
+                </div>
+                <div class="eventTypeDesc">
+                    <div class="eventTag">
+                        Event
+                    </div>
+                    <div class="eventDuration">
+                        14th - 15th April,2024
+                    </div>
+                </div>
+                <div class="exploreGallery">
+                    <button>View Gallery</button>
+                </div>
+            </div>
+        </div>
+        <div class="eventCard">
+            <div class="eventBannerImg">
+                <a href="#">
+                    <img src="https://images.unsplash.com/photo-1571983763217-7ed0b741b0a5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=720&ixlib=rb-1.2.1&q=80&w=1280" alt="Banner Image">
+                </a>
+            </div>
+            <div class="eventCardContent">
+                <div class="eventCardHeading">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, officiis?</p>
+                </div>
+                <div class="eventTypeDesc">
+                    <div class="eventTag">
+                        Event
+                    </div>
+                    <div class="eventDuration">
+                        14th - 15th April,2024
+                    </div>
+                </div>
+                <div class="exploreGallery">
+                    <button>View Gallery</button>
+                </div>
+            </div>
+        </div>
+        <div class="eventCard">
+            <div class="eventBannerImg">
+                <a href="#">
+                    <img src="https://images.unsplash.com/photo-1571983763217-7ed0b741b0a5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=720&ixlib=rb-1.2.1&q=80&w=1280" alt="Banner Image">
+                </a>
+            </div>
+            <div class="eventCardContent">
+                <div class="eventCardHeading">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, officiis?</p>
+                </div>
+                <div class="eventTypeDesc">
+                    <div class="eventTag">
+                        Event
+                    </div>
+                    <div class="eventDuration">
+                        14th - 15th April,2024
+                    </div>
+                </div>
+                <div class="exploreGallery">
+                    <button >View Gallery</button>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        
+    </div>
+</section>
+
+  {% include "front/include/deals.html" %}
+  <script src="{% static 'front/js/fancy-box-js.js'%}"></script>
+  <script>
+    function loadGallery(galleryID){
+        $.ajax({
+            url: `{% url 'event_gallery' %}?event_id=${galleryID}`,
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                if (data && data.length > 0) {
+                    var galleryItems = [];
+                    data.forEach(function(item) {
+                        let source
+                        let thumb
+                        if(item.video_embed_code){
+                            source = item.video_embed_code
+                            thumb = item.url
+                        }else{
+                            source = item.url
+                            thumb = item.url
+                        }
+                        let opts = {
+                            caption: item.caption
+                        };
+                        if (thumb) {
+                            opts.thumb = thumb;
+                        }
+                        galleryItems.push({
+                            src: source,
+                            thumb: thumb,
+                            opts: opts
+                        });
+                    });
+    
+                    $.fancybox.open(galleryItems, {
+                        buttons: [
+                        "slideShow",
+                        "thumbs",
+                        "fullScreen",
+                        "close"
+                        ],
+                        thumbs : {
+                            autoStart : true,
+                            axis: 'x'
+                        },
+                        loop: false,
+                        protect: true
+                    });
+                    
+                } else {
+                    alert('No images found.'); 
+                }
+            },
+            error: function() {
+                alert('Error loading images.');
+            }
+        });
+        }
+      $(document).ready(()=>{
+          
+    $(".cat_tab").on("click",function(){
+        let category_id=$(this).attr('category_id');
+       
+        get_event_listing(category_id)
+        
+      });
+      const urlParams = new URLSearchParams(window.location.search);
+      const galleryID = urlParams.get('galleryID');
+      if (galleryID) {
+          loadGallery(galleryID);
+      }
+    function get_event_listing(type=""){
+         $.ajax({
+              url: '{% url "event_list" %}?eventtype='+type,  
+              type: 'GET',
+              dataType: 'html',
+              success: function(response) {
+                  $('.event-div-content').html(response);                   
+                },
+              error: function(error) {
+                  console.log('Error:', error);
+                }
+          }); 
+       }
+       get_event_listing();
+      
+})
+</script>
+{% endblock %}
+

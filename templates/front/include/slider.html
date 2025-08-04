@@ -1,0 +1,10 @@
+{% load static %}
+
+
+    <div class="containerSlider_pro-2 {% if random_products|length >= 2 %}two{%else%} one {%endif%}" total_cards="{{ random_products|length }}"  id="horizontalScrollContainer">
+        {% for product in random_products %}
+        {% with product=product %}
+        {% include "front/include/product_card.html" %}
+        {% endwith %}
+        {% endfor %}
+    </div>

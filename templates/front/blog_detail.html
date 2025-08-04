@@ -1,0 +1,87 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+
+<style>
+    .remove_add{
+       overflow: auto;
+    }
+    .remove_add .containerSlider_pro-2{
+        width: 100%;
+        padding: 0;
+        margin-top: 15px;
+    }
+    .blog_dev ol, .blog_dev ul{
+        padding-left: 1rem;
+    }
+    .blog-content-section ol, .blog-content-section ul{
+        padding-left: 1rem;
+        width: calc(100% - 1rem)
+    }
+</style>
+
+{% include "front/include/breadcrumb.html" %}
+{%if blog_data.banner_image %}
+<section class="product_img">
+    <img src="{{blog_data.banner_image.url}}" alt="{{title}}" title="{{title}}"  />
+</section>
+{%endif%}
+<section class="blogs_details_p">
+    <div class="Indulge_sec2 para_anim head_anim">
+        <h1>{{blog_data.heading}}</h1>
+        {% if blog_data.sub_heading %}
+        <h3>{{blog_data.sub_heading}}</h3>
+        {%endif %}
+        {% if blog_data.intro_description %}
+        <p>{{blog_data.intro_description|safe}}</p>
+        {%endif %}
+    </div>
+</section>
+
+<section class="blog-content-section">
+    {{blog_data.description|safe}}  
+</section>
+{% if  random_products%}
+<section class='remove_add'>
+<h2 class='h1 related_pro'>
+    Related Products
+</h2>
+<div class="containerSlider blogs-con" id="containerSlider "  >
+    {% comment %} <div class="SliderContent">
+        <div class="fixedSlide head_anim">
+            <h2 class="h1">Best Selling </h2>
+            <h3>Products</h3>
+        </div>
+    </div> {% endcomment %}
+    {% include "front/include/slider.html" %}
+</div>  
+</section>
+{% endif %}
+{% include "front/include/secret_book.html" %}
+{% include "front/include/deals.html" %}
+
+
+
+<script>    
+    $(document).ready(function() {
+        var parentElement = $('.containerSlider_pro-2');
+        var numberOfChildren = parentElement.children().length;
+        if (window.innerWidth >= 1024) {
+            if(numberOfChildren > 3 ){
+                parentElement.addClass('scrolll')
+            }
+            } else if (window.innerWidth < 1024 && window.innerWidth > 768) {
+                if(numberOfChildren > 2 ){
+                parentElement.addClass('scrolll')
+            }             
+            } else if (window.innerWidth <= 768) {  // Adjusted condition to include 768
+                if(numberOfChildren > 1 ){
+                parentElement.addClass('scrolll')
+            }
+        }
+
+
+            // console.log('Number of children:', numberOfChildren);
+        });
+</script>
+
+
+{% endblock %}

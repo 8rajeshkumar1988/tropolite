@@ -1,0 +1,16 @@
+/* Change the background color of the header */
+#header {
+    background-color: #e2b57c; 
+}
+
+/* Custom primary color */
+.primary-color {
+    background-color: #0074e4; /* Change this to your desired primary color */
+    color: #ffffff; /* Text color for primary elements */
+}
+
+/* Custom secondary color */
+.secondary-color {
+    background-color: #ff5733; /* Change this to your desired secondary color */
+    color: #ffffff; /* Text color for secondary elements */
+}

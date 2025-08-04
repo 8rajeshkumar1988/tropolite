@@ -1,0 +1,281 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+{% include "front/include/breadcrumb.html" %}
+<section class="extra_heading_div head_anim">
+   
+        {% if product_data.name|length > 20 %}
+        <h1>{{ product_data.name }}</h1>
+        {% endif %}
+        <div class="whips extra_heading whips2">
+
+            
+            <div class="img-gal">
+                <div class="gal-dis" style="display: flex;
+                flex-direction: column;     align-items: center; justify-content: space-between;">
+                    {% if product_data.video_embed_code %}  
+                   <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative; display: block;">
+                    <div id="{{product_data.video_embed_code|safe}}_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+                    </div>
+                    
+                    <iframe src="https://player.vimeo.com/video/{{product_data.video_embed_code|safe}}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title=""></iframe></div><script async src="https://player.vimeo.com/api/player.js"></script>
+                    <script>
+                        get_thumbnail({{product_data.video_embed_code|safe}})
+                    </script>
+                    
+                   <img style='display:none;' src="image-cara" alt="image attribute" title='image attribute'>
+                   <video style="display: none;" muted autoplay loop >
+                       <source src="" type="video/mp4">
+                   </video> 
+                    {% elif product_data.video %}
+                    <img src="" alt="{{ product_data.name }}" title="{{ product_data.name }}">
+                    <video style="display: block;" muted autoplay loop >
+                        <source src="{{product_data.video.url}}" type="video/mp4">
+                    </video>                                        
+                    {% elif product_data.banner_image %}
+                    <img style="display: block;" src="{{product_data.banner_image.url}}" alt="{{ product_data.name }}" title="{{ product_data.name }}" />
+                    {% else %}
+                       <img style="display: block;"  src="{% static 'front/assets/noImage.webp' %}" alt="{{ product_data.name }}" title="{{ product_data.name }}" />
+                    {% endif %}
+                    <p class="title-img"></p>
+                </div>
+                <div id='slider_opt' style='display: flex;
+                align-items: center;
+                justify-content: space-around;
+            '>
+                    <i class="fa-solid fa-angle-left" id='prevBtn' style="color: #932f31;"></i>
+                    <div id='slider_container' style='overflow-x: scroll;  transition: transform 1s ease-in-out;'>    
+                <div class="gal-opt">
+                    {% if product_galery %}
+                    {% if product_data.video_embed_code %}  
+                    <div  class='embed_video'  style="padding:0;position:relative;">
+                        <div id="{{product_data.video_embed_code|safe}}_thumbImg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                            {% comment %} <img src=`${get_thumbnail({{product_data.video_embed_code|safe}})}` alt="Video Thumbnail" style="width: 100%; height: auto;"> {% endcomment %}
+                        </div>
+                        
+                        </div>
+                        {% comment %} <script>
+                            get_thumbnail({{product_data.video_embed_code|safe}})
+                        </script> {% endcomment %}
+                    {% elif product_data.video %}
+                    <video muted autoplay loop>
+                        <source src="{{product_data.video.url}}" type="video/mp4">
+                    </video>
+                    {% elif product_data.banner_image %}
+                     <img src="{{product_data.banner_image.url}}" alt="{{ product_data.name }}" title="{{ product_data.name }}">
+                    {% endif %}
+                    {% if product_galery %}
+                    {% for galary in product_galery %}
+                    <img src="{{galary.image.url}}" title="{{galary.image_title}}" alt="{{ product_data.name }}">
+                   
+                    {% endfor %}
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+                <i class="fa-solid fa-angle-right" id='nextBtn' style="color: #932f31;"></i>
+            </div>
+            </div>
+            <div class="img-gal-text">
+                {% if product_data.name|length <= 20 %} <h1 class='h1'>{{ product_data.name }}</h1>
+                    {% endif %}
+                    {% if product_data.sub_title %}
+                    <h3>{{product_data.sub_title}}</h3>
+                    {%endif%}
+                    <div class="whips2_info">
+                        {% if product_sizes %}
+                        <p>Size : <strong>
+                                {% for product_size in product_sizes %}
+                                {% if forloop.counter > 1 %} , {% else %} {% endif %}
+                                {{product_size.size}}
+
+                                {%endfor%}
+                            </strong></p>
+                        {% endif %}
+                        {% comment %} <p>Storage Temp. : <strong>{{product_data.storage_temp}}</strong></p> {% endcomment %}
+                        <p>Shelf Life : <strong>{{product_data.shelf_life}}</strong></p>
+                    </div>
+                    {% if product_data.description %}
+                    <div class="whip-para-1 para_anim" >
+                        {{product_data.description|safe}}
+                    </div>
+                    {%endif%}
+                    <div class="resting" style="    display: flex;
+                    justify-content: flex-start; gap:20px;">
+                        <a href="javascript:void(0)" class="cta open_enquire">
+                            <span>Order in bulk</span>
+                            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>
+                        </a>
+                        {% if product_data.shop_now_url %}
+                        <a target='_blank' href="{{product_data.shop_now_url}}" class="cta ">
+                            <span>Shop Now</span>
+                            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                <path d="M1,5 L11,5"></path>
+                                <polyline points="8 1 12 5 8 9"></polyline>
+                            </svg>
+                        </a>
+                        {% endif %}
+                    </div>
+            </div>
+
+        </div>
+    
+</section>
+ 
+{% if product_attributes %}
+<section class="product_attributes">
+    <div class="product_header head_anim">
+        <h2 class="h1">Core</h2>
+        <h3>PRODUCT ATTRIBUTES</h3>
+    </div>
+    <div class="product_Att_box para_anim list_anim">
+        {% for product_attribute in product_attributes %}
+        <div>
+            <h3>{{product_attribute.heading}}</h3>
+            {% if product_attribute.description %}
+            <div class="product_Att_box_description ">
+                {{product_attribute.description|safe}}
+            </div>
+            {%endif%}
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+{% endif %}
+
+{% if product_colors %}
+{% comment %} <section class="other_flavour_section">
+    <h2>
+        {% if product_data.heading_for_flavour_section %}
+        {{ product_data.heading_for_flavour_section }}
+        {%else%}
+        Other Flavours
+        {% endif %}
+    </h2>
+
+    <div class="other_flavour_products">
+        {% for flavour in product_colors %}
+        <div class="product_flavour">
+            <div class="o-f_product_img_container">
+                <img src="{{flavour.image.url}}" alt="{{flavour.name}}">
+            </div>
+            <div class="o-f_product_details">
+                <p class="h4">{{flavour.name}}</p>
+                <p>{{flavour.sub_heading}}</p>
+            </div>
+        </div>
+        {% endfor %}
+       
+        
+    </div>
+</section> {% endcomment %}
+{% endif %}
+
+
+<section class="product_detail head_anim">
+    <h2 class="h1">Product Details</h2>
+    <div class="Product_full_info">
+        <div class="product_detail_container">
+            {% if product_sizes %}
+            <div class="Product_size_Con">
+                <h3>Sizes Available</h3>
+                <div class="flex product_size_h">
+                    {% for product_size in product_sizes %}
+                    <p>{{product_size.size}}</p>
+
+                    {%endfor%}
+                </div>
+            </div>
+            {% endif %}
+            <div class="product_life_info">
+                {% if product_data.shelf_life_section_heading %}
+                <h3>{{product_data.shelf_life_section_heading}}</h3>
+                {%endif%}
+                <div class="flex extra_qt short_para_anim">
+                    <div class="product_life_min ">
+                        <h3>{{product_data.shelf_life}}</h3>
+                        {% if product_data.shelf_life_section_subheading %}
+                        <p>{{product_data.shelf_life_section_subheading}}</p>
+                        {%endif%}
+                    </div>
+                    <div class="product_life_min">
+                        <h3>{{product_data.storage_temp}}</h3>
+                        {% if product_data.shelf_life_section_temp_heading %}
+                        <p>{{product_data.shelf_life_section_temp_heading}}</p>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if product_data.used_directions %}
+        <div class="product_life_desc list_anim para_anim">
+            <!-- <h3>Usage Directions</h3> -->
+            {{product_data.used_directions|safe}}
+        </div>
+        {%endif%}
+    </div>
+
+    
+    <div class="resting" style="    display: flex;
+    justify-content: center;">
+    <a href="/dealer-locator" class="cta">
+        <span>Find Nearest Distributors</span>
+        <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+        </svg>
+</a>
+    </div>
+</section>
+
+
+
+{% include "front/include/secret_book.html" %}
+
+{% include "front/include/deals.html" %}
+
+
+
+
+
+
+<script>
+
+if(window.innerWidth > 1024){
+        var $sliderContainer = $('#slider_container');
+        let scrollAmount = 100;
+
+        function updateArrowsVisibility() {
+            const totalItems = $sliderContainer.find('.gal-opt img, .gal-opt video').length;
+            
+                if (totalItems > 3 ) {
+                    // $('#prevBtn').show();
+                    // $('#nextBtn').show();
+                } else {
+                    $('#prevBtn').hide();
+                    $('#nextBtn').hide();
+                }                                
+            }
+        $sliderContainer.scrollLeft(-100);
+        updateArrowsVisibility();
+        $('#nextBtn').on('click', function() {
+            console.log('yash');
+            $sliderContainer.scrollLeft($sliderContainer.scrollLeft() + scrollAmount);
+        });
+        
+        $('#prevBtn').on('click', function() {
+            console.log('know');
+            $sliderContainer.scrollLeft($sliderContainer.scrollLeft() - scrollAmount);
+        });        
+    
+    }
+
+</script>
+
+{% endblock %}
+
+
+

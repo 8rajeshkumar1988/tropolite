@@ -1,0 +1,85 @@
+{% load static %}
+{% if statics %}
+<section class='reach_counter'>
+    <div class="reach">
+      <div class="first-reach">
+        
+        {% for static in statics %}
+        <div>
+          <h2 class="legacy-number h1">{{static.value}}</h2>
+          <p>{{static.heading}}</p>
+         
+        </div>
+        {%endfor%}
+
+      </div>
+      <div class="sec-reach">
+        <h3>Perfected Over 50 Years of</h3>
+        <h2 class="classs h1">Gourmet Excellence</h2>
+        <div class="para_anim"><p>Tropolite has been at the forefront of food innovation since the 1970s. We are the largest
+          manufacturer &amp; supplier of ingredients for the bakery, culinary and dairy food industry, serving customers
+          across India and the Middle East.</p>
+        </div>
+        <a href="/about-us" aria-label='explore to the official about-us  page' class="cta">
+          <span>About Us</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    
+
+    var myDiv = $('.legacy-number');
+  var hasBeenInView = false;
+
+  const numberCount = function(){
+  $('.legacy-number').each(function() {
+    var $this = $(this);
+    var text = $this.text();
+    var numbers = text.match(/\d+/);
+    var characters = text.match(/[^\d]+/g); 
+    if (numbers) {
+      for (let i = 1; i <= numbers[0]; i++) {
+        setTimeout(() => {            
+          $this.text(`${i}${characters}`);
+        },1500 * i / numbers[0]);
+      }
+    }
+  });
+  hasBeenInView = true;
+  }
+
+ 
+
+
+  function isElementInViewport(element) {
+    var rect = element[0].getBoundingClientRect();
+
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= $(window).height() &&
+      rect.right <= $(window).width()
+    );
+  }
+
+
+  if (isElementInViewport(myDiv) && !hasBeenInView) {
+    numberCount();
+  }
+
+  $(window).on('scroll', function() {    
+    if (isElementInViewport(myDiv) && !hasBeenInView) {
+      numberCount();
+    }
+  });
+
+
+
+  </script>
+  {%endif%}

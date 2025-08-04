@@ -1,0 +1,130 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}{% load random_tags %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/recipes.css' %}" />
+<style>
+    .recipies__container .gourmet{
+        grid-column: span 3; 
+        margin: 20px 0px;
+    }
+    .recipies__container .containerSlider{
+        grid-column: span 3;
+        margin:0;
+    }
+    .blogs-con .containerSlider_pro-2{
+        width:100%;
+        padding: 0;
+    }
+    .blogs-con .containerSlider{
+        padding: 0;
+    }
+</style>
+{% endblock %}
+
+{% include "front/include/breadcrumb.html" %}
+
+
+
+<section class="recipies-section">
+    <div class="headBlog head_anim">
+        <h1>Knowledge Hub</h1>
+        <h3>Blog</h3>
+    </div>
+    <div class="recipies__container">
+        {% if blogs %}
+            {% for blog in blogs %}
+            <div class="recipies_container_box">
+                <div class="box__img">
+                    {% if blog.image %}
+                    <a href="/blogs/{{blog.slug}}"><img loading='lazy' src="{{blog.image.url}}" alt="{{blog.heading}}" title="{{blog.heading}}"></a>
+                    {% else %}
+                    <a href="/blogs/{{blog.slug}}"><img loading='lazy' src="{% static 'front/assets/cake-slice.webp'%}"  alt="{{blog.heading}}" title="{{blog.heading}}" ></a>
+                    {% endif %}
+                </div>
+                <div class="box__content">
+                    <div class="box_content_heading">
+                        <p>{{blog.heading}} 
+                            {%if blog.sub_heading%}
+                            {{blog.sub_heading}}
+                            {%endif%}</p>
+                    </div>
+                    <div class="box_content_buttons">
+                        {% if blog.tags %}
+                            {% if blog.tags.all %}
+                                 {% for tag in blog.tags.all|slice:":2" %}
+                                    <a href="/blogs/{{tag.slug}}">{{tag.name}}</a>
+                                 {% endfor%}
+                            {% endif %}
+                        {% endif %}
+                        
+                    </div>
+                    <div class="box_content_view-more">
+                        <a class="viewfullblog" href="/blogs/{{blog.slug}}">View Full Blog</a>
+                    </div>
+                </div>
+            </div>
+
+            {% if forloop.counter == 12 %}                      
+                {% include "front/include/hotspot_slider.html" with ID=1 %} 
+            {% endif %}
+            {% if forloop.counter == 24 %}                      
+                <div class='finder_in_recipe'>
+                        {% include "front/include/bakery_finder.html" %} 
+                </div>                     
+            {% endif %}
+            {% if forloop.counter == 36 %}
+                      
+               
+            {% if  random_products%}
+            <h2 class='h1 related_pro' style='margin-top:40px;'>
+                Related Products
+            </h2>
+            <div class="containerSlider blogs-con" id="containerSlider "  >              
+                {% include "front/include/slider.html" %}
+            </div> 
+            {% endif %}             
+            {% endif %}
+            {% endfor %}
+
+            <div class='finder_in_recipe'>
+                {% include "front/include/hotspot_slider.html" with ID=2 %} 
+            </div> 
+
+       
+        {% endif %}
+            
+        
+
+        
+    </div>
+</section>
+
+
+{% include "front/include/deals.html" %}
+
+
+<script>    
+    $(document).ready(function() {
+        var parentElement = $('.containerSlider_pro-2');
+        var numberOfChildren = parentElement.children().length;
+        if (window.innerWidth >= 1024) {
+            if(numberOfChildren > 3 ){
+                parentElement.addClass('scrolll')
+            }
+            } else if (window.innerWidth < 1024 && window.innerWidth > 768) {
+                if(numberOfChildren > 2 ){
+                parentElement.addClass('scrolll')
+            }             
+            } else if (window.innerWidth <= 768) {  // Adjusted condition to include 768
+                if(numberOfChildren > 1 ){
+                parentElement.addClass('scrolll')
+            }
+        }
+
+
+            // console.log('Number of children:', numberOfChildren);
+        });
+</script>
+
+
+{% endblock %}
+

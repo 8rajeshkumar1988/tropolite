@@ -1,0 +1,377 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+<style>
+  .sound{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer;
+  }
+  .icon svg:last-child {
+    display: none;
+  }
+  @media screen and (max-width:600px) {
+    .sound{
+      top: 5px;
+      right: 10px;
+      scale: .6;
+    }
+  }
+
+</style>
+<h1 hidden>Tropilite Foods empowers culinary professionals, from seasoned chefs to aspiring bakers, with the tools to create food masterpieces.</h1>
+<section class="main-cara">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="1200000"> 
+        <!-- <video src="{% static "front/assets/fact.mp4" %}" muted  autoplay></video> -->
+        <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;">
+           <div id="908587113_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+          </div> 
+          
+          <iframe src="https://player.vimeo.com/video/908587113?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1" frameborder="0" allow="autoplay;  picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+        <div class="create-text carousel-caption d-none d-md-block">
+          <a href="/bakery/bakery-whips/cook-n-whip" class="cta">
+            <span>Start exploring</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="carousel-item"  data-bs-interval="1111110">
+        <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/908587163?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&display=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div> 
+        <!-- <video src="{% static "front/assets/fact.mp4" %}" muted  ></video> -->
+        <div class="create-text carousel-caption d-none d-md-block">
+          <a href="/bakery/bakery-whips/svensons" class="cta">
+            <span>Start exploring</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+        </div>       
+      </div>
+      <div class="carousel-item" data-bs-interval="1111110">
+        <!-- <video src="{% static "front/assets/fact.mp4" %}" muted  ></video> -->
+        <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/900034742?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&display=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div> 
+        <div class="create-text carousel-caption d-none d-md-block">
+          <a href="/bakery/bakery-premixes/zero-maida-cake-mixes" class="cta">
+            <span>Start exploring</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="carousel-item"  data-bs-interval="1111110">
+        <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/902949189?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&display=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+        <!-- <video src="{% static "front/assets/fact.mp4" %}" muted  ></video> -->
+        <div class="create-text carousel-caption d-none d-md-block">
+          <a href="/bakery/bakery-ingredients/cream-cheese " class="cta">
+            <span>Start exploring</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+        </div>       
+      </div>
+      <div class="carousel-item" data-bs-interval="1111110">
+        <!-- <video src="{% static "front/assets/fact.mp4" %}" muted  ></video> -->
+        <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/908592183?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&display=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe></div>
+        <div class="create-text carousel-caption d-none d-md-block">
+          <a href="/culinary/cooking-cream/flexi-creme-gold" class="cta">
+            <span>Start exploring</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <button class=" carousel-control-prev previous_btn" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class=" carousel-control-next next_btn" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+<section class="sec-main-cara">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <div class="d-block w-100 sec-cara">
+          <h5 class='create-art'>Cook</h5>
+          <img loading='lazy' src="{% static 'front/assets/first-slide.webp' %}" height="100%" width="100%" alt="carouse-background images refers to the images related to the content  shown on the webpages" title="carouse-background images refers to the images related to the content  shown on the webpages">
+          <img loading='lazy' class="append-img" src="{% static 'front/assets/first-img.webp' %}" alt="carouse-background images refers to the images related to the content  shown on the webpages" title="carouse-background images refers to the images related to the content  shown on the webpages">
+        </div>
+        <a href="/culinary" class="cta">
+          <span>EXPLORE PRODUCTS</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <div class="d-block w-100 sec-cara">
+          <h5 class='create-art'>Whip</h5>
+          <img src="{% static 'front/assets/first-slide.webp' %}" height="100%" width="100%" alt="carouse-background images refers to the images related to the content  shown on the webpages" title="carouse-background images refers to the images related to the content  shown on the webpages">
+          <img class="append-img" src="{% static 'front/assets/sec-img.webp' %}" alt="carouse-background images refers to the images related to the content  shown on the webpages" title="carouse-background images refers to the images related to the content  shown on the webpages">
+        </div>
+        <a href="/dairy" class="cta">
+          <span>EXPLORE PRODUCTS</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="carousel-item">
+        <div class="d-block w-100 sec-cara">
+          <h5 class='create-art'>Bake</h5>
+          <img src="{% static 'front/assets/first-slide.webp' %}" height="100%" width="100%" alt="carouse-background images refers to the images related to the content  shown on the webpages" title="carouse-background images refers to the images related to the content  shown on the webpages">
+
+          <!-- <img class="append-img" src="{% static 'front/assets/platter3_2x.png' %}" alt="carouse-background images refers to the images related to the content  shown on the webpages"> -->
+          <img class="append-img"
+          src="{% static 'front/assets/platter3.webp' %}"
+          srcset="
+            {% static 'front/assets/platter3.webp' %} 768w,
+            {% static 'front/assets/platter3_2x.webp' %} 1x
+          "
+          alt="carouse-background images refers to the images related to the content shown on the webpages" title="carouse-background images refers to the images related to the content  shown on the webpages">
+        
+        </div>
+        <a href="/bakery" class="cta">
+          <span>EXPLORE PRODUCTS</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <span class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </span>
+    <span class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </span>
+  </div>
+</section>
+
+{% include "front/include/legacy_numbers.html" %}
+
+
+
+<style>
+    .innerdetail .h4{margin: 0;
+    margin-bottom: 10px;
+    color: whit;
+    text-transform: uppercase;
+    font-family: karin;
+    font-style: normal;
+}
+.inner-detail .h5{
+    margin: 0;
+    margin-bottom: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-family: karin !important;
+    font-style: normal;
+    font-size: 1rem !important;
+    font-weight: 100;
+}
+</style>
+
+
+    {% include "front/include/secret_book.html" %}
+
+{% include "front/include/hotspot_slider_new.html" %}
+
+
+
+{% include "front/include/bakery_finder.html" %}
+
+
+
+{% include "front/include/customers.html" %}
+
+{% include "front/include/instagram_posts.html" %}
+
+<section class="social" style="">
+
+</section>
+
+<!-- {% include "front/include/socials.html" %} -->
+{% include "front/include/deals.html" %}
+
+
+
+
+<script>
+// Get a reference to all videos within .carousel-item elements
+const carouselVideos = document.querySelectorAll('.carousel-item video');
+
+// Keep track of the currently playing video index
+let currentVideoIndex = 0;
+
+// Add a click event listener to each mute/unmute button in each .carousel-item
+carouselVideos.forEach((video, index) => {
+  // Find the mute/unmute button within the current carousel item
+  // {% comment %} const muteButton = document.querySelector('.sound'); {% endcomment %}
+  const muteButton = video.parentElement.querySelector('.sound');
+
+  // Add click event listener to the found mute/unmute button
+  muteButton.addEventListener('click', () => {
+    $('.icon svg').toggle()
+    // Toggle the mute state for the clicked video
+    video.muted = !video.muted;
+    // Update the currently playing video index
+    currentVideoIndex = index;
+  });
+});
+
+// Add event listener for the carousel slide event
+const carousel = document.getElementById('carouselExampleDark');
+carousel.addEventListener('slide.bs.carousel', () => {
+  // Mute the previous video when transitioning to the next one
+  const previousVideo = carouselVideos[currentVideoIndex];
+  if (previousVideo) {
+    $('.icon svg:last-child').hide();
+    $('.icon svg:first-child').show();
+    previousVideo.muted = true;
+  }
+});
+
+
+
+</script>
+<!-- <script src="{% static 'front/js/insta.js' %}"></script> -->
+<script>
+  window.history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  get_thumbnail('908587113');
+
+ //   jQuery.fn.FCInstagram.accessData = {  
+     
+ // accessToken:'',    
+ // };
+ // $('#instafeed').FCInstagram({
+ //   max: 3, // A number between 1 and 25 of photos to show. Default: 9
+ //   autoplay: true, // Set autoplay video: true/false. Default: false
+ //   complete: function () { // A callback function to execute after the display of the photos.
+ //     // console.log('completed');
+ //   }
+ // }); 
+
+    $('.embed_video iframe').each(function(){
+      var item = $(this)
+      item.on('touchstart', function(event) {
+        startX = event.originalEvent.touches[0].clientX;        
+    });
+
+    item.on('touchmove', function(event) {
+      if (!startX) return; // Touch start position not recorded
+
+      const currentX = event.originalEvent.touches[0].clientX;
+      const deltaX = currentX - startX;
+
+      if (Math.abs(deltaX) > 10) {
+          // Swipe left or right detected
+          if (deltaX > 0) {
+            console.log('Swipe Right');
+            $('.previous_btn').trigger('click');
+        } else {
+            console.log('Swipe Left');
+            $('.next_btn').trigger('click');
+        }
+        
+
+          // Reset start position to avoid continuous logging
+          startX = null;
+      }
+  });
+    })  
+    
+
+  
+
+
+    // Imp.
+    const myCarouselElement = document.querySelector('#carouselExampleDark')
+
+const embedVideos = document.querySelectorAll('.carousel-item .embed_video iframe')
+    const playerInstances = []
+
+    embedVideos.forEach((iframe, index) => {
+        const player = new Vimeo.Player(iframe)
+        playerInstances.push(player)
+    })
+
+    myCarouselElement.addEventListener('slide.bs.carousel', event => {
+        const activeIndex = event.to
+        console.log(activeIndex)
+        playerInstances.forEach((player, index) => {
+            if (index === activeIndex) {
+                player.play()
+            } else {
+                player.pause()
+            }
+        })
+    })
+
+
+
+
+    $(document).ready(function(){
+      $.ajax({
+        url: '/getInstaPost',
+        method: 'GET',
+        dataType: 'html',  
+        beforeSend: function () {
+            $('.social').html(`Wait...`);
+            
+        },
+        success: function(response) {                
+            $('.social').html(response)
+        },
+        error: function(xhr, status, error) {          
+            console.error('Error:', status, error);
+        }
+      });
+    })
+
+</script>
+{% endblock %}

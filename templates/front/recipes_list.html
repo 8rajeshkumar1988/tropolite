@@ -1,0 +1,161 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}{% load random_tags %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'front/css/recipes.css' %}" />
+<style>
+    .recipies__container .gourmet{
+        grid-column: span 3; 
+        margin: 20px 0px;
+    }
+    .recipies__container .containerSlider{
+        grid-column: span 3;
+        margin:0;
+        padding: 0;
+        margin-bottom: 40px;
+    }
+    .recipies__container .containerSlider_pro-2{
+        width: 100%;
+        padding: 0;
+    }
+    .recipies-section{
+        overflow: visible;
+    }
+</style>
+{% endblock %}
+
+{% include "front/include/breadcrumb.html" %}
+
+
+<section class="video-section head_anim">
+    <div class="happy-back">
+        <!-- <img loading='lazy' src="assets/taste-happy.png" alt=""> -->
+        <div  class='embed_video'  style="padding:56.25% 0 0 0;position:relative;">
+            <div id="899764647_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            
+            </div>
+            <iframe src="https://player.vimeo.com/video/899764647?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe>
+        </div>
+
+        <div>
+            <h3>The Master Chef's</h3>
+            <h1 class='h1'>Secret Recipe Book</h1>
+        </div>
+    </div>
+</section>
+<script>
+    get_thumbnail('899764647');
+</script>
+<section class="recipies-section">
+    <div class="recipies__container">
+
+        {% if recipes %}
+            {% for recipe in recipes %}
+            <div class="recipies_container_box">
+                <div class="box__img">
+                    {% if recipe.image %}
+                    <a href="/recipes/{{recipe.slug}}"><img loading='lazy' src="{{recipe.image.url}}" alt="{{recipe.heading}}" title="{{recipe.heading}}"></a>
+                    {% else %}
+                    <a href="/recipes/{{recipe.slug}}"><img loading='lazy' src="{% static 'front/assets/cake-slice.webp'%}" alt="{{recipe.heading}}" title="{{recipe.heading}}"></a>
+                    {% endif %}
+                </div>
+                <div class="box__content">
+                    <div class="box_content_heading">
+                        <p>{{recipe.heading}} 
+                            {%if recipe.sub_heading%}
+                            {{recipe.sub_heading}}
+                            {%endif%}
+                        </p>
+                    </div>
+                    <div class="box_content_buttons">
+                        {% if recipe.tags %}
+                            {% if recipe.tags.all %}
+                                 {% for tag in recipe.tags.all|slice:":2" %}
+                                    <a href="/recipes/{{tag.slug}}">{{tag.name}}</a>
+                                 {% endfor%}
+                            {% endif %}
+                        {% endif %}
+                        
+                    </div>
+                    <div class="box_content_view-more">
+                        <a class="viewfullblog" href="/recipes/{{recipe.slug}}">View Full Recipe</a>
+                    </div>
+                </div>
+            </div>
+
+                {% if forloop.counter == 12 %}
+                      
+                        {% include "front/include/hotspot_slider.html" with ID=1 %} 
+                     
+                {% endif %}
+                {% if forloop.counter == 24 %}
+                      
+                <div class='finder_in_recipe'>
+                        {% include "front/include/bakery_finder.html" %} 
+                </div>                     
+                {% endif %}
+
+                {% if forloop.counter == 36 %}
+                      
+               
+                {% if  random_products%}
+                <h2 class='related_pro' style='margin-top:40px;'>
+                    Related Products
+                </h2>
+                <div class="containerSlider blogs-con" id="containerSlider "  >              
+                    {% include "front/include/slider.html" %}
+                </div> 
+                {% endif %}             
+                {% endif %}
+            {% endfor %}
+
+            {% comment %} {% if forloop.counter == 24 %} {% endcomment %}
+                      
+                <div class='finder_in_recipe'>
+                        {% include "front/include/hotspot_slider.html" with ID=2 %} 
+                </div>                     
+                {% comment %} {% endif %} {% endcomment %}
+
+        {% endif %}
+        
+
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+{% include "front/include/deals.html" %}
+
+
+
+<script>    
+    
+    
+    $(document).ready(function() {
+        var parentElement = $('.containerSlider_pro-2');
+        var numberOfChildren = parentElement.children().length;
+        if (window.innerWidth >= 1024) {
+            if(numberOfChildren > 3 ){
+                parentElement.addClass('scrolll')
+            }
+            } else if (window.innerWidth < 1024 && window.innerWidth > 768) {
+                if(numberOfChildren > 2 ){
+                parentElement.addClass('scrolll')
+            }             
+            } else if (window.innerWidth <= 768) {  // Adjusted condition to include 768
+                if(numberOfChildren > 1 ){
+                parentElement.addClass('scrolll')
+            }
+        }
+
+
+            // console.log('Number of children:', numberOfChildren);
+        });
+</script>
+
+{% endblock %}

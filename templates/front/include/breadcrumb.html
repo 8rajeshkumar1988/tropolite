@@ -1,0 +1,7 @@
+<section class="breadcrumbs">
+{% if breadcrumbs %} {% for bcrumbs in breadcrumbs %} {% if bcrumbs.slug %}
+<a href="{{ bcrumbs.slug }}" aria-label='{{ bcrumbs.heading }}'>{{ bcrumbs.heading }}</a>
+/ {% else %}
+<span class="currentActive">{{ bcrumbs.heading }}</span>
+{% endif %} {% endfor %} {% endif %}
+</section>

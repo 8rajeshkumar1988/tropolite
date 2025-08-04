@@ -1,0 +1,78 @@
+{% extends "front/base.html" %}{% block content %} {% load static %}
+
+{% include "front/include/breadcrumb.html" %}
+
+
+
+<section class="whips head_anim">
+    <div class="para_anim">
+        <h1>{{subcategory_data.heading}}</h1>
+        {% if subcategory_data.sub_title %}
+        <h2 style='font-size:1.5rem; font-family:karin;'>{{subcategory_data.sub_title}}</h2>
+        {% endif %}
+        <p class="whip-para-1">
+         {{subcategory_data.description|safe}}
+        </p>
+        
+        <!-- <a href="#" class="cta">
+            <span>Explore products</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </a> -->
+    </div>
+    {% if subcategory_data.video_embed_code %}
+    {{subcategory_data.video_embed_code|safe}}
+    
+    {% elif subcategory_data.banner_image %}
+    <div><img class="img_radius" src="{{ subcategory_data.banner_image.url }}" alt="{{subcategory_data.heading}}" title="{{subcategory_data.heading}}" /></div>
+    {%endif%}
+</section>
+{% if trust_facters %}
+<section class="whywhips head_anim">
+    <div>
+        <h3>why choose our</h3>
+        <h2 class="h1">{{subcategory_data.heading}}?</h2>
+    </div>
+    <div>
+        {% for trust_facter in trust_facters %}
+        <div class="">
+            {% if trust_facter.image %}
+            <div><img loading='lazy' src="{{ trust_facter.image.url }}" alt="{{trust_facter.heading}}" title="{{trust_facter.heading}}" /></div>
+            {%endif%}
+            <p>{{trust_facter.heading}}</p>
+        </div>
+        {%endfor%}
+    </div>
+</section>
+{% endif %}
+
+{% if products %}
+<section class="product head_anim">
+    <div class="pro-1 para_anim">
+        {%if subcategory_data.product_section_heading%}
+        <h2 class="h1">{{subcategory_data.product_section_heading}}</h2>
+        {%endif%}
+        {%if subcategory_data.product_section_subtitle%}
+        <h3>{{subcategory_data.product_section_subtitle}}</h3>
+        {%endif%}
+        {%if subcategory_data.product_section_content%}
+        <p>
+            {{subcategory_data.product_section_content|safe}}
+        </p>
+        {%endif%}
+    </div>
+    {% if product_list %}
+    {% include "front/include/product_sub_cat_temp2.html" %}
+    {% else %} 
+    {% include "front/include/product_sub_cat_temp1.html" %}
+    {% endif %}
+    
+</section>
+{% endif %}
+{% include "front/include/secret_book.html" %}
+
+{% include "front/include/deals.html" %}
+
+{% endblock %}

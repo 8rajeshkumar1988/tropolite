@@ -1,0 +1,79 @@
+{% load static %}
+<section class="footer">
+  <div class="footer-content">
+    <div class="foot1">
+      <img loading='lazy' class="logo" src="{% static 'front/assets/logo.webp' %}" alt="tropolite"  title="tropolite"    />
+      <p class="happy-taste">Create Magical Moments</p>
+      <p class="happy-major-text">
+        Tropilite Foods is one of the largest manufacturers and suppliers of foods ingredients for bakery, culinary & dairy industry across India & Middle East.
+      </p>
+      <img class="davar" src="{% static 'front/assets/davarsLogo.webp' %}" alt="footer davar logo" title="footer davar logo" />
+    </div>
+    {% if category_list %} {% for catmenus in category_list %}
+    <div class="foot{{ forloop.counter|add:1 }}">
+      <a href="/{{catmenus.slug}}" aria-label='{{catmenus.name}}'>{{catmenus.name}}</a>      
+      {% if catmenus.sub_category%} 
+      {% for subcat in catmenus.sub_category %}
+      <a href="/{{catmenus.slug}}/{{subcat.slug}}" aria-label='{{subcat.name}}'>{{subcat.name}}</a>
+      {% endfor %}                 
+      {% endif %}
+    </div>
+    {% endfor %} {% endif %}
+    <div class="foot5">
+      <a href="/contact-us">india office</a
+      ><p>Davar Campus, Tansen Road Industrial Estate Gwalior, Madhya Pradesh -
+        474002</p
+      ><a href="/contact-us">Dubai office</a
+      ><p>Gulf Central, 2nd floor Shop 20, Madina Mall, AL QUSAIS, Dubai</p
+      >  
+      
+      <a href='/faqs' rel='no-follow' aria-label="Bakery" style='color: white;
+          cursor: pointer;
+          font-family: Karin !important;
+          font-size: 1rem !important;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          '>
+          FAQs
+      </a> <a href='/privacy-policy' rel='no-follow' aria-label="Bakery" style='color: white;
+      cursor: pointer;
+      font-family: Karin !important;
+      font-size: 0.9rem !important;
+      font-weight: 600;
+          letter-spacing: 0.1em;'>
+       Privacy Policy
+  </a> 
+      <a href='/dealer-locator' rel='no-follow' aria-label="Bakery" style='color: white;
+          cursor: pointer;
+          font-family: Karin !important;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          font-size: 0.9rem !important;'>
+          Distributors
+      </a>
+
+    </div>
+  </div>
+  <hr />
+  <div class="footer-copy" style='margin-bottom: 20px;'>
+    <div style="display: flex;
+    align-items: center;">
+      <p style='margin:0;'>Copyright© 2024, Tropilite Foods Pvt. Ltd.</p>
+    
+    </div>
+    <div>
+      <!-- <i class="fa-brands fa-youtube" style="color: #ffffff"></i> -->
+      <a target="_blank" href="https://www.facebook.com/tropilite">
+        <i class="fa-brands fa-square-facebook" style="color: #ffffff"></i> <span class="visually-hidden">facebook navigation</span>
+      </a>
+      <a target="_blank" href="https://www.instagram.com/tropolitefoods/"> 
+        <i class="fa-brands fa-instagram" style="color: #ffffff"></i><span class="visually-hidden"> navigation to the instagram page of the tropolite</span>
+      </a>
+      <a target="_blank" href="https://www.linkedin.com/company/tropilite-foods">
+        <i class="fa-brands fa-linkedin" style="color: #ffffff"></i><span class="visually-hidden">linkedin paga of tropoltite</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include "front/include/enquire_pop_up.html" %}

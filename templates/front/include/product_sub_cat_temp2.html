@@ -1,0 +1,29 @@
+{% load static %} {% if product_list %}
+
+<div class="pro_sub_cat">
+  {% for list in product_list %} {% for sublist in list.subtype_list %}
+  {% if sublist.product_list %}
+  <div>
+    {% if forloop.counter == 1 %}
+    <h3>{{list.name}}</h3>
+    {%endif%}
+    {% if list.has_products == '0' %}
+      <h3>{{sublist.name}}</h3>
+    {%endif%}
+    <div class="pro-2">
+    
+      {% for product in sublist.product_list %}
+     
+
+      {% with product=product %}
+      {% include "front/include/product_card.html" %}
+      {% endwith %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% endfor %} {% endfor %}
+</div>
+
+{% endif %}

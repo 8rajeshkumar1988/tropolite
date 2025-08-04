@@ -1,0 +1,55 @@
+{% load static %}
+{% if meta_image %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{page_url}}"
+    },
+    "headline": "{{title}}",
+    "image": "{{meta_image.url}}",
+    "author": {
+      "@type": "Article",
+      "name": "Tropilite Foods Pvt. Ltd."
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "",
+      "logo": {
+        "@type": "ImageObject",
+        "url": ""
+      }
+    },
+    "datePublished": ""
+  }
+</script>
+{%else%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{page_url}}"
+    },
+    "headline": "{{title}}",
+    "image": "",
+    "author": {
+      "@type": "Article",
+      "name": "Tropilite Foods Pvt. Ltd."
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "",
+      "logo": {
+        "@type": "ImageObject",
+        "url": ""
+      }
+    },
+    "datePublished": ""
+  }
+</script>
+
+{%endif%}
