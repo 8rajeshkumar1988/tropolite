@@ -81,3 +81,23 @@ class AboutUsImage(models.Model):
 
     # def __str__(self):
     #     return self.image_alt_text   
+
+
+
+
+
+class OurBrand(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_ourbrands')
+    
+    description = models.TextField(max_length=255,
+                            null=True, blank=True)
+    
+    image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    sequence_number = models.IntegerField(blank=False, default=1, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    # def __str__(self):
+    #     return self.name

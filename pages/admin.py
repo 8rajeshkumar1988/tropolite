@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page,Leadership,LeadershipGroupImage,AboutUsImage
+from .models import Page,Leadership,LeadershipGroupImage,AboutUsImage,OurBrand
 from django.urls import reverse
 from django.utils.html import format_html
 import csv
@@ -29,7 +29,10 @@ class AboutUsImageAdmin(admin.StackedInline):
     model = AboutUsImage
     extra = 0 
     max_num = 1   
-
+class OurBrandAdmin(admin.StackedInline):
+    model = OurBrand
+    extra = 0 
+   
 
 
 class PageAdmin(admin.ModelAdmin):
@@ -38,7 +41,7 @@ class PageAdmin(admin.ModelAdmin):
     list_per_page = 20  # record 10 per page
     #list_editable=('sequence_number','is_active')
     prepopulated_fields = {"slug": ("heading",)}
-    inlines = [LeadershipAdmin,LeadershipGroupImageAdmin,AboutUsImageAdmin]
+    inlines = [LeadershipAdmin,LeadershipGroupImageAdmin,AboutUsImageAdmin,OurBrandAdmin]
 
     def get_inline_instances(self, request, obj=None):
         inline_instances = super().get_inline_instances(request, obj)
@@ -48,7 +51,7 @@ class PageAdmin(admin.ModelAdmin):
             return [inline for inline in inline_instances if isinstance(inline,(LeadershipAdmin, LeadershipGroupImageAdmin))]
         elif obj and obj.id == 2:
             # Only show LeadershipAdmin
-            return [inline for inline in inline_instances if isinstance(inline,(AboutUsImageAdmin))]
+            return [inline for inline in inline_instances if isinstance(inline,(AboutUsImageAdmin,OurBrandAdmin))]
         
         else:
             # Only show OtherInfo
