@@ -272,9 +272,12 @@ def about_us(request):
 
     context["about_us_images"] = about_us_images
 
-    ourbrands = OurBrand.objects.all().order_by("sequence_number").filter(is_active=True, page_id=page_info["page_id"])
+    ourbrands = (
+        OurBrand.objects.all()
+        .order_by("sequence_number")
+        .filter(is_active=True, page_id=page_info["page_id"])
+    )
     context["ourbrands"] = ourbrands
-
 
     context["itemListElement"] = json.dumps(
         get_breadcrumb_json(breadcrumbs, request, "about-us")
@@ -311,6 +314,21 @@ def leadership(request):
         get_breadcrumb_json(breadcrumbs, request, "leadership")
     )
     context["leadform"] = LeadForm()
+
+    try:
+        leadershipimage = LeadershipGroupImage.objects.get(page_id=page_info["page_id"])
+    except LeadershipGroupImage.DoesNotExist:
+        leadershipimage = None
+
+    context["leadershipimage"] = leadershipimage
+
+    leaderships = (
+        Leadership.objects.all()
+        .order_by("sequence_number")
+        .filter(is_active=True, page_id=page_info["page_id"])
+    )
+    context["leaderships"] = leaderships
+
     return render(request, "front/leadership.html", context)
 
 
@@ -808,6 +826,14 @@ def jobs(request):
         get_breadcrumb_json(breadcrumbs, request, "career")
     )
     context["leadform"] = LeadForm()
+
+    try:
+        carrerimage = CarrerImage.objects.get(page_id=page_info["page_id"])
+    except CarrerImage.DoesNotExist:
+        carrerimage = None
+
+    context["carrerimage"] = carrerimage
+
     return render(request, "front/jobs.html", context)
 
 
@@ -1405,6 +1431,14 @@ def csr(request):
         CsrCategory.objects.all().order_by("sequence_number").filter(is_active=True)
     )
     context["csr_category_list"] = csr_category_list
+
+
+    try:
+        csrimage = CsrImage.objects.get(page_id=page_info["page_id"])
+    except CsrImage.DoesNotExist:
+        csrimage = None
+
+    context["csrimage"] = csrimage
 
     return render(request, "front/csr.html", context)
 

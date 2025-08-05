@@ -15,7 +15,14 @@
     <h2 style='font-size:1.5rem; font-family:karin; text-align:center;'>Nurturing change, <br />Nurturing India</h2>
   </div>
   <div class="happy-back head_anim">
-    <img src="{% static 'front/assets/MOU with JU.webp' %}" alt="csr background image" title='csr background image'>
+
+    <img 
+        src="{% if csrimage and csrimage.top_image %} {{csrimage.top_image.url}} {%else%}{% static 'front/assets/MOU with JU.webp' %}{%endif%}"
+        alt="{% if csrimage and csrimage.top_image_alt_text %}{{csrimage.top_image_alt_text}}{%else%}csr background image{%endif%}"
+        title="{% if csrimage and csrimage.top_image_alt_text %}{{csrimage.top_image_alt_text}}{%else%}csr background image{%endif%}"
+        loading='lazy' />
+
+    <!-- <img src="{% static 'front/assets/MOU with JU.webp' %}" alt="csr background image" title='csr background image'> -->
   
   
   </div>
@@ -28,7 +35,12 @@
     </p>
   </div>
   <div>
-    <img src="{% static 'front/assets/CSR_Image.webp' %}" alt="CSR Objective"  title='CSR Objective' />
+    <img 
+        src="{% if csrimage and csrimage.CSR_objective_image %} {{csrimage.CSR_objective_image.url}} {%else%}{% static 'front/assets/CSR_Image.webp' %}{%endif%}"
+        alt="{% if csrimage and csrimage.CSR_objective_image_alt_text %}{{csrimage.CSR_objective_image_alt_text}}{%else%}CSR Objective{%endif%}"
+        title="{% if csrimage and csrimage.CSR_objective_image_alt_text %}{{csrimage.CSR_objective_image_alt_text}}{%else%}CSR Objective{%endif%}"
+        loading='lazy' />
+    <!-- <img src="{% static 'front/assets/CSR_Image.webp' %}" alt="CSR Objective"  title='CSR Objective' /> -->
   </div>
 </section>
 <section class="piller head_anim">

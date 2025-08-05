@@ -6,14 +6,25 @@
         font-size: 0.9rem;
         font-family: faunaOne !important;
     }
-    ::-webkit-details-marker{
-        display:none;
+
+    ::-webkit-details-marker {
+        display: none;
     }
+
     .iphone::before {
-        {% comment %} content: '' !important;
-        display: none !important; {% endcomment %}
+            {
+            % comment %
+        }
+
+        content: '' !important;
+        display: none !important;
+
+            {
+            % endcomment %
+        }
     }
-    .checkkk input{
+
+    .checkkk input {
         padding-left: 0px !important;
     }
 </style>
@@ -22,18 +33,17 @@
 <section class="taste-happy head_anim">
     <div class="aboutus-top-heading">
         <h1>Life at Tropilite</h1>
-        <h2 style='font-size:1.5rem; font-family:karin; text-align:center;'>Nurturing Creativity, Empowering Innovation</h2>
+        <h2 style='font-size:1.5rem; font-family:karin; text-align:center;'>Nurturing Creativity, Empowering Innovation
+        </h2>
     </div>
     <div class="happy-back">
         <!-- <img src="assets/taste-happy.webp" alt=""> -->
         <div class='embed_video' style="padding:56.25% 0 0 0;position:relative;">
-            <div id="899745706_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-            
+            <div id="{{carrerimage.video_id}}_thumb"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+
             </div>
-            <iframe
-                src="https://player.vimeo.com/video/899745706?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&muted=1&controls=false"
-                frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
-                style="position:absolute;top:0;left:0;width:100%;height:100%;" title="TropoliteCookNWhip"></iframe>
+            {{carrerimage.top_video_iframe|safe}}
         </div>
     </div>
     <div class="happy-text para-anim">
@@ -59,14 +69,28 @@
                 </p>
             </div>
             <div class="app-item1 app-div">
-                <img src="{% static 'front/assets/Creativity.webp' %}" alt="Cultivating Creativity" title="Cultivating Creativity">
+                <img 
+                    src="{% if carrerimage and carrerimage.cultivating_creativity_image %} {{carrerimage.cultivating_creativity_image.url}} {%else%}{% static 'front/assets/Creativity.webp' %}{%endif%}"
+                    alt="{% if carrerimage and carrerimage.cultivating_creativity_image_alt_text %}{{carrerimage.cultivating_creativity_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    title="{% if carrerimage and carrerimage.cultivating_creativity_image_alt_text %}{{carrerimage.cultivating_creativity_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    loading='lazy' />
+
+                
             </div>
 
         </div>
 
         <div class="app-maindiv app-even para_anim">
-            <div class="app-item1 app-div"><img loading='lazy' src="{% static 'front/assets/DSC01785.webp' %}"
-                    alt="Cultivating Leadership" title="Cultivating Leadership"></div>
+            <div class="app-item1 app-div">
+                <img 
+                    src="{% if carrerimage and carrerimage.cultivating_leadership_image %} {{carrerimage.cultivating_leadership_image.url}} {%else%}{% static 'front/assets/Creativity.webp' %}{%endif%}"
+                    alt="{% if carrerimage and carrerimage.cultivating_leadership_image_alt_text %}{{carrerimage.cultivating_leadership_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    title="{% if carrerimage and carrerimage.cultivating_leadership_image_alt_text %}{{carrerimage.cultivating_leadership_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    loading='lazy' />
+                
+                
+                
+            </div>
             <div class="app-item2 app-div">
                 <h2 class="h1">Cultivating Leadership</h2>
                 <h3>A Journey Across All Roles</h3>
@@ -87,13 +111,19 @@
                 </p>
             </div>
             <div class="app-item1 app-div">
-                <img loading='lazy' src="{% static 'front/assets/Life At Tropolite- Banner.webp' %}"
-                    alt="Your Canvas, Our Blazing Horizon" title="Your Canvas, Our Blazing Horizon">
+                <img 
+                    src="{% if carrerimage and carrerimage.opportunities_image %} {{carrerimage.opportunities_image.url}} {%else%}{% static 'front/assets/Creativity.webp' %}{%endif%}"
+                    alt="{% if carrerimage and carrerimage.opportunities_image_alt_text %}{{carrerimage.opportunities_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    title="{% if carrerimage and carrerimage.opportunities_image_alt_text %}{{carrerimage.opportunities_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    loading='lazy' />
+
+                <!-- <img loading='lazy' src="{% static 'front/assets/Life At Tropolite- Banner.webp' %}"
+                    alt="Your Canvas, Our Blazing Horizon" title="Your Canvas, Our Blazing Horizon"> -->
             </div>
 
         </div>
 
-        
+
     </div>
 </section>
 <section class="taste-happy head_anim">
@@ -103,9 +133,15 @@
     </div>
     <div class="happy-back" style=' max-height: 500px;
     '>
-        <img src="{% static 'front/assets/Tropolite Team.webp' %}"
-        alt="The Loom of Strength and Synergy"  title="The Loom of Strength and Synergy">
-       
+        <!-- <img src="{% static 'front/assets/Tropolite Team.webp' %}" alt="The Loom of Strength and Synergy"
+            title="The Loom of Strength and Synergy"> -->
+
+        <img 
+                    src="{% if carrerimage and carrerimage.diversity_image %} {{carrerimage.diversity_image.url}} {%else%}{% static 'front/assets/Creativity.webp' %}{%endif%}"
+                    alt="{% if carrerimage and carrerimage.diversity_image_alt_text %}{{carrerimage.diversity_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    title="{% if carrerimage and carrerimage.diversity_image_alt_text %}{{carrerimage.diversity_image_alt_text}}{%else%}Cultivating Creativity{%endif%}"
+                    loading='lazy' />    
+
     </div>
     <div class="happy-text para-anim">
         <div class="para_anim certi-head-para">
@@ -179,22 +215,22 @@
 
         <div class="jobdetails">
             {% for department in departments %}
-         
+
             <details class="main_detail">
                 <summary>{{department.name}} &nbsp;
-                    <p style="margin: 0;"> ({{ department.job_list|length }} {% if department.job_list|length > 1 %}Vacancies{%else%}Vacancy{%endif%}) </p>
+                    <p style="margin: 0;"> ({{ department.job_list|length }} {% if department.job_list|length > 1%}Vacancies{%else%}Vacancy{%endif%}) </p>
                 </summary>
 
                 {%if department.job_list %}
                 {% for job in department.job_list %}
                 <details class="sub_detail">
                     <summary>{{job.heading}}</summary>
-                    
+
                     {% if job.job_scope %}
                     <div class="summarySlot">
                         <p>Location</p>
                         <div>
-                        {{job.location |safe}}
+                            {{job.location |safe}}
                         </div>
                     </div>
                     {% endif %}
@@ -203,8 +239,8 @@
                     <div class="summarySlot">
                         <p>Job Scope</p>
                         <div>
-                        {{job.job_scope |safe}}
-                        </div>  
+                            {{job.job_scope |safe}}
+                        </div>
                     </div>
                     {% endif %}
 
@@ -212,7 +248,7 @@
                     <div class="summarySlot">
                         <p>Qualification</p>
                         <div>
-                        {{job.qualifications |safe}}
+                            {{job.qualifications |safe}}
                         </div>
                     </div>
                     {% endif %}
@@ -222,7 +258,7 @@
                         <p>Desired Experience & Skills
                         </p>
                         <div>
-                        {{job.desired_experience_skills |safe}}
+                            {{job.desired_experience_skills |safe}}
                         </div>
                     </div>
                     {% endif %}
@@ -233,25 +269,25 @@
 
                         </p>
                         <div>
-                        {{job.key_Responsibilities |safe}}
-                        </div>  
+                            {{job.key_Responsibilities |safe}}
+                        </div>
                     </div>
                     {% endif %}
 
                     {% if job.CTC_band %}
                     <div class="summarySlot">
-                        <p>CTC                       </p>
+                        <p>CTC </p>
                         <div>
-                        {{job.CTC_band |safe}}
+                            {{job.CTC_band |safe}}
                         </div>
                     </div>
                     {% endif %}
 
 
-                    
-                   
+
+
                     <div class="summarySlot">
-                        <button type='button' onclick="displayForm('{{job.id}}','{{job.heading}}')" class="cta" >
+                        <button type='button' onclick="displayForm('{{job.id}}','{{job.heading}}')" class="cta">
                             <span>APPLY NOW</span>
                             <svg width="13px" height="10px" viewBox="0 0 13 10">
                                 <path d="M1,5 L11,5"></path>
@@ -261,17 +297,17 @@
 
                     </div>
                 </details>
-                
+
                 {%endfor%}
-                
+
                 {% endif %}
 
-                
+
             </details>
-          
-           {%endfor%}
-          
-           
+
+            {%endfor%}
+
+
 
         </div>
 
@@ -350,7 +386,7 @@
                 {% comment %} <div class="col">
                     <label for="id_cover_letter">Cover Letter<span
                             style='color: #932f31; font-size:1.5rem;'>*</span></label><br>
-                    
+
                     {{jobform.cover_letter}}
 
                 </div> {% endcomment %}
@@ -377,7 +413,7 @@
 
 {% include "front/include/deals.html" %}
 <script>
-    get_thumbnail('899745706');
+    get_thumbnail('{{carrerimage.video_id}}');
 </script>
 <script>
     let form = document.querySelector(".form")
@@ -405,7 +441,7 @@
 
     $(document).ready(function () {
 
-        
+
 
 
 
@@ -421,7 +457,7 @@
                 }
             });
             var not_filled = 0;
-           
+
             // console.log(not_filled);  
             if (not_filled == 0) {
                 form = document.getElementById('apply_job_form');
@@ -457,7 +493,7 @@
                             $('.share-resume').text('Thanks for Applying')
                             var thankspara = $("<p>").addClass('thankspara').text("We have received your application and will review it carefully. Stay tuned for updates on your application status.");
                             $('.containerForm').append(thankspara)
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 location.reload();
                             }, 5000);
                         } else {
@@ -511,7 +547,7 @@
             });
         });
     });
-    
+
 
 </script>
 {% endblock %}

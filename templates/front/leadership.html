@@ -37,30 +37,25 @@
     Food Service and Dairy industries, contributing to the broader culinary
     landscape.
   </p>
+  {% if leaderships %}
   <div class="leading_div">
+
+   {% for leadership in leaderships %}
     <div>
       <div class="Leading-img-div">
-        <img loading="lazy" src="{% static 'front/assets/GS-Davar.webp' %}" alt="Late Dr.GS Davar photograph"
-          title="Late Dr.GS Davar photograph" />
+        <img loading="lazy" src="{{leadership.image.url}}" alt="{{leadership.image_alt_text}}"
+          title="{{leadership.image_alt_text}}" />
       </div>
       <div class="Leading-text-div">
-        <h3>Late Dr. G. S. Davar</h3>
-        <p class="post-leader">Founder</p>
-        <p>
-          Dr. Davar was an accomplished food scientist who started his career in
-          research in food science and technology after completing his
-          post-graduation from Central Food Technology Research Institute
-          (Mysore) and doctoral thesis from Germany that he completed on Carl
-          Duisburg Scholarship.
-        </p>
-        <p>
-          The company’s strong rooting in research and innovation lies in the
-          vision and leadership of Late Dr. Davar who served as its Managing
-          Director for more than three decades until his passing in 2016.
-        </p>
+        <h3>{{leadership.name}}</h3>
+        <p class="post-leader">{{leadership.position}}</p>
+        {{leadership.description|safe}}
       </div>
     </div>
-    <div>
+    {% endfor %}
+
+
+    <!-- <div>
       <div class="Leading-img-div">
         <img loading="lazy" src="{% static 'front/assets/Meera-Davar.webp' %}" alt="Meera Davar photograph"
           title="Meera Davar photograph" />
@@ -80,8 +75,8 @@
           the Board Member of Jiwaji University and as a patron for All India Magneto Therapists Association.
         </p>
       </div>
-    </div>
-    <div>
+    </div> -->
+    <!-- <div>
       <div class="Leading-img-div">
         <img loading="lazy" src="{% static 'front/assets/Puneet.webp' %}" alt=" Mr Puneet Davar photograph"
           title=" Mr Puneet Davar photograph" />
@@ -104,8 +99,8 @@
           Tropilite has expanded its reach and vision, aspiring to be an eminent food solutions provider worldwide.
         </p>
       </div>
-    </div>
-    <div>
+    </div> -->
+    <!-- <div>
       <div class="Leading-img-div">
         <img loading="lazy" src="{% static 'front/assets/Monica-Davar.webp' %}" alt=" Mrs  Monisha Davar photograph"
           title=" Mrs  Monisha Davar photograph" />
@@ -125,8 +120,9 @@
           sector shapes the company's offerings, ensuring they resonate with the evolving tastes of consumers.
         </p>
       </div>
-    </div>
+    </div> -->
   </div>
+  {%endif%}
 </section>
 
 <section class="leader_passion head_anim">
@@ -136,8 +132,14 @@
   </div>
   <div class="leader-guide">
     <div class="guide-img">
-      <img loading="lazy" src="{% static 'front/assets/all-employees.webp' %}" alt="group images of the leaders"
-        title="group images of the leaders" />
+      <!-- <img loading="lazy" src="{% static 'front/assets/all-employees.webp' %}" alt="group images of the leaders"
+        title="group images of the leaders" /> -->
+
+      <img 
+        src="{% if leadershipimage and leadershipimage.image %} {{leadershipimage.image.url}} {%else%}{% static 'front/assets/all-employees.webp' %}{%endif%}"
+        alt="{% if leadershipimage and leadershipimage.image_alt_text %}{{leadershipimage.image_alt_text}}{%else%}Davars{%endif%}"
+        title="{% if leadershipimage and leadershipimage.image_alt_text %}{{leadershipimage.image_alt_text}}{%else%}Davars{%endif%}"
+        loading='lazy' />
     </div>
     <div class="guide-content para_anim">
       <div>
