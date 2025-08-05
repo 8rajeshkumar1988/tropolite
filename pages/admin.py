@@ -18,25 +18,39 @@ class LeadershipAdmin(admin.StackedInline):
     model = Leadership
     extra = 0 
 
+    def has_delete_permission(self, request, obj = ...):
+        return False
+
 
 class LeadershipGroupImageAdmin(admin.StackedInline):
     model = LeadershipGroupImage
     extra = 0 
     max_num = 1
 
+    def has_delete_permission(self, request, obj = ...):
+        return False
+
 
 class AboutUsImageAdmin(admin.StackedInline):
     model = AboutUsImage
     extra = 0 
-    max_num = 1   
+    max_num = 1 
+    def has_delete_permission(self, request, obj = ...):
+        return False  
 class OurBrandAdmin(admin.StackedInline):
     model = OurBrand
     extra = 0 
+
+    def has_delete_permission(self, request, obj = ...):
+        return False
    
 class CarrerImageAdmin(admin.StackedInline):
     model = CarrerImage
     extra = 1
     max_num = 1   
+
+    def has_delete_permission(self, request, obj = ...):
+        return False
 
 
 class CsrImageAdmin(admin.StackedInline):
@@ -44,21 +58,33 @@ class CsrImageAdmin(admin.StackedInline):
     extra = 1
     max_num = 1  
 
+    def has_delete_permission(self, request, obj = ...):
+        return False
+
 class PatentsCertificatesImageAdmin(admin.StackedInline):
     model = PatentsCertificatesImage
     extra = 1
     max_num = 1  
+
+    def has_delete_permission(self, request, obj = ...):
+        return False
 
 class FoodDairyTechnologyImageAdmin(admin.StackedInline):
     model = FoodDairyTechnologyImage
     extra = 1
     max_num = 1 
 
+    def has_delete_permission(self, request, obj = ...):
+        return False
+
 
 class MicrobialBiotechnologyImageAdmin(admin.StackedInline):
     model = MicrobialBiotechnologyImage
     extra = 1
     max_num = 1 
+
+    def has_delete_permission(self, request, obj = ...):
+        return False
 
     
 
