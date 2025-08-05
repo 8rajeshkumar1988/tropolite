@@ -3471,7 +3471,7 @@ input[type="number"]::-webkit-outer-spin-button {
         -ms-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
   }
-  .access-menu > li:last-child a {
+  .access-menu > li:last-child a, .access-menu > li:last-child button {
     
     -webkit-transition: all 0.1s ease;
     
@@ -3485,7 +3485,7 @@ input[type="number"]::-webkit-outer-spin-button {
     /* font-weight: 600;
     scale: 1.1; */
   }
-  .access-menu > li:last-child a {
+  .access-menu > li:last-child a, .access-menu > li:last-child button {
     background: #e2b57c;
     /* padding: 0; */
     height: calc(100% + 23.5px);
