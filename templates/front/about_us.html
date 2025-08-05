@@ -6,7 +6,7 @@
         padding-top: 20px !important;
     }
 </style>
-
+{% if about_us_images and about_us_images.top_video_iframe %}
 <section class="taste-happy head_anim">
     <div class="aboutus-top-heading">
         <h3>Pioneers of</h3>
@@ -15,10 +15,13 @@
     <div class="happy-back">
         <!-- <img loading='lazy' src="assets/taste-happy.webp" alt=""> -->
         <div style="padding:56.25% 0 0 0;position:relative;">
-            <div id="899726700_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+            <div id="{{about_us_images.video_id}}_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
             
             </div>
-            <iframe src="https://player.vimeo.com/video/899726700?badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479&amp;loop=1&controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Leadership Team- Video"></iframe></div>
+            {{about_us_images.top_video_iframe|safe}}
+            <!-- <iframe src="https://player.vimeo.com/video/899726700?badge=0&amp;autoplay=1&amp;player_id=0&amp;app_id=58479&amp;loop=1&controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Leadership Team- Video"></iframe> -->
+        
+        </div>
     </div>
     <div class="happy-text para-anim" >
         <div class="para_anim">
@@ -30,10 +33,13 @@
     </div>
 </section>
 <script>
-    get_thumbnail('899726700');
+    get_thumbnail('{{about_us_images.video_id}}');
 </script>
+{%endif%}
 <section class="whoweare head_anim">
-    <div><img loading='lazy' src="{% static 'front/assets/DSC01750.webp' %}" alt="food"  title="Davars" loading='lazy' /></div>
+    <div>
+        <img loading='lazy' src="{% if about_us_images and about_us_images.who_we_are %} {{about_us_images.who_we_are.url}} {%else%}{% static 'front/assets/DSC01750.webp' %} {%endif%}" alt="{% if about_us_images and about_us_images.who_we_are_alt_text %}{{about_us_images.who_we_are_alt_text}}{%else%}Davars{%endif%}"  title="{% if about_us_images and about_us_images.who_we_are_alt_text %}{{about_us_images.who_we_are_alt_text}}{%else%}Davars{%endif%}" loading='lazy' />
+    </div>
     <div class="para_anim">
         <h2 class="h1">Who We Are</h2>
         <p>Tropilite Foods Pvt. Ltd is a renowned manufacturer of food ingredients, catering to the institutional, bakery, dairy and HORECA sectors since the 1970s. With a stellar reputation in the market, we have experienced tremendous growth by consistently delivering top-quality baking products.</p>
@@ -44,16 +50,19 @@
          
     </div>
 </section>
+{% if ourbrands %}
 <section class="ourbrand head_anim">
     <h2 class="h1">Our Brands</h2>
     <div class="brands-div">
+        {% for brand in ourbrands %}
         <div class="short_para_anim">
-            <a href="/bakery">
-                <img loading='lazy' src="{% static 'front/assets/logo brand.webp' %}" alt="tropolite" title="tropolite" loading='lazy' /></a>
-            <p>Largest manufacturer and supplier of baking ingredients</p>
+            <a href="{{brand.url_slug}}">
+                <img loading='lazy' src="{{brand.image.url}}" alt="{{brand.image_alt_text}}" title="{{brand.image_alt_text}}" loading='lazy' /></a>
+            <p>{{brand.description}}</p>
             
         </div>
-        <div class="short_para_anim">
+        {% endfor %}
+        <!-- <div class="short_para_anim">
             <a href="/culinary">
 
                 <img loading='lazy' loading='lazy' src="{% static 'front/assets/flexi brand.webp' %}" alt="Flexi" title="Flexi" >
@@ -72,9 +81,10 @@
                 <img loading='lazy' src="{% static 'front/assets/Tropolite-Prime-Logo.webp' %}" alt="Prime" title="Prime" >
             </a>
             <p>Tropolite’s assorted, secret ingredients for gourmet magic</p>
-        </div>
+        </div> -->
     </div>
 </section>
+{%endif%}
 <section class="application vision head_anim">
     <div class="apps">
         <div class="app-maindiv app-odd">
@@ -84,12 +94,17 @@
                 </p>
             </div>
             <div class="app-item1 app-div">
-                <img loading='lazy' src="{% static 'front/assets/Unleashing Taste and Texture.webp' %}" alt="Our Vision" title='our vision'>
+                
+                <img loading='lazy' src="{% if about_us_images and about_us_images.our_vision %} {{about_us_images.our_vision.url}} {%else%}{% static 'front/assets/Unleashing Taste and Texture.webp' %}{%endif%}" alt="{% if about_us_images and about_us_images.our_vision_alt_text %}{{about_us_images.our_vision_alt_text}}{%else%}Davars{%endif%}"  title="{% if about_us_images and about_us_images.our_vision_alt_text %}{{about_us_images.our_vision_alt_text}}{%else%}Davars{%endif%}" loading='lazy' />
+                
             </div>
         </div>
 
         <div class="app-maindiv app-even para_anim">
-            <div class="app-item1 app-div"><img loading='lazy' src="{% static 'front/assets/Production-Line-4.webp' %}" alt="Our Mission" title='our mission' ></div>
+            <div class="app-item1 app-div">
+                <img loading='lazy' src="{% if about_us_images and about_us_images.our_mission %} {{about_us_images.our_mission.url}} {%else%}{% static 'front/assets/Production-Line-4.webp' %}{%endif%}" alt="{% if about_us_images and about_us_images.our_mission_alt_text %}{{about_us_images.our_mission_alt_text}}{%else%}Davars{%endif%}"  title="{% if about_us_images and about_us_images.our_mission_alt_text %}{{about_us_images.our_mission_alt_text}}{%else%}Davars{%endif%}" loading='lazy' />
+            
+            </div>
             <div class="app-item2 app-div">
                 <h2 class="h1">Our Mission</h2>
                 <p>To empower our customers everywhere by working with and for them and deliver to them a unique

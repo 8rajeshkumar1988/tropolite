@@ -65,6 +65,7 @@ class LeadershipGroupImage(models.Model):
 class AboutUsImage(models.Model):
     page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_aboutus')
     top_video_iframe=models.TextField(null=True, blank=True)
+    video_id = models.CharField(max_length=255, null=True, blank=True)
     who_we_are=models.ImageField(upload_to='leadership/',null=True, blank=True)
     who_we_are_alt_text = models.CharField(max_length=255, null=True, blank=True)
 
@@ -94,6 +95,7 @@ class OurBrand(models.Model):
     
     image=models.ImageField(upload_to='leadership/',null=True, blank=True)
     image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+    url_slug = models.CharField(max_length=255, null=True, blank=True)
     is_active = models.BooleanField(default=True)
     sequence_number = models.IntegerField(blank=False, default=1, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -106,6 +108,7 @@ class OurBrand(models.Model):
 class CarrerImage(models.Model):
     page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_career')
     top_video_iframe=models.TextField(null=True, blank=True)
+    video_id = models.CharField(max_length=255, null=True, blank=True)
 
     cultivating_creativity_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
     cultivating_creativity_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
@@ -154,6 +157,7 @@ class CsrImage(models.Model):
 class PatentsCertificatesImage(models.Model):
     page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_patentscertificates')
     top_video_iframe=models.TextField(null=True, blank=True)
+    video_id = models.CharField(max_length=255, null=True, blank=True)
 
     quality_and_safety_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
     quality_and_safety_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
@@ -173,6 +177,7 @@ class PatentsCertificatesImage(models.Model):
 class FoodDairyTechnologyImage(models.Model):
     page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_pfdt')
     top_video_iframe=models.TextField(null=True, blank=True)
+    video_id = models.CharField(max_length=255, null=True, blank=True)
 
     formulating_the_future_of_flavor_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
     formulating_the_future_of_flavor_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
@@ -199,6 +204,7 @@ class FoodDairyTechnologyImage(models.Model):
 class MicrobialBiotechnologyImage(models.Model):
     page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_mb')
     top_video_iframe=models.TextField(null=True, blank=True)
+    video_id = models.CharField(max_length=255, null=True, blank=True)
 
     art_of_fermentation_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
     art_of_fermentation_image_alt_text = models.CharField(max_length=255, null=True, blank=True)

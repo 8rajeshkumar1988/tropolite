@@ -70,6 +70,7 @@ def get_page_data(page_slug):
             context['title'] = page_data.heading
             context['meta_title'] = page_data.heading
         context['heading'] = page_data.heading
+        context['page_id'] = page_data.id
         context['meta_image'] = page_data.meta_image
         context['meta_keywords'] = page_data.meta_keywords
         context['meta_description'] = page_data.meta_description
