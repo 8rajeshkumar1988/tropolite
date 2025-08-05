@@ -101,3 +101,116 @@ class OurBrand(models.Model):
 
     # def __str__(self):
     #     return self.name
+
+
+class CarrerImage(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_career')
+    top_video_iframe=models.TextField(null=True, blank=True)
+
+    cultivating_creativity_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    cultivating_creativity_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    cultivating_leadership_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    cultivating_leadership_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    opportunities_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    opportunities_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+
+    diversity_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    diversity_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Carrer Image"
+        verbose_name_plural = "Carrer Images"
+    
+
+    # def __str__(self):
+    #     return self.image_alt_text      
+    # 
+    # 
+    #  
+
+
+class CsrImage(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_csr')
+    
+
+    top_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    top_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+  
+
+
+    CSR_objective_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    CSR_objective_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "CSR Page Image"
+        verbose_name_plural = "CSR Page Images"
+
+
+
+class PatentsCertificatesImage(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_patentscertificates')
+    top_video_iframe=models.TextField(null=True, blank=True)
+
+    quality_and_safety_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    quality_and_safety_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    our_patents_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    our_patents_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    
+
+    class Meta:
+        verbose_name = "Patents Certificates Image"
+        verbose_name_plural = "Patents Certificates Images"
+
+
+
+
+class FoodDairyTechnologyImage(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_pfdt')
+    top_video_iframe=models.TextField(null=True, blank=True)
+
+    formulating_the_future_of_flavor_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    formulating_the_future_of_flavor_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    redefining_bakery_artistry_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    redefining_bakery_artistry_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+
+    unleashing_taste_and_texture_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    unleashing_taste_and_texture_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    r_and_d_activities_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    r_and_d_activities_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    
+
+    class Meta:
+        verbose_name = "Food & Dairy Technology Image"
+        verbose_name_plural = "Food & Dairy Technology Images"
+
+
+
+
+class MicrobialBiotechnologyImage(models.Model):
+    page=models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=False, related_name='page_mb')
+    top_video_iframe=models.TextField(null=True, blank=True)
+
+    art_of_fermentation_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    art_of_fermentation_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    championing_progress_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    championing_progress_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+
+    exploring_health_benefits_image=models.ImageField(upload_to='leadership/',null=True, blank=True)
+    exploring_health_benefits_image_alt_text = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Microbial Biotechnology Image"
+        verbose_name_plural = "Microbial Biotechnology Images"
+    
