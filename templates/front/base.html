@@ -236,7 +236,7 @@ function getCookie(name) {
 }
 
 // Example usage:
-  var awardCookie = getCookie('award');
+  let awardCookie = getCookie('award');
   if(awardCookie !== 'saved'){
     $('.award').slideDown(500)
     $('.award').css('display', 'flex')
@@ -246,7 +246,7 @@ function getCookie(name) {
   
 
   jQuery(function () {
-    var $els = $('p[class^=p]'),
+    var $els = $('.award p[class^=p]'),
         i = 0,
         len = $els.length;
 
