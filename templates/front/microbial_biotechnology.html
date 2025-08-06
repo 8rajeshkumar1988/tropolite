@@ -12,7 +12,9 @@
             <div id="901056879_thumb" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
             
             </div>
-            <iframe preload="auto" src="https://player.vimeo.com/video/901056879?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&loop=1&autoplay=1&display=1&controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="R&amp;D Clip- Patents"></iframe></div>
+            {{pageimages.top_video_iframe|safe}}
+        
+        </div>
     </div>    
 </section>
 <section class="fermentation_art para_anim ">
@@ -21,16 +23,43 @@
         <h3>Cutting-Edge Science & Innovation</h3>
         <p>With a rich legacy of safe usage in the food industry, the spotlight is now on selected cultures for dairy fermentation, showcasing remarkable potential and health benefits. At Tropolite Foods Pvt Ltd, we're dedicated to exploring the realm of microbial wonders to elevate the taste, texture and nutritional value of food.</p>
     </div>
-    <div class='ferma_img'><img src="{% static 'front/assets/The-art-of-fermentation-meets-cutting-edge-science.jpg' %}" alt="test images" title="test images"></div>
+    <div class='ferma_img'>
+        
+        <!-- <img src="{% static 'front/assets/The-art-of-fermentation-meets-cutting-edge-science.jpg' %}" alt="test images" title="test images"> -->
+          <img 
+        src="{% if pageimages and pageimages.art_of_fermentation_image %} {{pageimages.art_of_fermentation_image.url}} {%else%}{% static 'front/assets/Formulating the Future of Flavor.webp' %}{%endif%}"
+        alt="{% if pageimages and pageimages.art_of_fermentation_image_alt_text %}{{pageimages.art_of_fermentation_image_alt_text}}{%else%}Formulating the Future of Flavor{%endif%}"
+        title="{% if pageimages and pageimages.art_of_fermentation_image_alt_text %}{{pageimages.art_of_fermentation_image_alt_text}}{%else%}Formulating the Future of Flavor{%endif%}"
+        loading='lazy' />
+    
+    </div>
 </section>
 <section class="champ para_anim">
     <div class="champ-div">
         <div class="champ-text"><h2>Championing Progress</h2><h3>The Power of Starter Cultures
         </h3><p>The cultivation of starter cultures has taken the food industry by storm. These cultures, meticulously formed using distinct cultivation mediums and a carefully curated blend of fungal and bacterial strains, are at the heart of dairy product fermentation. Our palette of microorganisms encompasses bacteria, fungi (yeasts and molds) and enzymes, all harmonizing to craft a symphony of flavors and textures. The industrial application of starter cultures rests on precision, from concentration to preservation technologies, ensuring a steady supply of robust and functional cultures.</p></div>
-        <div class="champ-img"><img loading='lazy' src="{% static 'front/assets/metaSet.webp' %}" alt="Championing the Power of Starter Cultures" title="Championing the Power of Starter Cultures">> </div>
+        <div class="champ-img">
+            
+             <img 
+        src="{% if pageimages and pageimages.championing_progress_image %} {{pageimages.championing_progress_image.url}} {%else%}{% static 'front/assets/Formulating the Future of Flavor.webp' %}{%endif%}"
+        alt="{% if pageimages and pageimages.championing_progress_image_alt_text %}{{pageimages.championing_progress_image_alt_text}}{%else%}Formulating the Future of Flavor{%endif%}"
+        title="{% if pageimages and pageimages.championing_progress_image_alt_text %}{{pageimages.championing_progress_image_alt_text}}{%else%}Formulating the Future of Flavor{%endif%}"
+        loading='lazy' />
+        
+        </div>
     </div>
     <div class="champ-div">
-        <div class="champ-img"><img loading='lazy' src="{% static 'front/assets/Exploring-Health-Benefits-and-Beyond.jpg' %}" alt="Exploring Health Benefits and Beyond" title="Exploring Health Benefits and Beyond"></div>
+        <div class="champ-img">
+            
+            <!-- <img loading='lazy' src="{% static 'front/assets/Exploring-Health-Benefits-and-Beyond.jpg' %}" alt="Exploring Health Benefits and Beyond" title="Exploring Health Benefits and Beyond"> -->
+        
+          <img 
+        src="{% if pageimages and pageimages.exploring_health_benefits_image %} {{pageimages.exploring_health_benefits_image.url}} {%else%}{% static 'front/assets/Exploring-Health-Benefits-and-Beyond.jpg' %}{%endif%}"
+        alt="{% if pageimages and pageimages.exploring_health_benefits_image_alt_text %}{{pageimages.exploring_health_benefits_image_alt_text}}{%else%}Exploring Health Benefits and Beyond{%endif%}"
+        title="{% if pageimages and pageimages.exploring_health_benefits_image_alt_text %}{{pageimages.exploring_health_benefits_image_alt_text}}{%else%}Exploring Health Benefits and Beyond{%endif%}"
+        loading='lazy' />
+
+        </div>
         <div class="champ-text"><h2>Exploring Health Benefits</h2><h3>And Beyond</h3><p>In this era of discovery, we delve into the potential health benefits associated with starter cultures. Research hints at the role of lactic acid bacteria in influencing colon cancer growth, lowering cholesterol levels, preventing urogenital infections, addressing constipation and managing food allergies. Tropolite Foods Pvt Ltd is at the forefront of this exploration, channeling our expertise towards isolating, improving, establishing and mass-producing Probiotics and Yeast for diverse applications in dairy fermentation, baking and brewing.</p></div>
     </div>
 </section>
@@ -57,6 +86,6 @@
 
 {% include "front/include/deals.html" %}
 <script>
-    get_thumbnail('901056879');
+    get_thumbnail('{{pageimages.video_id}}');
 </script>
 {% endblock %}

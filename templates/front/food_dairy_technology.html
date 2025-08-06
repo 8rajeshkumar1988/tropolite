@@ -28,7 +28,8 @@
             
         </div>
         <div style="padding:56.25% 0 0 0;position:relative;">
-            <iframe preload="auto" src="https://player.vimeo.com/video/902134053?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;loop=1&amp;autoplay=1&amp;display=1&amp;controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="R&amp;D Clip- Patents" data-ready="true"></iframe>
+            {{pageimages.top_video_iframe|safe}}
+            <!-- <iframe preload="auto" src="https://player.vimeo.com/video/902134053?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;loop=1&amp;autoplay=1&amp;display=1&amp;controls=false&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="R&amp;D Clip- Patents" data-ready="true"></iframe> -->
         </div> 
     </div>
     <div class="happy-text para-anim">
@@ -41,7 +42,15 @@
     <div class="apps">
         <div class="app-maindiv app-odd">
             <div class="app-item1 app-div">
-                <img src="{% static 'front/assets/Formulating the Future of Flavor.webp' %}" alt="Formulating the Future of Flavor" title="Formulating the Future of Flavor">
+                <!-- <img src="{% static 'front/assets/Formulating the Future of Flavor.webp' %}" alt="Formulating the Future of Flavor" title="Formulating the Future of Flavor"> -->
+                
+                 <img 
+        src="{% if pageimages and pageimages.formulating_the_future_of_flavor_image %} {{pageimages.formulating_the_future_of_flavor_image.url}} {%else%}{% static 'front/assets/Formulating the Future of Flavor.webp' %}{%endif%}"
+        alt="{% if pageimages and pageimages.formulating_the_future_of_flavor_image_alt_text %}{{pageimages.formulating_the_future_of_flavor_image_alt_text}}{%else%}Formulating the Future of Flavor{%endif%}"
+        title="{% if pageimages and pageimages.formulating_the_future_of_flavor_image_alt_text %}{{pageimages.formulating_the_future_of_flavor_image_alt_text}}{%else%}Formulating the Future of Flavor{%endif%}"
+        loading='lazy' />
+            
+            
             </div>
             <div class="app-item2 app-div para_anim">
                 <h3>Formulating the Future of Flavor</h3>
@@ -61,12 +70,24 @@
                     loaf, a sumptuous cake, or a delicate pastry. With Tropilite Foods Pvt Ltd, your culinary
                     imagination knows no bounds.</p>
             </div>
-            <div class="app-item1 app-div"><img loading='lazy' src="{% static 'front/assets/Redefining Bakery Artistry.webp' %}" alt="Redefining Bakery Artistry" title="Redefining Bakery Artistry"></div>
+            <div class="app-item1 app-div">
+                <!-- <img loading='lazy' src="{% static 'front/assets/Redefining Bakery Artistry.webp' %}" alt="Redefining Bakery Artistry" title="Redefining Bakery Artistry"> -->
+                 <img 
+        src="{% if pageimages and pageimages.redefining_bakery_artistry_image %} {{pageimages.redefining_bakery_artistry_image.url}} {%else%}{% static 'front/assets/Redefining Bakery Artistry.webp' %}{%endif%}"
+        alt="{% if pageimages and pageimages.redefining_bakery_artistry_image_alt_text %}{{pageimages.redefining_bakery_artistry_image_alt_text}}{%else%}Redefining Bakery Artistry{%endif%}"
+        title="{% if pageimages and pageimages.redefining_bakery_artistry_image_alt_text %}{{pageimages.redefining_bakery_artistry_image_alt_text}}{%else%}Redefining Bakery Artistry{%endif%}"
+        loading='lazy' />
+            </div>
         </div>
 
         <div class="app-maindiv app-odd">
             <div class="app-item1 app-div">
-                <img loading='lazy' src="{% static 'front/assets/unleasing.webp' %}" alt="Unleashing Taste and Texture" title="Unleashing Taste and Texture">
+                <!-- <img loading='lazy' src="{% static 'front/assets/unleasing.webp' %}" alt="Unleashing Taste and Texture" title="Unleashing Taste and Texture"> -->
+                  <img 
+        src="{% if pageimages and pageimages.unleashing_taste_and_texture_image %} {{pageimages.unleashing_taste_and_texture_image.url}} {%else%}{% static 'front/assets/unleasing.webp' %}{%endif%}"
+        alt="{% if pageimages and pageimages.unleashing_taste_and_texture_image_alt_text %}{{pageimages.unleashing_taste_and_texture_image_alt_text}}{%else%}Unleashing Taste and Texture{%endif%}"
+        title="{% if pageimages and pageimages.unleashing_taste_and_texture_image_alt_text %}{{pageimages.unleashing_taste_and_texture_image_alt_text}}{%else%}Unleashing Taste and Texture{%endif%}"
+        loading='lazy' />
             </div>
             <div class="app-item2 app-div para_anim">
                 <h3>Unleashing Taste and Texture</h3>
@@ -91,7 +112,15 @@
                 <li><p>Standardization of the developed formulations.</p></li>
             </ul>
         </div>
-        <div><img loading='lazy' src="{% static 'front/assets/R&D activities.webp' %}" alt="Development of new cost-effective and more competitive food products from customer point of view" title="Development of new cost-effective and more competitive food products from customer point of view"></div>
+        <div>
+            <img 
+        src="{% if pageimages and pageimages.r_and_d_activities_image %} {{pageimages.r_and_d_activities_image.url}} {%else%}{% static 'front/assets/unleasing.webp' %}{%endif%}"
+        alt="{% if pageimages and pageimages.r_and_d_activities_image_alt_text %}{{pageimages.r_and_d_activities_image_alt_text}}{%else%}Development of new cost-effective and more competitive food products from customer point of view{%endif%}"
+        title="{% if pageimages and pageimages.r_and_d_activities_image_alt_text %}{{pageimages.r_and_d_activities_image_alt_text}}{%else%}Development of new cost-effective and more competitive food products from customer point of view{%endif%}"
+        loading='lazy' />
+            <!-- <img loading='lazy' src="{% static 'front/assets/R&D activities.webp' %}" alt="Development of new cost-effective and more competitive food products from customer point of view" title="Development of new cost-effective and more competitive food products from customer point of view"> -->
+        
+        </div>
     </div>
 </section>
 
@@ -99,6 +128,6 @@
 
 
 <script>
-    get_thumbnail('902134053');
+    get_thumbnail('{{pageimages.video_id}}');
 </script>
 {% endblock %}

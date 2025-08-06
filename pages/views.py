@@ -628,6 +628,16 @@ def food_dairy_technology(request):
         get_breadcrumb_json(breadcrumbs, request, "food-dairy-technology")
     )
     context["leadform"] = LeadForm()
+
+    try:
+        pageimages = FoodDairyTechnologyImage.objects.get(page_id=page_info["page_id"])
+    except FoodDairyTechnologyImage.DoesNotExist:
+        pageimages = None
+
+    context["pageimages"] = pageimages
+
+
+
     return render(request, "front/food_dairy_technology.html", context)
 
 
@@ -1532,7 +1542,7 @@ def events(request):
 def event_list(request):
     context = {}
     eventType = request.GET.get("eventtype")
-    eventLists = Event.objects.all().order_by("created_at").filter(is_active=True)
+    eventLists = Event.objects.all().order_by("-event_date").filter(is_active=True)
 
     if eventType is not None and eventType:
         eventLists = eventLists.filter(event_type=eventType)
@@ -1595,6 +1605,17 @@ def patents_certificates(request):
         get_breadcrumb_json(breadcrumbs, request, "patents-certificates")
     )
     context["leadform"] = LeadForm()
+
+    
+    try:
+        pcertifimages = PatentsCertificatesImage.objects.get(page_id=page_info["page_id"])
+    except PatentsCertificatesImage.DoesNotExist:
+        pcertifimages = None
+
+    context["pcertifimages"] = pcertifimages
+
+
+
     return render(request, "front/patents_certificates.html", context)
 
 
@@ -1627,6 +1648,15 @@ def microbial_biotechnology(request):
         get_breadcrumb_json(breadcrumbs, request, "microbial-biotechnology")
     )
     context["leadform"] = LeadForm()
+
+    try:
+        pageimages = MicrobialBiotechnologyImage.objects.get(page_id=page_info["page_id"])
+    except MicrobialBiotechnologyImage.DoesNotExist:
+        pageimages = None
+
+    context["pageimages"] = pageimages
+
+
     return render(request, "front/microbial_biotechnology.html", context)
 
 
