@@ -989,7 +989,7 @@ def save_lead(request):
         city = request.POST["city"]
         description = request.POST["description"]
         page = request.POST["page"]
-        if name == "":
+        if name == "" or name == "RobertAcath":
             response_data["error"] = True
             response_data["message"] = (
                 "*All fields are mandatory. Please fill the missing fields."

@@ -100,8 +100,8 @@ WSGI_APPLICATION = 'tropolite.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
+        #'ENGINE': 'mysql.connector.django',
         'NAME': 'tropolite_db',
         'USER': 'root',
         'PASSWORD': "",
